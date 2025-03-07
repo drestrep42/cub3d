@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:29:48 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/04 20:23:25 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/03/07 12:54:38 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_exit(char *message)
 {
+	printf("Error\n");
 	printf("%s\n", message);
 	exit(1);
 }

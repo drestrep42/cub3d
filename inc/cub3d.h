@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/04 20:32:48 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/03/07 17:38:57 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,72 @@
 #include "../MLX42/include/MLX42/MLX42.h"
 
 #define USAGE_ERROR "Correct use: ./cub3d map_name.cub"
+#define EMPTY_MAP "Map is empty"
+#define INVALID_MAP "Invalid map"
 
-typedef struct scube
+#define NO 0
+#define SO 1
+#define EA 2
+#define WE 3
+
+#define WIDTH 2000
+#define HEIGHT 2000
+
+typedef struct s_points
 {
-	int	a;
-}				t_cube;
+	int			x;
+	int			y;
+	int			z;
+	int			height;
+}				t_points;
 
+typedef struct s_map
+{
+	t_points	**coord;
+}				t_map;
+
+typedef struct s_texture
+{
+	char		*path;
+	bool		empty;
+}				t_texture;
+
+typedef struct s_floor
+{
+	int			color;
+	bool		empty;
+}				t_floor;
+
+typedef struct s_ceiling
+{
+	int			color;
+	bool		empty;
+}				t_ceiling;
+
+typedef struct s_file
+{	
+	t_map		map;
+	t_floor		floor;
+	t_ceiling	ceiling;
+	t_texture	*textures[4];
+	
+}				t_file;
+typedef struct s_mlx
+{
+	t_file		file;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	void		*img_ptr;
+	int			width;
+	int			height;
+}				t_mlx;
+
+void	cube_init(t_mlx *mlx);
+
+void	parsing(t_file *file, int fd);
+
+void	free_all(t_mlx mlx);
 void	ft_exit(char *message);
-void	cube_init(t_cube *cube);
+void	free_all(t_mlx mlx);
 
 #endif
