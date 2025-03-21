@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:47:22 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/07 17:40:17 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/03/21 14:20:05 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ int	transition_table(int i, int j)
 	return (status[i][j]);
 }
 
-void	skip_spaces(char *line)
+char *skip_spaces(char *line)
 {
-	while (line && *line == ' ')
-		line++;
+    while (*line == ' ' || *line == '	')
+        line++;
+    return (ft_strdup(line));
 }
 
 void	validate_var(t_texture *texture, \
@@ -47,11 +48,12 @@ t_floor *floor, t_ceiling *ceiling, char *var)
 		floor->empty = false;
 	else if (ceiling->empty && ft_strncmp(var, "C", 2) == 0)
 		ceiling->empty = false;
-	else
+	else if (ft_strncmp(var, "\n", 1) != 0)
 	{
 		free(var);
 		ft_exit(INVALID_MAP);
 	}
+	free(var);
 }
 
 char	*get_word(char *line)
@@ -59,21 +61,17 @@ char	*get_word(char *line)
 	int	i;
 
 	i = 0;
-	while (line && line[i] != ' ')
+	while (line[i] && line[i] != ' ' && line[i] != '	')
 		i++;
 	return (ft_substr(line, 0, i));
 }
 
 void	file_init(t_file *file)
 {
-	file->textures[NO] = malloc(sizeof(file->textures));
-	file->textures[SO] = malloc(sizeof(file->textures));
-	file->textures[EA] = malloc(sizeof(file->textures));
-	file->textures[WE] = malloc(sizeof(file->textures));
-	file->textures[NO]->empty = true;
-	file->textures[SO]->empty = true;
-	file->textures[EA]->empty = true;
-	file->textures[WE]->empty = true;
+	file->textures[NO].empty = true;
+	file->textures[SO].empty = true;
+	file->textures[EA].empty = true;
+	file->textures[WE].empty = true;
 	file->ceiling.empty = true;
 	file->floor.empty = true;
 }
@@ -81,19 +79,23 @@ void	file_init(t_file *file)
 void	parsing(t_file *file, int fd)
 {
 	char	*line;
+	char	*trimmed;
 
 	line = get_next_line(fd);
 	if (!line)
 		ft_exit(EMPTY_MAP);
 	file_init(file);
-	while (line && (file->textures[NO]->empty || file->textures[SO]->empty ||\
-			file->textures[EA]->empty || file->textures[WE]->empty || \
+	while (line && (file->textures[NO].empty || file->textures[SO].empty ||\
+			file->textures[EA].empty || file->textures[WE].empty || \
 			file->floor.empty || file->ceiling.empty))
 	{
-		skip_spaces(line);
-		validate_var(*file->textures, &file->floor, \
-		&file->ceiling, get_word(line));
+		trimmed = skip_spaces(line);
 		free(line);
+		validate_var(file->textures, &file->floor, \
+		&file->ceiling, get_word(trimmed));
+		
+		free(trimmed);
 		line = get_next_line(fd);
 	}
+	free(line);
 }

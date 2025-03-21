@@ -6,7 +6,7 @@
 #    By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 12:51:47 by drestrep          #+#    #+#              #
-#    Updated: 2025/03/07 17:38:45 by drestrep         ###   ########.fr        #
+#    Updated: 2025/03/21 14:32:25 by drestrep         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ $(NAME): $(LIBFT) $(MLX) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBRARIES) $(INCLUDES)
 
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	@$(MAKE) -s -C $(LIBFT_DIR)
 
 $(MLX):
 	make -C MLX42
@@ -52,6 +52,7 @@ exe: all
 
 clean:
 					@rm -rf $(OBJS)
+					@$(MAKE) -s -C $(LIBFT_DIR) clean
 	
 fclean: clean	
 					@rm -rf $(NAME)

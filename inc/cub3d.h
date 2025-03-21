@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/07 17:38:57 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/03/21 13:46:27 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,10 @@ typedef struct s_file
 	t_map		map;
 	t_floor		floor;
 	t_ceiling	ceiling;
-	t_texture	*textures[4];
+	t_texture	textures[4];
 	
 }				t_file;
+
 typedef struct s_mlx
 {
 	t_file		file;
