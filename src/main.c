@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:57:59 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/21 13:47:36 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:30:41 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int main(int ac, char **argv)
 	parsing(&mlx.file, fd);
 	cube_init(&mlx);
 	mlx_loop(mlx.mlx_ptr);
-	//free_all(mlx);
+	free_all(&mlx);
 	return (0);
 }

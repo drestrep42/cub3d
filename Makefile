@@ -6,14 +6,14 @@
 #    By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 12:51:47 by drestrep          #+#    #+#              #
-#    Updated: 2025/03/21 14:32:25 by drestrep         ###   ########.fr        #
+#    Updated: 2025/03/25 14:39:12 by drestrep         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	cub3d
 
 CC				=	gcc
-CFLAGS			=	-g3 -Wall -Wextra -Werror -fsanitize=address -I$(LIBFT_DIR) #-Ofast -DDEBUG=1
+CFLAGS			=	-g3 -Wall -Wextra -Werror -I$(LIBFT_DIR) -fsanitize=address #-Ofast -DDEBUG=1
 
 LIBFT_DIR		= 	libft
 LIBFT			= 	$(LIBFT_DIR)/libft.a
