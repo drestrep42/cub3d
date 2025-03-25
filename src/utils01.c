@@ -1,21 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 17:35:59 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/25 17:52:07 by drestrep         ###   ########.fr       */
+/*   Created: 2025/03/25 17:46:27 by drestrep          #+#    #+#             */
+/*   Updated: 2025/03/25 17:47:45 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	free_all(t_mlx *mlx)
+char	*skip_spaces(char *line)
 {
-	free(mlx->file.textures[NO].path);
-	free(mlx->file.textures[SO].path);
-	free(mlx->file.textures[EA].path);
-	free(mlx->file.textures[WE].path);
+	while (*line == ' ' || *line == '\t')
+		line++;
+	return (ft_strdup(line));
+}
+
+char	*get_word(char *line)
+{
+	char	*word;
+	int		i;
+
+	i = 0;
+	while (line[i] && line[i] != '\n' \
+	&& line[i] != ' ' && line[i] != '\t')
+		i++;
+	word = ft_substr(line, 0, i);
+	return (word);
+}
+
+int	check_spaces(char **ptr)
+{
+	while (*ptr && **ptr == ' ')
+		(*ptr)++;
+	if (**ptr != '\n')
+		return (-1);
+	return (0);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_cub3d.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/20 03:16:43 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/25 16:37:13 by drestrep         ###   ########.fr       */
+/*   Created: 2025/03/25 16:52:50 by drestrep          #+#    #+#             */
+/*   Updated: 2025/03/25 17:38:36 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "../inc/cub3d.h"
 
 int	ft_countstr(char const *s, char c)
 {
@@ -23,10 +23,14 @@ int	ft_countstr(char const *s, char c)
 		return (0);
 	while (s[i])
 	{
+		if (s[i] == c && s[i + 1] == c)
+			ft_exit(INVALID_TEXTURES);
 		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
 			j++;
 		i++;
 	}
+	if (j != 2)
+		ft_exit(INVALID_TEXTURES);
 	if (s[0] != c)
 		j++;
 	return (j);
@@ -54,7 +58,7 @@ char	*ft_string(const char *s, char c, size_t counter)
 	return (str);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split_cub3d(char const *s, char c)
 {
 	char	**new;
 	size_t	sn;

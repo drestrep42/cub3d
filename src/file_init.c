@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   file_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 17:35:59 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/25 17:52:07 by drestrep         ###   ########.fr       */
+/*   Created: 2025/03/25 17:41:55 by drestrep          #+#    #+#             */
+/*   Updated: 2025/03/25 17:42:04 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	free_all(t_mlx *mlx)
+void	file_init(t_file *file)
 {
-	free(mlx->file.textures[NO].path);
-	free(mlx->file.textures[SO].path);
-	free(mlx->file.textures[EA].path);
-	free(mlx->file.textures[WE].path);
+	file->textures[NO].empty = true;
+	file->textures[SO].empty = true;
+	file->textures[EA].empty = true;
+	file->textures[WE].empty = true;
+	file->ceiling.empty = true;
+	file->floor.empty = true;
 }
