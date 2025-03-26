@@ -6,14 +6,14 @@
 #    By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 12:51:47 by drestrep          #+#    #+#              #
-#    Updated: 2025/03/07 17:38:45 by drestrep         ###   ########.fr        #
+#    Updated: 2025/03/25 17:54:01 by drestrep         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	cub3d
 
 CC				=	gcc
-CFLAGS			=	-g3 -Wall -Wextra -Werror -fsanitize=address -I$(LIBFT_DIR) #-Ofast -DDEBUG=1
+CFLAGS			=	-g3 -Wall -Wextra -Werror -I$(LIBFT_DIR) -fsanitize=address #-Ofast -DDEBUG=1
 
 LIBFT_DIR		= 	libft
 LIBFT			= 	$(LIBFT_DIR)/libft.a
@@ -32,7 +32,8 @@ PATH_BASE 		=	./src/
 
 BASE_DIR   		=	$(addprefix $(PATH_BASE), $(BASE_SRC))
 
-BASE_SRC		=	main.c  cube_init.c  parsing.c  ft_free.c  ft_exit.c
+BASE_SRC		=	main.c  cube_init.c  parsing.c  ft_free.c  ft_exit.c 	\
+					file_init.c	parse_textures.c	utils01.c	utils02.c	\
 
 OBJS			=	${BASE_DIR:.c=.o} \
 
@@ -42,7 +43,7 @@ $(NAME): $(LIBFT) $(MLX) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBRARIES) $(INCLUDES)
 
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	@$(MAKE) -s -C $(LIBFT_DIR)
 
 $(MLX):
 	make -C MLX42
@@ -52,6 +53,7 @@ exe: all
 
 clean:
 					@rm -rf $(OBJS)
+					@$(MAKE) -s -C $(LIBFT_DIR) clean
 	
 fclean: clean	
 					@rm -rf $(NAME)
