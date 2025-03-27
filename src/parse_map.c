@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:01:11 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/27 14:26:47 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/03/27 18:01:08 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	get_map_size(int fd)
 
 void	parse_line(char *line, int *player)
 {
-	while (line)
+	while (line && *line != '\0')
 	{
 		while (*line == ' ')
 		{
@@ -76,23 +76,25 @@ void	parse_line(char *line, int *player)
 void	parse_map(t_map *map, int fd, int size)
 {
 	static int	player;
-	char		**aux;
 	char		*line;
+	int			x;
+	int			y;
 
+	y = 0;
 	line = get_to_map(fd);
-	map->points = malloc((size + 1) * sizeof(char *));
-	if (!map->points)
-		exit(1);
-	aux = map->points;
+	map->coord = ft_malloc((size + 1) * sizeof(t_points *));
 	while (line && ft_strncmp(line, "\n", 1) != 0)
 	{
+		x = -1;
 		parse_line(line, &player);
-		printf("%s", line);
-		*aux = ft_strdup(line);
+		map->coord[y] = ft_malloc((ft_strlen(line) + 1) * sizeof(t_points));
+		while (line[++x])
+			map->coord[y][x].nbr = line[x];
+		map->coord[y][x].nbr = '\0';
 		free(line);
 		line = get_next_line(fd);
-		aux++;
+		y++;
 	}
-	*aux = NULL;
+	map->coord[y] = NULL;
 	free(line);
 }

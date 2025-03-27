@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/27 14:33:28 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:49:18 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,13 @@
 
 typedef struct s_points
 {
-	int			x;
-	int			y;
-	int			z;
-	int			height;
+	int			filled;
+	char		nbr;
 }				t_points;
 
 typedef struct s_map
 {
 	t_points	**coord;
-	char		**points;
 	int			x_nbrs;
 	int			y_nbrs;
 }				t_map;

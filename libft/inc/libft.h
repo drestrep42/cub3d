@@ -5,20 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 18:57:34 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/04 19:15:15 by drestrep         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 00:04:22 by drestrep          #+#    #+#             */
-/*   Updated: 2024/03/14 16:40:09 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/03/27 18:09:17 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +26,6 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 69
 # endif
-
 
 // LIBFT
 typedef struct s_list
@@ -114,5 +101,11 @@ void	ft_putptr(size_t ptr, int *len);
 void	ft_putnbr(int nbr, int *len);
 void	ft_unsigned_int(int var, int *len);
 void	ft_hexadecimal(unsigned int nbr, int *len, char c);
+
+//		FT_MALLOC
+void	*ft_malloc(int size);
+
+//		FT_EXIT
+void	*ft_exit(char *message);
 
 #endif
