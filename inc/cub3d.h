@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/27 18:27:35 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/05 15:29:38 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <string.h>
 # include <errno.h>
 # include <sys/time.h>
+#include <math.h>
 # include "../libft/inc/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
@@ -39,13 +40,16 @@
 # define G 1
 # define B 2
 
-# define WIDTH 800
-# define HEIGHT 800
-#define mapWidth 24
-#define mapHeight 24
+# define WIDTH 1000
+# define HEIGHT 1000
+#define mapWidth 8
+#define mapHeight 13
 #define screenWidth 640
 #define screenHeight 480
-
+#define MOVE_SPEED 0.1
+#define ROT_SPEED  0.05
+#define BLOCK  64
+#define PI  3.14159265359
 
 
 typedef struct s_points
@@ -79,6 +83,20 @@ typedef struct s_ceiling
 	bool		empty;
 }				t_ceiling;
 
+typedef struct s_player
+{
+    double posX;
+    double posY;
+    // double dirX;
+    // double dirY;
+	double angle;
+    double planeX;
+    double planeY;
+
+	bool left_rotate;
+	bool right_rotate;
+}               t_player;
+
 typedef struct s_file
 {
 	t_map		map;
@@ -92,9 +110,10 @@ typedef struct s_mlx
 {
 	t_file		file;
 	void		*mlx_ptr;
-	void		*img_ptr;
+	mlx_image_t	*img;
 	int			width;
 	int			height;
+	t_player    player;
 }				t_mlx;
 
 // Init

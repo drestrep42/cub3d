@@ -3,136 +3,325 @@
 /*                                                        :::      ::::::::   */
 /*   cube_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/27 19:44:58 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/05 15:25:49 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
+int worldMap[mapWidth][mapHeight] = {
+    {1,1,1,1,1,1,1,1,1,1,1,1,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,1,0,0,0,0,0,0,1},
+    {1,0,1,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,1,1,1,1,1,0,1},
+    {1,0,0,0,0,0,1,1,1,1,1,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,1,1,1,1,1,1,1,1,1,1,1,1}
+};
+
+void put_pixel(int x, int y, int color, mlx_image_t *img)
+{
+    if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
+        return;
+    img->pixels[y * img->width + x] = color;
+    mlx_put_pixel(img, x, y, color);
+}
+
+void draw_square(int x, int y, int size, int color, mlx_image_t *img)
+{
+    for (int i = 0; i < size; i++)
+        put_pixel(x + i, y, color, img);  
+    for (int i = 0; i < size; i++)
+        put_pixel(x, y+i, color, img);
+    for (int i = 0; i < size; i++)
+        put_pixel(x+size, y+i, color, img);
+    for (int i = 0; i < size; i++)
+        put_pixel(x+i, y+size, color, img);
+    
+}
+
+bool touch(double px, double py)
+{
+    int x = (int)(px / BLOCK);
+    int y = (int)(py / BLOCK);
+    if (x < 0 || x >= mapWidth || y < 0 || y >= mapHeight)
+        return true;
+    if (worldMap[y][x] == 1)
+        return true;
+    return false;
+}
+
+// void move_player(mlx_key_data_t key_data, t_player *player)
+// {
+//     int speed = 3;
+//     double angle_speed = 0.2;
+//     double cos_angle = cos(player->angle);
+//     double sin_angle = sin(player->angle);
+    
+//     // printf("angulo '%f'\n", player->angle);
+//     if (key_data.key == MLX_KEY_Q)
+//         player->angle -= angle_speed;
+//     if (key_data.key == MLX_KEY_E)
+//         player->angle += angle_speed;
+//     if (player->angle > 2 * PI)
+//         player->angle = 0;
+//     if (player->angle < 0)
+//         player->angle = 2 * PI;
+
+
+//     //min 6.09
+//     if (key_data.key == MLX_KEY_UP)
+//     {
+//         player->posX += cos_angle * speed;
+//         player->posY += sin_angle * speed;
+//     }
+//     if (key_data.key == MLX_KEY_DOWN)
+//     {
+//         player->posX -= cos_angle * speed;
+//         player->posY -= sin_angle * speed;
+
+//     }
+//     if (key_data.key == MLX_KEY_LEFT)
+//     {
+//         player->posX += cos_angle * speed;
+//         player->posY -= sin_angle * speed;
+
+//     }
+//     if (key_data.key == MLX_KEY_RIGHT)
+//     {
+//         player->posX -= cos_angle * speed;
+//         player->posY += sin_angle * speed;
+
+//     }
+// }
+
+void move_player(mlx_key_data_t key_data, t_player *player)
+{
+    int speed = 3;              // Velocidad de movimiento
+    double angle_speed = 0.2;     // Velocidad de rotación
+    double cos_angle = cos(player->angle);
+    double sin_angle = sin(player->angle);
+
+    //movimiento de la cam
+    if (key_data.key == MLX_KEY_Q)
+        player->angle -= angle_speed;
+    if (key_data.key == MLX_KEY_E)
+        player->angle += angle_speed;
+    if (player->angle > 2 * PI)
+        player->angle = 0;
+    if (player->angle < 0)
+        player->angle = 2 * PI;
+
+    // movimiento del personaje
+    if (key_data.key == MLX_KEY_UP)
+    {
+        double newPosX = player->posX + cos_angle * speed;
+        double newPosY = player->posY + sin_angle * speed;
+        if (!touch(newPosX, player->posY))
+            player->posX = newPosX;
+        if (!touch(player->posX, newPosY))
+            player->posY = newPosY;
+    }
+    if (key_data.key == MLX_KEY_DOWN)
+    {
+        double newPosX = player->posX - cos_angle * speed;
+        double newPosY = player->posY - sin_angle * speed;
+        if (!touch(newPosX, player->posY))
+            player->posX = newPosX;
+        if (!touch(player->posX, newPosY))
+            player->posY = newPosY;
+    }
+    if (key_data.key == MLX_KEY_RIGHT)
+    {
+        double newPosX = player->posX - sin_angle * speed;
+        double newPosY = player->posY + cos_angle * speed;
+        if (!touch(newPosX, player->posY))
+            player->posX = newPosX;
+        if (!touch(player->posX, newPosY))
+            player->posY = newPosY;
+    }
+    if (key_data.key == MLX_KEY_LEFT)
+    {
+        double newPosX = player->posX + sin_angle * speed;
+        double newPosY = player->posY - cos_angle * speed;
+        if (!touch(newPosX, player->posY))
+            player->posX = newPosX;
+        if (!touch(player->posX, newPosY))
+            player->posY = newPosY;
+    }
+}
+
 static void key_callback(mlx_key_data_t key_data, void *param)
 {
     t_mlx *mlx = (t_mlx *)param;
-	(void)mlx;
-	// printf("path: '%s'\n", mlx->file.textures[NO].path);
+    (void)mlx;
     if (key_data.key == MLX_KEY_ESCAPE)
         exit(1);
-	// mlx_destroy_image(window->mlx, window->img.img_ptr);
-	// window->img.img_ptr = mlx_new_image(window->mlx, WIDTH_WIN, HEIGHT_WIN);
-	// window->img.img_pixel_ptr = mlx_get_data_addr(window->img.img_ptr,
-	// 		&window->img.bits_per_pixel, &window->img.line_length,
-	// 		&window->img.endian);
+    if (key_data.key == MLX_KEY_UP || key_data.key == MLX_KEY_DOWN ||
+        key_data.key == MLX_KEY_RIGHT || key_data.key == MLX_KEY_LEFT ||
+        key_data.key == MLX_KEY_Q || key_data.key == MLX_KEY_E)
+        move_player(key_data, &mlx->player);
 }
 
-
-
-void	cube_init(t_mlx *mlx)
+void init_player(t_player *player)
 {
+    player->posX = WIDTH / 2;
+    player->posY = HEIGHT / 2;
+    player->angle = PI / 2;
+    // player->posX = 12.0;
+    // player->posY = 12.0;
 
-	mlx->mlx_ptr = mlx_init(WIDTH, HEIGHT, "cub3d", true);
-	mlx->img_ptr = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT);
-// 	double posX = 22, posY = 12;  //x and y start position
-// 	double dirX = -1, dirY = 0; //initial direction vector
-// 	double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
-
-// 	double time = 0; //time of current frame
-// 	double oldTime = 0; //time of previous frame
-// 	int worldMap[mapWidth][mapHeight]=
-// 	{
-// 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-// 		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-// 		{1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-// 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-// 	};
-// 	while(1)
-//   	{
-// 		for(int x = 0; x < WIDTH; x++)
-// 		{
-// 			//calculate ray position and direction
-// 			double cameraX = 2 * x / (double)WIDTH - 1; //x-coordinate in camera space
-// 			double rayDirX = dirX + planeX * cameraX;
-// 			double rayDirY = dirY + planeY * cameraX;
-// 			int mapX = int(posX);
-//       int mapY = int(posY);
-// 	    double sideDistX;
-//       double sideDistY;
-// double deltaDistX = (rayDirX == 0) ? 1e30 : std::abs(1 / rayDirX);
-//       double deltaDistY = (rayDirY == 0) ? 1e30 : std::abs(1 / rayDirY);
-
-//       double perpWallDist;
-// int stepX;
-//       int stepY;
-
-//       int hit = 0; //was there a wall hit?
-//       int side; //was a NS or a EW wall hit?
-//       //calculate step and initial sideDist
-//       if(rayDirX < 0)
-//       {
-//         stepX = -1;
-//         sideDistX = (posX - mapX) * deltaDistX;
-//       }
-//       else
-//       {
-//         stepX = 1;
-//         sideDistX = (mapX + 1.0 - posX) * deltaDistX;
-//       }
-//       if(rayDirY < 0)
-//       {
-//         stepY = -1;
-//         sideDistY = (posY - mapY) * deltaDistY;
-//       }
-//       else
-//       {
-//         stepY = 1;
-//         sideDistY = (mapY + 1.0 - posY) * deltaDistY;
-//       }
-//       //perform DDA
-//       while(hit == 0)
-//       {
-//         //jump to next map square, either in x-direction, or in y-direction
-//         if(sideDistX < sideDistY)
-//         {
-//           sideDistX += deltaDistX;
-//           mapX += stepX;
-//           side = 0;
-//         }
-//         else
-//         {
-//           sideDistY += deltaDistY;
-//           mapY += stepY;
-//           side = 1;
-//         }
-//         //Check if ray has hit a wall
-//         if(worldMap[mapX][mapY] > 0) hit = 1;
-//       }
-
-
-
-// 		}
-// 	}
-// 	mlx_image_to_window(mlx->mlx_ptr, mlx->img_ptr, 0, 0);
-	mlx_key_hook(mlx->mlx_ptr, key_callback, mlx);
-	mlx_loop(mlx->mlx_ptr);
 }
+
+// void draw_loop(t_mlx *mlx)
+// {
+//     t_player player;
+//     player = mlx->player;
+//     move_player(&player);
+//     draw_square(player.posX, player.posY, 5, 0x00FF00, mlx->img);
+//     mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
+// }
+
+void clear_image(t_mlx *mlx)
+{
+    for (int y = 0; y < HEIGHT; y++)
+        for (int x = 0; x < WIDTH; x++)
+            put_pixel(x, y, 0, mlx->img);
+}
+
+void draw_map(t_mlx *mlx)
+{
+    // t_points **map = mlx->file.map.coord;
+    int color = 0XAAAAAA;
+    for (int y = 0; mlx->file.map.y_nbrs; y++) {
+        for (int x= 0; mlx->file.map.x_nbrs; x++) {
+    // for (int y = 0; y < mapWidth; y++) {
+    //     for (int x = 0; x < mapHeight; x++) {
+            if (worldMap[y][x] == 1)
+                draw_square(x * 64, y * 64, 64, color, mlx->img);
+        }
+    }
+}
+
+
+
+// double ray_x = mlx->player.posX;
+// double ray_y = mlx->player.posY;
+// double cos_angle = cos(mlx->player.angle);
+// double sin_angle = sin(mlx->player.angle);
+
+// while (!touch(ray_x, ray_y))
+// {
+//     put_pixel(ray_x, ray_y, 0xAAAAAA, mlx->img);
+//     ray_x += cos_angle;        
+//     ray_y += sin_angle;        
+// }
+
+double distance(double x, double y)
+{
+    return (sqrt(x*x+y*y));
+}
+
+double init_distance(double x, double y, double x1, double y1, t_mlx *mlx)
+{
+    double delta_x = x1 - x;
+    double delta_y = y1 - y;
+    double angle = atan2(delta_y, delta_x) - mlx->player.angle;
+    double dist = distance(delta_x, delta_y )* cos(angle);
+    return (dist);
+    
+}
+
+// void draw_line(t_mlx *mlx, float start_x)
+void draw_line(t_mlx *mlx, float start_x, int i)
+{
+    double ray_x = mlx->player.posX;
+    double ray_y = mlx->player.posY;
+    double cos_angle = cos(start_x);
+    double sin_angle = sin(start_x);
+    
+    while (!touch(ray_x, ray_y))
+    {
+        // put_pixel(ray_x, ray_y, 0xAA1111, mlx->img);//proyeccion de la vista del jugador
+        ray_x += cos_angle;        
+        ray_y += sin_angle;        
+    }
+    double dist = init_distance(mlx->player.posX, mlx->player.posY, ray_x, ray_y, mlx);
+    double height = (BLOCK/dist)*(WIDTH/2);
+    int start_y = (HEIGHT-height)/2;
+    int end = start_y +height;
+    while (start_y < end)
+    {
+        put_pixel(i, start_y, 0xAAAAAA, mlx->img);
+        start_y++;
+    }
+    
+}
+
+void draw_loop(void *param)
+{
+    t_mlx *mlx = (t_mlx *)param;
+    // draw_square(mlx->player.posX, mlx->player.posY, 5, 0XAAAAAA, mlx->img);
+    // draw_map(mlx);
+    // create_line
+    clear_image(mlx);
+
+    // Dibujar el cielo en rojo
+    for (int y = 0; y < HEIGHT / 2; y++)
+    {
+        for (int x = 0; x < WIDTH; x++)
+        {
+            put_pixel(x, y, 0xFF0000, mlx->img); // Color rojo
+        }
+    }
+
+    // Dibujar el suelo en verde
+    for (int y = HEIGHT / 2; y < HEIGHT; y++)
+    {
+        for (int x = 0; x < WIDTH; x++)
+        {
+            put_pixel(x, y, 0x00FF00, mlx->img); // Color verde
+        }
+    }
+
+    // Renderizar las paredes y otros elementos del juego
+    float fraction = PI / 3 / WIDTH;
+    float start_x = mlx->player.angle - PI / 6;
+    int i = 0;
+    while (i < WIDTH)
+    {
+        draw_line(mlx, start_x, i);
+        start_x += fraction;
+        i++;
+    }
+
+    mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
+
+}
+
+void cube_init(t_mlx *mlx)
+{
+    mlx->width = WIDTH;
+    mlx->height = HEIGHT;
+    mlx->mlx_ptr = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
+    if (!mlx->mlx_ptr)
+        ft_exit("Error al inicializar MLX");
+    mlx->img = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT);
+    if (!mlx->img)
+        ft_exit("Error al crear la imagen");
+    // draw_square(WIDTH, HEIGHT, 10, 0XAAAAAA, mlx->img);
+    init_player(&mlx->player);
+    // player.dirX = -1.0;
+    // player.dirY = 0.0;
+    // player.planeX = 0.0;
+    // player.planeY = 0.66;
+    mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
+    mlx_key_hook(mlx->mlx_ptr, key_callback, mlx);
+    mlx_loop_hook(mlx->mlx_ptr, draw_loop, mlx);
+    mlx_loop(mlx->mlx_ptr);
+}
+ 

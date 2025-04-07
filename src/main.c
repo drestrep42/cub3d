@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:57:59 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/27 12:48:54 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/04/01 23:38:03 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **argv)
 	file_init(&mlx.file);
 	parsing(&mlx.file, argv[1]);
 	cube_init(&mlx);
-	mlx_loop(mlx.mlx_ptr);
+	// mlx_loop(mlx.mlx_ptr);
 	free_all(&mlx);
 	return (0);
 }
