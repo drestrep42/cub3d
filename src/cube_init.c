@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/05 15:25:49 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:57:35 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void put_pixel(int x, int y, int color, mlx_image_t *img)
 {
     if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
         return;
-    img->pixels[y * img->width + x] = color;
     mlx_put_pixel(img, x, y, color);
 }
 
@@ -197,8 +196,8 @@ void draw_map(t_mlx *mlx)
 {
     // t_points **map = mlx->file.map.coord;
     int color = 0XAAAAAA;
-    for (int y = 0; mlx->file.map.y_nbrs; y++) {
-        for (int x= 0; mlx->file.map.x_nbrs; x++) {
+    for (int y = 0; y < mlx->file.map.y_nbrs; y++) {
+        for (int x = 0; x < mlx->file.map.x_nbrs; x++) {
     // for (int y = 0; y < mapWidth; y++) {
     //     for (int x = 0; x < mapHeight; x++) {
             if (worldMap[y][x] == 1)
