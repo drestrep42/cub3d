@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/09 16:58:05 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:03:05 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@
 
 # define WIDTH 800
 # define HEIGHT 800
-#define mapWidth 8
-#define mapHeight 13
+#define mapHeight 8
+#define mapWidth 13
 #define screenWidth 640
 #define screenHeight 480
 #define MOVE_SPEED 0.1

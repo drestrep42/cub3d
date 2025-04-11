@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:47:22 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/27 17:53:56 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/04/10 17:02:42 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,21 @@ void	map_validator(t_map *map)
 		y++;
 	} */
 }
+void set_map_dimensions(t_map *map)
+{
+    int y = 0, max_x = 0, x;
+    while (map->coord[y])
+    {
+        x = 0;
+        while (map->coord[y][x].nbr)
+            x++;
+        if (x > max_x)
+            max_x = x;
+        y++;
+    }
+    map->y_nbrs = y;
+    map->x_nbrs = max_x;
+}
 
 void	parsing(t_file *file, char *argv)
 {
@@ -55,5 +70,6 @@ void	parsing(t_file *file, char *argv)
 	close(fd);
 	fd = open(argv, O_RDONLY);
 	parse_map(&file->map, fd, size);
+	set_map_dimensions(&file->map);
 	map_validator(&file->map);
 }

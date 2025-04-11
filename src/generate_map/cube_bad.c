@@ -1,27 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cube_init.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/11 13:05:12 by igvisera         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "../inc/cub3d.h"
-
-char worldMap[mapHeight][mapWidth] = {
-    {'1','1','1','1','1','1','1','1','1','1','1','1','1'},
-    {'1','0','0','0','0','0','0','0','0','1','0','0','1'},
-    {'1','0','0','0','0','1','0','0','0','1','S','0','1'},
-    {'1','0','1','0','0','0','0','0','0','0','0','0','1'},
-    {'1','0','0','0','0','0','1','1','1','1','1','0','1'},
-    {'1','0','0','0','0','0','1','1','1','1','1','0','1'},
-    {'1','0','0','0','0','0','0','0','0','0','0','0','1'},
-    {'1','1','1','1','1','1','1','1','1','1','1','1','1'}
-};
 
 void put_pixel(int x, int y, int color, mlx_image_t *img)
 {
@@ -43,17 +19,22 @@ void draw_square(int x, int y, int size, int color, mlx_image_t *img)
     
 }
 
-bool touch(double px, double py)
-// bool touch(double px, double py, t_map *map)
+bool touch(double px, double py, t_mlx *mlx)
 {
     int x = (int)(px / BLOCK);
     int y = (int)(py / BLOCK);
-    
-    if (x < 0 || y < 0 || x >= mapWidth || y >= mapHeight)
+    if (x < 0 || x >= mlx->file.map.x_nbrs || y < 0 || y >= mlx->file.map.y_nbrs)
+    {
+        printf("Checking tile: x = %d, y = %d => '%c'\n", x, y, mlx->file.map.coord[y][x].nbr);
         return true;
-    if (worldMap[y][x] == '1')
-    // if (map->coord[y][x].nbr == '1')
+    }
+    // if (x < 0 || x >= mapWidth || y < 0 || y >= mapHeight)
+    if (mlx->file.map.coord[y][x].nbr == '1')
+    // if (worldMap[y][x] == 1)
+    {
+        printf("Checking tile: x = %d, y = %d => '%c'\n", x, y, mlx->file.map.coord[y][x].nbr);
         return true;
+    }
     return false;
 }
 
@@ -80,36 +61,36 @@ void move_player(mlx_key_data_t key_data, t_mlx *mlx)
     {
         double newPosX = mlx->player.posX + cos_angle * speed;
         double newPosY = mlx->player.posY + sin_angle * speed;
-        if (!touch(newPosX, mlx->player.posY))
+        if (!touch(newPosX, mlx->player.posY, mlx))
             mlx->player.posX = newPosX;
-        if (!touch(mlx->player.posX, newPosY))
+        if (!touch(mlx->player.posX, newPosY, mlx))
             mlx->player.posY = newPosY;
     }
     if (key_data.key == MLX_KEY_DOWN)
     {
         double newPosX = mlx->player.posX - cos_angle * speed;
         double newPosY = mlx->player.posY - sin_angle * speed;
-        if (!touch(newPosX, mlx->player.posY))
+        if (!touch(newPosX, mlx->player.posY, mlx))
             mlx->player.posX = newPosX;
-        if (!touch(mlx->player.posX, newPosY))
+        if (!touch(mlx->player.posX, newPosY, mlx))
             mlx->player.posY = newPosY;
     }
     if (key_data.key == MLX_KEY_RIGHT)
     {
         double newPosX = mlx->player.posX - sin_angle * speed;
         double newPosY = mlx->player.posY + cos_angle * speed;
-        if (!touch(newPosX, mlx->player.posY))
+        if (!touch(newPosX, mlx->player.posY, mlx))
             mlx->player.posX = newPosX;
-        if (!touch(mlx->player.posX, newPosY))
+        if (!touch(mlx->player.posX, newPosY, mlx))
             mlx->player.posY = newPosY;
     }
     if (key_data.key == MLX_KEY_LEFT)
     {
         double newPosX = mlx->player.posX + sin_angle * speed;
         double newPosY = mlx->player.posY - cos_angle * speed;
-        if (!touch(newPosX, mlx->player.posY))
+        if (!touch(newPosX, mlx->player.posY, mlx))
             mlx->player.posX = newPosX;
-        if (!touch(mlx->player.posX, newPosY))
+        if (!touch(mlx->player.posX, newPosY, mlx))
             mlx->player.posY = newPosY;
     }
 }
@@ -125,42 +106,81 @@ static void key_callback(mlx_key_data_t key_data, void *param)
         key_data.key == MLX_KEY_Q || key_data.key == MLX_KEY_E)
         move_player(key_data, mlx);
 }
-void init_player(t_player *player)
+
+// void init_player(t_player *player, t_mlx *mlx)
+// {
+//     // player->posX = WIDTH / 2;
+//     // player->posY = HEIGHT / 2;
+//     // player->angle = PI / 2;
+//     player->posX = mlx.;
+//     player->posY = HEIGHT / 2;
+//     player->angle = PI / 2;
+//     // player->posX = 12.0;
+//     // player->posY = 12.0;
+
+// }
+void print_map(t_map *map)
 {
-    int y;
-    int x;
+    int y = 0;
 
-    printf("pintamos el mapa\n");
-    for (y = 0; y < mapHeight; y++)
+    // Recorre las filas del mapa
+    while (y < map->y_nbrs)
     {
-        for (x = 0; x < mapWidth; x++)
-        {
-            char c = worldMap[y][x];
-            if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-            {
-                printf("accedes ??? x='%d' y='%d'\n", x, y);
-                // Posición centrada en el bloque: se le suma 0.5 y se 
-                // puede multiplicar por BLOCK si se usa coordenadas en píxeles
-                // player->posX = x + 0.5;
-                // player->posY = y + 0.5;
-                player->posX = (x + 0.5) * BLOCK;
-                player->posY = (y + 0.5) * BLOCK;
-                if (c == 'N')
-                    player->angle = 3 * PI / 2; // 270º
-                else if (c == 'S')
-                    player->angle = PI / 2;     // 90º
-                else if (c == 'E')
-                    player->angle = 0;          // 0º
-                else if (c == 'W')
-                    player->angle = PI;         // 180º
+        int x = 0;
 
-                worldMap[y][x] = '0'; // Elimina el marcador del mapa
-                return;
-            }
+        // Recorre las columnas dentro de la fila
+        while (x < map->x_nbrs)
+        {
+            // Imprime el valor del mapa en la posición (y, x)
+            printf("%c", map->coord[y][x].nbr);
+
+            // Avanza a la siguiente columna
+            x++;
         }
+
+        // Después de imprimir una fila, solo agrega un salto de línea
+
+        // Avanza a la siguiente fila
+        y++;
     }
 }
 
+
+
+void init_player(t_map *map, t_player *player)
+{
+    int y = 0;
+    int x;
+
+    printf("pintamos el mapa\n");
+    print_map(map);
+    while (map->coord[y])
+    {
+        x = 0;
+        while (map->coord[y][x].nbr)
+        {
+            char c = map->coord[y][x].nbr;
+            if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+            {
+                printf("accedes ??? x'%d' y'%d'\n", x, y);
+                player->posX = x + 0.5;
+                player->posY = y + 0.5;
+                if (c == 'N')
+                    player->angle = 3 * PI / 2; // 270º
+                else if (c == 'S')
+                    player->angle = PI / 2; // 90º
+                else if (c == 'E')
+                    player->angle = 0; // 0º
+                else if (c == 'W')
+                    player->angle = PI; // 180º
+                map->coord[y][x].nbr = '0'; // Elimina el marcador del mapa
+                return;
+            }
+            x++;
+        }
+        y++;
+    }
+}
 
 void clear_image(t_mlx *mlx)
 {
@@ -169,19 +189,18 @@ void clear_image(t_mlx *mlx)
             put_pixel(x, y, 0, mlx->img);
 }
 
-// void draw_map(t_mlx *mlx)
-// {
-//     // t_points **map = mlx->file.map.coord;
-//     int color = 0XAAAAAA;
-//     for (int y = 0; y < mlx->file.map.y_nbrs; y++) {
-//         for (int x = 0; x < mlx->file.map.x_nbrs; x++) {
-//     // for (int y = 0; y < mapWidth; y++) {
-//     //     for (int x = 0; x < mapHeight; x++) {
-//             if (worldMap[y][x] == 1)
-//                 draw_square(x * 64, y * 64, 64, color, mlx->img);
-//         }
-//     }
-// }
+void draw_map(t_mlx *mlx)
+{
+    int color = 0xAAAAAA;
+    for (int y = 0; y < mlx->file.map.y_nbrs; y++)
+    {
+        for (int x = 0; x < mlx->file.map.x_nbrs; x++)
+        {
+            if (mlx->file.map.coord[y][x].nbr == '1')
+                draw_square(x * BLOCK, y * BLOCK, BLOCK, color, mlx->img);
+        }
+    }
+}
 
 
 
@@ -219,11 +238,14 @@ void draw_line(t_mlx *mlx, float start_x, int i)
     double cos_angle = cos(start_x);
     double sin_angle = sin(start_x);
     
-    while (!touch(ray_x, ray_y))
+    while (!touch(ray_x, ray_y, mlx))
     {
+        double step = 0.5;
+        ray_x += cos_angle * step;
+        ray_y += sin_angle * step;
         // put_pixel(ray_x, ray_y, 0xAA1111, mlx->img);//proyeccion de la vista del jugador
-        ray_x += cos_angle;        
-        ray_y += sin_angle;        
+        // ray_x += cos_angle;        
+        // ray_y += sin_angle;        
     }
     double dist = init_distance(mlx->player.posX, mlx->player.posY, ray_x, ray_y, mlx);
     double height = (BLOCK/dist)*(WIDTH/2);
@@ -237,30 +259,67 @@ void draw_line(t_mlx *mlx, float start_x, int i)
     
 }
 
+// void draw_loop(void *param)
+// {
+//     t_mlx *mlx = (t_mlx *)param;
+//     // draw_square(mlx->player.posX, mlx->player.posY, 5, 0XAAAAAA, mlx->img);
+//     // draw_map(mlx);
+//     // create_line
+//     clear_image(mlx);
+
+//     for (int y = 0; y < 800 / 2; y++)
+//     {
+//         for (int x = 0; x < 800; x++)
+//         {
+//             put_pixel(x, y, 0xFF0000, mlx->img);// 0xAAAAAA
+//             // put_pixel(x, y, 0xFF0000, mlx->img);0xAAAAAA
+//         }
+//     }
+//     for (int y = HEIGHT / 2; y < HEIGHT; y++)
+//     {
+//         for (int x = 0; x < WIDTH; x++)
+//         {
+//             put_pixel(x, y, 0x00FF00, mlx->img);
+//         }
+//     }
+//     // Renderizar las paredes y otros elementos del juego
+//     float fraction = PI / 3 / WIDTH;
+//     float start_x = mlx->player.angle - PI / 6;
+//     int i = 0;
+//     while (i < WIDTH)
+//     {
+//         draw_line(mlx, start_x, i);
+//         start_x += fraction;
+//         i++;
+//     }
+
+//     mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
+
+// }
+
 void draw_loop(void *param)
 {
     t_mlx *mlx = (t_mlx *)param;
-    // draw_square(mlx->player.posX, mlx->player.posY, 5, 0XAAAAAA, mlx->img);
-    // draw_map(mlx);
-    // create_line
+    
+    // Limpia la imagen
     clear_image(mlx);
 
+    // Dibujar fondo: (Ejemplo: parte superior - cielo y parte inferior - suelo)
     for (int y = 0; y < HEIGHT / 2; y++)
     {
         for (int x = 0; x < WIDTH; x++)
-        {
-            put_pixel(x, y, 0xFF0000, mlx->img);// 0xAAAAAA
-            // put_pixel(x, y, 0xFF0000, mlx->img);0xAAAAAA
-        }
+            put_pixel(x, y, 0xFF0000, mlx->img); // Color rojo (cielo)
     }
     for (int y = HEIGHT / 2; y < HEIGHT; y++)
     {
         for (int x = 0; x < WIDTH; x++)
-        {
-            put_pixel(x, y, 0x00FF00, mlx->img);
-        }
+            put_pixel(x, y, 0x00FF00, mlx->img); // Color verde (suelo)
     }
-    // Renderizar las paredes y otros elementos del juego
+
+    // Dibuja el mapa (minimapa o para debug)
+    // draw_map(mlx);
+
+    // Renderiza la vista del jugador (raycasting)
     float fraction = PI / 3 / WIDTH;
     float start_x = mlx->player.angle - PI / 6;
     int i = 0;
@@ -271,8 +330,8 @@ void draw_loop(void *param)
         i++;
     }
 
+    // Actualiza la imagen en la ventana
     mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
-
 }
 
 void cube_init(t_mlx *mlx)
@@ -286,7 +345,7 @@ void cube_init(t_mlx *mlx)
     if (!mlx->img)
         ft_exit("Error al crear la imagen");
     // draw_square(WIDTH, HEIGHT, 10, 0XAAAAAA, mlx->img);
-    init_player(&mlx->player);
+    init_player(&mlx->file.map ,&mlx->player);
     // player.dirX = -1.0;
     // player.dirY = 0.0;
     // player.planeX = 0.0;
