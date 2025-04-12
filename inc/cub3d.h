@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/11 13:03:05 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:44:50 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ typedef struct s_map
 typedef struct s_texture
 {
 	char		*path;
+	// mlx_image_t  *img;
+	// mlx_image_t  *img;
+	mlx_texture_t *img;
 	bool		empty;
 }				t_texture;
 
@@ -167,6 +170,7 @@ void	parse_floor_and_ceiling(t_floor *floor, t_ceiling *ceiling, \
  */
 void	parse_textures(t_texture *texture, int cardinal, \
 						char **line, char *word);
+						// char **line, char *word, void *mlx_ptr);
 
 /**
  * Parses the map lines from the file and stores them in the map structure.
