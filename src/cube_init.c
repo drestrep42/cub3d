@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/12 19:51:55 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/12 22:45:35 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -431,8 +431,14 @@ void draw_line(t_mlx *mlx, float ray_angle, int screenX, t_texture textures[4])
     }
 
     // Obtener la textura seleccionada y verificar que esté inicializada
-    mlx_texture_t *tex = textures[textureIndex].img;
-    if (!tex || !tex->pixels)
+    printf("textureIndex '%d'\n", textureIndex);
+    printf("path '%s'\n", textures[textureIndex].path);
+    if (!mlx->file.textures[textureIndex].img)
+    {
+       printf("no existe la texutra\n");
+    }
+    mlx_texture_t *tex = mlx->file.textures[textureIndex].img;
+    if (!tex)
     {
         fprintf(stderr, "Error: La textura %d no se cargó correctamente.\n", textureIndex);
         exit(1);
