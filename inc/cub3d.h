@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/11 13:03:05 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:53:36 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_map
 	t_points	**coord;
 	int			x_nbrs;
 	int			y_nbrs;
+	char      **raw_lines;
 }				t_map;
 
 typedef struct s_texture

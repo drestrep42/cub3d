@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:47:22 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/10 17:02:42 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:05:17 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	map_validator(t_map *map)
 		y++;
 	} */
 }
+
 void set_map_dimensions(t_map *map)
 {
     int y = 0, max_x = 0, x;
@@ -71,5 +72,6 @@ void	parsing(t_file *file, char *argv)
 	fd = open(argv, O_RDONLY);
 	parse_map(&file->map, fd, size);
 	set_map_dimensions(&file->map);
+    printf("aaaaaaaaaaaaa map->y_nbrs: %d, map->x_nbrs: %d\n", file->map.y_nbrs, file->map.x_nbrs);
 	map_validator(&file->map);
 }
