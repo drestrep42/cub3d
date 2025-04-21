@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+         #
+#    By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/03 00:07:08 by drestrep          #+#    #+#              #
-#    Updated: 2025/03/27 17:58:23 by drestrep         ###   ########.fr        #
+#    Updated: 2025/04/21 20:56:55 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LIBFT_SRC			=	ft_isalnum.c			ft_isalpha.c			ft_isascii.c			ft_isdigit.c			\
 						ft_get_string.c			ft_atoi_base.c			ft_hexadecimal.c		ft_printf.c				\
 						ft_putchar.c			ft_putnbr.c				ft_putptr.c				ft_putstr.c				\
 						ft_unsigned_int.c		get_next_line.c			get_next_line_utils.c	ft_malloc.c				\
-						ft_exit.c
+						ft_exit.c				ft_strcmp.c
 
 SRC 				=	$(addprefix $(LIBFT_DIR), $(LIBFT_SRC))
 

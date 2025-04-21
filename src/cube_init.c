@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/21 13:27:41 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/21 21:00:28 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,12 @@ void draw_square(int x, int y, int size, int color, mlx_image_t *img)
     int i = 0;
     while (i < size)
         put_pixel(x + i++, y, color, img);
-
     i = 0;
     while (i < size)
         put_pixel(x, y + i++, color, img);
-
     i = 0;
     while (i < size)
         put_pixel(x + size, y + i++, color, img);
-
     i = 0;
     while (i < size)
         put_pixel(x + i++, y + size, color, img);
@@ -152,6 +149,28 @@ void init_player(t_player *player, t_map *map)
     }
 }
 
+// void draw_map(t_mlx *mlx)
+// {
+//     int color = 0xAAAAAA;
+
+//     for (int y = 0; y < mlx->file.map.y_nbrs; y++)
+//     {
+//         // Calculamos la longitud real de esta fila
+//         size_t row_len = ft_strlen(mlx->file.map.raw_lines[y]);
+
+//         for (int x = 0; x < mlx->file.map.x_nbrs; x++)
+//         {
+//             // Si x supera la longitud de la línea, saltamos
+//             if ((size_t)x >= row_len)
+//                 continue;
+
+//             if (mlx->file.map.coord[y][x].nbr == '1')
+//                 draw_square(x * BLOCK, y * BLOCK,
+//                             BLOCK, color, mlx->img);
+//         }
+//     }
+// }
+
 void clear_image(t_mlx *mlx)
 {
     int y = 0;
@@ -213,48 +232,337 @@ void draw_line(t_mlx *mlx, float start_x, int i)
     }
 }
 
+// void draw_loop(void *param)
+// {
+//     t_mlx *mlx = (t_mlx *)param;
+//     clear_image(mlx);
+//     draw_map(mlx);
+
+//     int y = 0;
+//     while (y < HEIGHT / 2)
+//     {
+//         int x = 0;
+//         while (x < WIDTH)
+//         {
+//             put_pixel(x, y, 0xFF0000, mlx->img);
+//             x++;
+//         }
+//         y++;
+//     }
+
+//     y = HEIGHT / 2;
+//     while (y < HEIGHT)
+//     {
+//         int x = 0;
+//         while (x < WIDTH)
+//         {
+//             put_pixel(x, y, 0x00FF00, mlx->img);
+//             x++;
+//         }
+//         y++;
+//     }
+
+//     float fraction = PI / 3 / WIDTH;
+//     float start_x = mlx->player.angle - PI / 6;
+//     int i = 0;
+//     while (i < WIDTH)
+//     {
+//         draw_line(mlx, start_x, i);
+//         start_x += fraction;
+//         i++;
+//     }
+
+//     mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
+// }
+// nueva versión de draw_line => cast_single_ray
+//-----------------------
+
+// void cast_single_ray(t_mlx *mlx, double rayAngle, int screenX)
+// {
+//     const double FOV           = PI / 3.0;
+//     const double projPlaneDist = (screenWidth / 2.0) / tan(FOV / 2.0);
+
+//     // Paso 1: jugador en celdas
+//     double posX = mlx->player.posX / BLOCK;
+//     double posY = mlx->player.posY / BLOCK;
+
+//     // Paso 2: dirección del rayo
+//     double rayDirX = cos(rayAngle);
+//     double rayDirY = sin(rayAngle);
+
+//     // Paso 3: celda inicial
+//     int mapX = (int)posX;
+//     int mapY = (int)posY;
+
+//     // Paso 4: distancias delta
+//     double deltaDistX = fabs(1.0 / rayDirX);
+//     double deltaDistY = fabs(1.0 / rayDirY);
+
+//     // Paso 5: calcular step y sideDist
+//     int stepX, stepY;
+//     double sideDistX, sideDistY;
+//     if (rayDirX < 0)
+//     {
+//         stepX     = -1;
+//         sideDistX = (posX - mapX) * deltaDistX;
+//     }
+//     else
+//     {
+//         stepX     = +1;
+//         sideDistX = (mapX + 1.0 - posX) * deltaDistX;
+//     }
+//     if (rayDirY < 0)
+//     {
+//         stepY     = -1;
+//         sideDistY = (posY - mapY) * deltaDistY;
+//     }
+//     else
+//     {
+//         stepY     = +1;
+//         sideDistY = (mapY + 1.0 - posY) * deltaDistY;
+//     }
+
+//     // Paso 6: DDA hasta el muro
+//     int hit = 0, side;
+//     while (!hit)
+//     {
+//         if (sideDistX < sideDistY)
+//         {
+//             sideDistX += deltaDistX;
+//             mapX      += stepX;
+//             side       = 0;
+//         }
+//         else
+//         {
+//             sideDistY += deltaDistY;
+//             mapY      += stepY;
+//             side       = 1;
+//         }
+//         // fuera de mapa?
+//         if (mapX < 0 || mapY < 0
+//          || mapX >= mlx->file.map.x_nbrs
+//          || mapY >= mlx->file.map.y_nbrs)
+//         {
+//             hit = 1;
+//             break;
+//         }
+//         if (mlx->file.map.coord[mapY][mapX].nbr == '1')
+//             hit = 1;
+//     }
+
+//     // Paso 7: distancia perpendicular en celdas
+//     double perpDist;
+//     if (side == 0)
+//         perpDist = ((mapX - posX) + (1 - stepX) * 0.5) / rayDirX;
+//     else
+//         perpDist = ((mapY - posY) + (1 - stepY) * 0.5) / rayDirY;
+
+//     // Paso 8: altura de línea en píxeles
+//     int lineHeight = (int)(projPlaneDist / perpDist);
+
+//     // Paso 9: start/end en Y
+//     int drawStart = -lineHeight/2 + screenHeight/2;
+//     if (drawStart < 0) drawStart = 0;
+//     int drawEnd   = lineHeight/2 + screenHeight/2;
+//     if (drawEnd >= screenHeight) drawEnd = screenHeight - 1;
+
+//     // Paso 10: elegir textura de muro
+//     int texID;
+//     if (side == 0)
+//         texID = (rayDirX > 0) ? SO : NO;
+//     else
+//         texID = (rayDirY > 0) ? WE : EA;
+//     t_texture *T = &mlx->file.textures[texID];
+
+//     // Paso 11: calcular coordenada X en textura
+//     double wallX = (side == 0)
+//                  ? posY + perpDist * rayDirY
+//                  : posX + perpDist * rayDirX;
+//     wallX -= floor(wallX);
+
+//     int texX = (int)(wallX * (double)T->img->width);
+//     if ((side == 0 && rayDirX > 0) ||
+//         (side == 1 && rayDirY < 0))
+//         texX = T->img->width - texX - 1;
+
+//     // Paso 12: paso vertical y posición inicial
+//     double stepTex = 1.0 * T->img->height / lineHeight;
+//     double texPos  = (drawStart - screenHeight/2 + lineHeight/2) * stepTex;
+
+//     // Paso 13: pintar columna
+//     for (int y = drawStart; y <= drawEnd; y++)
+//     {
+//         int texY = (int)texPos & (T->img->height - 1);
+//         texPos += stepTex;
+//         uint32_t color = ((uint32_t*)T->img->pixels)[texY * T->img->width + texX];
+//         put_pixel(screenX, y, color, mlx->img);
+//     }
+// }
+//------------------
+void cast_single_ray(t_mlx *mlx, double rayAngle, int screenX)
+{
+    // 1) Parámetros de cámara
+    const double FOV           = PI / 3.0;
+    const double projPlaneDist = (WIDTH / 2.0) / tan(FOV / 2.0);
+
+    // 2) Posición del jugador en unidades de celda
+    double posX = mlx->player.posX / BLOCK;
+    double posY = mlx->player.posY / BLOCK;
+
+    // 3) Dirección del rayo
+    double rayDirX = cos(rayAngle);
+    double rayDirY = sin(rayAngle);
+
+    // 4) Celda inicial
+    int mapX = (int)posX;
+    int mapY = (int)posY;
+
+    // 5) Distancias delta
+    double deltaDistX = fabs(1.0 / rayDirX);
+    double deltaDistY = fabs(1.0 / rayDirY);
+
+    // 6) Cálculo de step y sideDist
+    int stepX, stepY;
+    double sideDistX, sideDistY;
+    if (rayDirX < 0) {
+        stepX     = -1;
+        sideDistX = (posX - mapX) * deltaDistX;
+    } else {
+        stepX     = +1;
+        sideDistX = (mapX + 1.0 - posX) * deltaDistX;
+    }
+    if (rayDirY < 0) {
+        stepY     = -1;
+        sideDistY = (posY - mapY) * deltaDistY;
+    } else {
+        stepY     = +1;
+        sideDistY = (mapY + 1.0 - posY) * deltaDistY;
+    }
+
+    // 7) DDA: avanzamos hasta chocar con '1'
+    int hit = 0, side;
+    while (!hit) {
+        if (sideDistX < sideDistY) {
+            sideDistX += deltaDistX;
+            mapX      += stepX;
+            side       = 0;
+        } else {
+            sideDistY += deltaDistY;
+            mapY      += stepY;
+            side       = 1;
+        }
+        // fuera de mapa?
+        if (mapX < 0 || mapY < 0 ||
+            mapX >= mlx->file.map.x_nbrs ||
+            mapY >= mlx->file.map.y_nbrs)
+        {
+            hit = 1;
+            break;
+        }
+        if (mlx->file.map.coord[mapY][mapX].nbr == '1')
+            hit = 1;
+    }
+
+    // 8) Distancia perpendicular (en celdas)
+    double perpDist = (side == 0)
+        ? ((mapX - posX) + (1 - stepX) * 0.5) / rayDirX
+        : ((mapY - posY) + (1 - stepY) * 0.5) / rayDirY;
+
+    // 9) Altura de la línea (en píxeles)
+    int lineHeight = (int)(projPlaneDist / perpDist);
+
+    // 10) Límite superior/inferior de la línea
+    int drawStart = -lineHeight / 2 + HEIGHT / 2;
+    if (drawStart < 0) drawStart = 0;
+    int drawEnd = lineHeight / 2 + HEIGHT / 2;
+    if (drawEnd >= HEIGHT) drawEnd = HEIGHT - 1;
+
+    // 11) Seleccionamos la textura correcta
+    int texID;
+    if (side == 0)
+        texID = (rayDirX > 0) ? SO : NO;
+    else
+        texID = (rayDirY > 0) ? WE : EA;
+    t_texture *T = &mlx->file.textures[texID];
+
+    // 12) Si no hay textura (o puntero nulo), dibujamos gris
+    if (T->empty || T->img == NULL || T->img->pixels == NULL) {
+        for (int y = drawStart; y <= drawEnd; y++)
+            put_pixel(screenX, y, 0xAAAAAA, mlx->img);
+        return;
+    }
+
+    // 13) Muestreamos la textura
+    mlx_texture_t *tex   = T->img;
+    int            texW  = tex->width;
+    int            texH  = tex->height;
+    uint32_t      *pixels = (uint32_t *)tex->pixels;
+
+    // 13a) Cálculo de wallX (0.0–1.0)
+    double wallX = (side == 0)
+        ? (posY + perpDist * rayDirY)
+        : (posX + perpDist * rayDirX);
+    wallX -= floor(wallX);
+
+    // 13b) texX
+    int texX = (int)(wallX * texW);
+    if ((side == 0 && rayDirX > 0) ||
+        (side == 1 && rayDirY < 0))
+        texX = texW - texX - 1;
+
+    // 13c) paso vertical en la textura
+    double stepTex = (double)texH / lineHeight;
+    double texPos  = (drawStart - HEIGHT/2 + lineHeight/2) * stepTex;
+
+    // 13d) bucle de pintado
+    for (int y = drawStart; y <= drawEnd; y++) {
+        int texY = ((int)texPos) & (texH - 1);
+        texPos += stepTex;
+        uint32_t color = pixels[ texY * texW + texX ];
+        put_pixel(screenX, y, color, mlx->img);
+    }
+}
+
+
+
+
+
 void draw_loop(void *param)
 {
     t_mlx *mlx = (t_mlx *)param;
-    // draw_map(mlx);
+
     clear_image(mlx);
 
-    int y = 0;
-    while (y < HEIGHT / 2)
-    {
-        int x = 0;
-        while (x < WIDTH)
-        {
+    // cielo / suelo
+    for (int y = 0; y < HEIGHT/2; y++)
+        for (int x = 0; x < WIDTH; x++)
             put_pixel(x, y, 0xFF0000, mlx->img);
-            x++;
-        }
-        y++;
-    }
-
-    y = HEIGHT / 2;
-    while (y < HEIGHT)
-    {
-        int x = 0;
-        while (x < WIDTH)
-        {
+    for (int y = HEIGHT/2; y < HEIGHT; y++)
+        for (int x = 0; x < WIDTH; x++)
             put_pixel(x, y, 0x00FF00, mlx->img);
-            x++;
-        }
-        y++;
-    }
 
-    float fraction = PI / 3 / WIDTH;
-    float start_x = mlx->player.angle - PI / 6;
-    int i = 0;
-    while (i < WIDTH)
-    {
-        draw_line(mlx, start_x, i);
-        start_x += fraction;
-        i++;
-    }
+    // trazo rayos
+    double startAngle = mlx->player.angle - (PI/3)/2;
+    double angleStep  = (PI/3) / WIDTH;
+    for (int i = 0; i < WIDTH; i++, startAngle += angleStep)
+        cast_single_ray(mlx, startAngle, i);
 
     mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
 }
+
+
+// t_color	get_color(int col)
+// {
+// 	t_color	c;
+
+// 	c.t = (col >> 24) & 0xFF;
+// 	c.r = (col >> 16) & 0xFF;
+// 	c.g = (col >> 8) & 0xFF;
+// 	c.b = col & 0xFF;
+// 	return (c);
+// }
+
+
 
 void cube_init(t_mlx *mlx)
 {
@@ -401,25 +709,5 @@ void cube_init(t_mlx *mlx)
 //     }
 // }
 
-// void draw_map(t_mlx *mlx)
-// {
-//     int color = 0xAAAAAA;
 
-//     for (int y = 0; y < mlx->file.map.y_nbrs; y++)
-//     {
-//         // Calculamos la longitud real de esta fila
-//         size_t row_len = ft_strlen(mlx->file.map.raw_lines[y]);
-
-//         for (int x = 0; x < mlx->file.map.x_nbrs; x++)
-//         {
-//             // Si x supera la longitud de la línea, saltamos
-//             if ((size_t)x >= row_len)
-//                 continue;
-
-//             if (mlx->file.map.coord[y][x].nbr == '1')
-//                 draw_square(x * BLOCK, y * BLOCK,
-//                             BLOCK, color, mlx->img);
-//         }
-//     }
-// }
 

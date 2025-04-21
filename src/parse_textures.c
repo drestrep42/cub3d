@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:43:48 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/20 16:35:34 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/21 21:32:25 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,63 +45,47 @@ char	*get_word(char *line)
 // 	texture[cardinal].path = path;
 // 	texture[cardinal].empty = false;
 // }
-
-
-
-void parse_textures(t_texture *texture, int cardinal, char **line, char *word)
-// void parse_textures(t_texture *texture, int cardinal, char **line, char *word, void *mlx_ptr)
+void parse_textures(t_texture *texture,
+    int   cardinal,
+    char **line,
+    char  *word,
+    void  *mlx_ptr)
 {
-    char           *path;
-    int             fd;
-    // xpm_t          *xpm;
-    // mlx_texture_t  *tex;
-    // mlx_image_t    *img;
+char *path;
+int   fd;
 
-    *line += ft_strlen(word);
-    while (**line && (**line == ' ' || **line == '\t'))
-        (*line)++;
+// 🔸 Usamos `word` para saltar la clave ("NO", "SO", etc.)
+*line += ft_strlen(word);
+while (**line == ' ' || **line == '\t')
+(*line)++;
 
-    path = get_word(*line);
-    *line += ft_strlen(path);
-    while (**line && (**line == ' ' || **line == '\t'))
-        (*line)++;
-    if (**line != '\n')
-        ft_exit(INVALID_TEXTURES);
+// … ahora extractamos path igual que antes …
+path = get_word(*line);
+*line += ft_strlen(path);
+while (**line == ' ' || **line == '\t')
+(*line)++;
+if (**line != '\n')
+ft_exit(INVALID_TEXTURES);
 
-    fd = open(path, O_RDONLY);
-    if (fd == -1)
-    {
-        perror("Error al abrir el archivo de textura");
-        ft_exit(strerror(errno));
-    }
-    close(fd);
-    texture[cardinal].path = path;
-    xpm_t *xpm = mlx_load_xpm42(path);
-	if (!xpm)
-		perror("xpm");
-    // if (!&xpm->texture)
-	// 	perror("&xpm->texture");   
-    texture[cardinal].img = &xpm->texture;
-	// mlx_image_t* img = mlx_texture_to_image(mlx_ptr, &xpm->texture);
-    printf("cardinal '%d'\n", cardinal);
-	if (!texture[cardinal].img)
-        perror("img"); 
-    printf("aaaaaaaaaaaa\n");
-	// texture[cardinal].img = img;
+// Verificamos que el fichero exista
+fd = open(path, O_RDONLY);
+if (fd < 0)
+ft_exit(strerror(errno));
+close(fd);
 
-    // xpm = mlx_load_xpm42(path);
-    // if (!xpm)
-    // {
-    //     // fprintf(stderr, "Error load xpm: No se pudo cargar la textura desde '%s'\n", path);
-    //     ft_exit("Error load xpm");
-    // }
-    // tex = &xpm->texture;
-    // img = mlx_texture_to_image(mlx_ptr, tex);
-    // if (!img)
-    // {
-    //     // fprintf(stderr, "Error: No se pudo convertir la textura a imagen para '%s'\n", path);
-    //     ft_exit("Error al convertir la textura");
-    // }
-    // texture[cardinal].img = img;
-    texture[cardinal].empty = false;
+// Cargamos el XPM
+xpm_t *xpm = mlx_load_xpm42(path);
+if (!xpm)
+ft_exit("Error cargando XPM42");
+
+// Apuntamos `img` al texture interno de xpm
+texture[cardinal].path   = path;
+texture[cardinal].xpm    = xpm;
+texture[cardinal].img    = &xpm->texture;
+texture[cardinal].width  = xpm->texture.width;
+texture[cardinal].height = xpm->texture.height;
+texture[cardinal].empty  = false;
+
+// 🔸 Silenciamos el parámetro no usado
+(void)mlx_ptr;
 }

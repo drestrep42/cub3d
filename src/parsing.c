@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:47:22 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/16 14:05:17 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/21 21:30:44 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void set_map_dimensions(t_map *map)
     map->x_nbrs = max_x;
 }
 
-void	parsing(t_file *file, char *argv)
+void	parsing(t_mlx	*mlx, char *argv)
+// void	parsing(t_file *file, char *argv)
 {
 	int		fd;
 	int		size;
@@ -66,12 +67,13 @@ void	parsing(t_file *file, char *argv)
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
 		ft_exit(USAGE_ERROR);
-	parse_elements(file, fd);
+	parse_elements(&mlx->file, fd, mlx->mlx_ptr);
+	// parse_elements(file, fd);
 	size = get_map_size(fd);
 	close(fd);
 	fd = open(argv, O_RDONLY);
-	parse_map(&file->map, fd, size);
-	set_map_dimensions(&file->map);
-    printf("aaaaaaaaaaaaa map->y_nbrs: %d, map->x_nbrs: %d\n", file->map.y_nbrs, file->map.x_nbrs);
-	map_validator(&file->map);
+	parse_map(&mlx->file.map, fd, size);
+	set_map_dimensions(&mlx->file.map);
+    printf("aaaaaaaaaaaaa map->y_nbrs: %d, map->x_nbrs: %d\n", mlx->file.map.y_nbrs, mlx->file.map.x_nbrs);
+	map_validator(&mlx->file.map);
 }
