@@ -1,0 +1,10 @@
+/* XPM */
+static char *mini_xpm[] = {
+"4 4 2 1",       // 4x4 pixels, 2 colores, 1 carácter por pixel
+". c #FFFFFF",   // blanco
+"# c #000000",   // negro
+"....",
+".##.",
+".##.",
+"...."
+};

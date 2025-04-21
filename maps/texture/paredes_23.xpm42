@@ -1,0 +1,284 @@
+!XPM42
+138 141 141 2 c
+   #000000FF
+.  #010101FF
+X  #020202FF
+o  #30303FF
+O  #040404FF
++  #50505FF
+@  #060606FF
+#  #070707FF
+$  #80808FF
+%  #090909FF
+&  #A0A0AFF
+*  #0B0B0BFF
+=  #0C0C0CFF
+-  #D0D0DFF
+;  #0E0E0EFF
+:  #F0F0FFF
+>  #111111FF
+,  #191919FF
+<  #1A1A1AFF
+1  #1C1C1CFF
+2  #1D1D1DFF
+3  #1E1E1EFF
+4  #1F1F1FFF
+5  #202020FF
+6  #212121FF
+7  #222222FF
+8  #232323FF
+9  #242424FF
+0  #252525FF
+q  #262626FF
+w  #272727FF
+e  #282828FF
+r  #292929FF
+t  #2A2A2AFF
+y  #2B2B2BFF
+u  #2C2C2CFF
+i  #2D2D2DFF
+p  #2E2E2EFF
+a  #2F2F2FFF
+s  #303030FF
+d  #313131FF
+f  #323232FF
+g  #333333FF
+h  #343434FF
+j  #353535FF
+k  #363636FF
+l  #373737FF
+z  #383838FF
+x  #393939FF
+c  #3A3A3AFF
+v  #3B3B3BFF
+b  #3C3C3CFF
+n  #3D3D3DFF
+m  #3E3E3EFF
+M  #3F3F3FFF
+N  #404040FF
+B  #414141FF
+V  #424242FF
+C  #434343FF
+Z  #444444FF
+A  #454545FF
+S  #464646FF
+D  #474747FF
+F  #484848FF
+G  #494949FF
+H  #4A4A4AFF
+J  #4B4B4BFF
+K  #4C4C4CFF
+L  #4D4D4DFF
+P  #4E4E4EFF
+I  #4F4F4FFF
+U  #505050FF
+Y  #515151FF
+T  #525252FF
+R  #535353FF
+E  #545454FF
+W  #555555FF
+Q  #565656FF
+!  #575757FF
+~  #585858FF
+^  #595959FF
+/  #5A5A5AFF
+(  #5B5B5BFF
+)  #5C5C5CFF
+_  #5D5D5DFF
+`  #5E5E5EFF
+'  #5F5F5FFF
+]  #606060FF
+[  #616161FF
+{  #626262FF
+}  #636363FF
+|  #646464FF
+ . #656565FF
+.. #666666FF
+X. #676767FF
+o. #686868FF
+O. #696969FF
++. #6A6A6AFF
+@. #6B6B6BFF
+#. #6C6C6CFF
+$. #6D6D6DFF
+%. #6E6E6EFF
+&. #6F6F6FFF
+*. #707070FF
+=. #717171FF
+-. #727272FF
+;. #737373FF
+:. #747474FF
+>. #757575FF
+,. #767676FF
+<. #777777FF
+1. #787878FF
+2. #797979FF
+3. #7A7A7AFF
+4. #7B7B7BFF
+5. #7C7C7CFF
+6. #7D7D7DFF
+7. #7E7E7EFF
+8. #7F7F7FFF
+9. #808080FF
+0. #818181FF
+q. #828282FF
+w. #838383FF
+e. #848484FF
+r. #858585FF
+t. #868686FF
+y. #878787FF
+u. #888888FF
+i. #898989FF
+p. #8A8A8AFF
+a. #8B8B8BFF
+s. #8C8C8CFF
+d. #8D8D8DFF
+f. #8E8E8EFF
+g. #8F8F8FFF
+h. #909090FF
+j. #919191FF
+k. #929292FF
+l. #939393FF
+z. #959595FF
+x. #969696FF
+r.r.@.L Q L L T T L Q L T J L ^ =.1.:.=.1.1.=.:.:.:.:.:.:.:.:.:.=.:.:.=.=.1.q.i.r.q.i.d.r.r.i.r.r.r.r.i.r.q.h.S i i i h i g i t g t g 7 t i t i g c m m c m C m m m m m m m h i i g i t t g i i i g t t t i t g L Q L L h g q t C L T L T r.r.i.i.r.i.q.q.r.1.:.:.:.:.1.:.| | #.q.q.
+q.i.#.L L L L L L L T L T L T ` #.:.=.#.:.:.=.:.:.:.:.:.:.:.:.:.=.:.:.=.:.1.r.d.q.q.i.i.r.r.i.r.r.r.r.r.r.r.i.m t q q t q t t t g t g t i i 7 7 i h c c h h c h c h h h c h i q t i t t q i q q q i q t q t t c T Q T L g t q t c J T L T q.r.r.r.q.r.r.r.q.:.:.=.:.#.=.8.8.1.=.=.:.
+q.r.@.T L T Q T T T T T Q T Q ` #.:.=.=.:.1.:.:.:.:.:.:.:.:.:.:.=.=.=.:.:.1.q.r.r.r.i.d.i.i.d.i.r.i.r.i.d.i.i.T g i g i i i g i t 2 q q g g g g g c m m m m m m m m m m m m h i i i i i t g q t g h i i g i i m L J L T g i t i C T Q T Q 8.q.r.q.q.i.i.i.q.:.:.1.8.:.=.=.:.1.#.=.=.
+d.r.@.^ L L L T L L T ` @.| @.#.=.1.:.:.:.1.:.:.:.:.:.:.:.:.:.:.:.=.=.:.:.1.1.1.1.1.1.1.1.1.1.1.1.1.1.r.i.8.r.=.:.:.1.=.:.=.:.=.C t i t i t t t i h c h h g t t t t i i i i t q i i t t t g t i i i t h J S m S ^ L L ^ h g i t i m C m m ^ ` ` { #.8.r.r.r.q.q.q.q.q.r.q.8.r.i.r.r.
+i.q.| ^ L T T Q T T T @.1.:.:.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.1.1.:.:.:.:.:.1.:.:.8.r.d.q.i.i.r.r.i.r.i.r.i.i.m q t i g i i i i c m m c h t t t i i i t t i i i i t t t i q i t t i m ^ ^ L T ^ J J T i i g i i c m c c L T L T @.r.i.i.i.r.r.i.r.r.d.i.r.i.8.r.r.
+r.r.@.Q L T T T T T L @.1.:.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.1.:.=.=.:.1.:.=.:.:.:.:.=.:.1.8.r.i.i.r.r.i.r.q.r.r.r.d.C t t i i t i q t h c c m h i i t i g i t t i g t i i i i i q i t t g m T T T L T J T Q i t i i g c m c m L T L L @.i.i.r.i.r.q.r.r.q.r.r.d.h.q.r.r.
+r.i.#.T T L L L L T L @.=.:.:.:.:.:.:.:.:.:.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.1.=.=.1.:.=.:.:.1.8.q.r.d.r.q.r.d.r.r.r.r.r.d.C t t t t q g t g m m h c g t t t i i t t t i i t t t i t t q g t q g c J L T L T T Q ^ g i t q i c c c m J T L Q @.r.i.r.i.i.i.i.i.i.i.q.q.d.r.h.d.
+#.=.` L Q L Q { { #.{ #.=.:.:.:.:.:.:.:.:.:.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.:.:.=.=.:.#.:.1.1.8.1.q.q.i.r.i.r.i.r.d.m t t i i t g t t h g i h g t i i i i i i i i i g g i i t i i m C c C J T T ^ L C m c m q t i t g c c c C J Q L T ` #.@.| | | @.@.| =.q.8.:.8.8.q.8.
+L T L L ^ Q Q 1.:.8.=.=.:.:.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.1.:.1.:.:.:.=.:.:.#.:.=.=.=.:.:.:.:.1.r.r.i.r.i.r.q.i.c i q i t t g t t t t t t t t t t t i t t i q q t t t t i t g L T L T T T L L S i t q g i t t t g c m c m L T J L T T L T T T Q J T @.1.:.:.1.=.:.=.
+Q Q T J T L Q 1.@.:.:.=.8.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.1.1.1.:.=.1.:.=.:.:.:.:.=.1.:.:.:.:.=.=.1.r.i.r.r.r.i.i.q.r.c i q i t t g t i i i i i g i t i t g i i g t t i i i t i i h L Q T L T T T L J t t q i t i i i g c c h m L T L L T T L L L L T T Q @.1.:.=.:.=.:.=.
+T L L J J J ^ :.@.:.=.=.:.:.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.#.=.:.=.=.:.=.=.=.=.:.=.=.=.=.#.#.:.q.r.q.r.r.i.i.r.i.m i t i t t g t t i i t t i i i i t i i i i t t t t t q t q i J L T Q T L L L T q i q t t t t t g c c c m L T L L T T L T T L T L Q @.1.1.1.:.=.:.:.
+T J Q ^ ^ ^ { =.=.8.#.1.#.1.=.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.8.8.8.1.8.8.1.8.1.1.8.1.1.1.1.1.1.8.r.q.i.i.r.i.r.r.m t t i t t i t q g g t i g h g g g g i i g h m m c m c c c m T T Q ^ ^ T T Q ^ q g i i i i t t g c c c m J L J S L L L T T T T Q Q { #.#.#.@.| @.@.
+Q T | =.#.#.=.:.#.1.#.8.=.1.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.=.1.r.q.i.q.r.r.q.i.r.r.r.r.r.r.i.r.q.r.r.q.r.q.:.:.:.:.c q t i i t i t g L T L T T T L L L L L L T { #.#.#.=.=.#.#.#.1.=.=.=.=.=.:.:.#.q g t t t i t t g c c c c C C m c S J L T T L L Q L S C m C C C C C 
+T L | :.:.:.:.:.#.=.=.:.:.=.=.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.=.:.=.1.i.8.d.q.r.r.q.i.i.r.q.r.r.i.r.q.r.i.i.r.r.8.#.=.:.:.c 7 t t i t i i t L T T T T T T T T T T L T @.1.:.=.1.1.:.:.:.1.:.:.:.:.:.:.:.@.i g q t q t t i g c m c c c c c m S L T T T L L ^ T C c h c c c c c 
+L J { :.=.:.=.=.1.:.:.:.1.=.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.1.:.1.d.q.h.r.d.d.r.r.i.i.i.r.i.i.i.r.i.d.d.i.d.r.1.1.8.1.C q i t i t i i t L L J L L T T T T L T L L | :.:.=.:.:.:.:.:.:.=.:.:.:.=.=.=.@.h g t g i t i i g c m m c c c c m J T Q Q Q T T T L C c c m m m c m 
+T T @.1.:.:.=.=.=.=.#.:.=.=.=.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.#.:.=.=.i.r.i.q.d.d.q.r.i.d.d.i.i.i.d.i.i.i.i.q.i.r.:.:.:.#.S t g t i q t t i Q T L Q T Q L T T L Q T T @.1.:.#.=.=.:.1.:.:.1.:.=.=.:.1.:.#.i q 7 h i t t i g h c m c c c c m S L T T T L T T T C c c c c c h c 
+Q L =.8.q.q.8.q.8.8.8.8.8.8.8.q.q.q.q.q.8.q.q.8.q.q.q.q.q.q.q.q.q.q.8.q.q.q.i.i.q.8.{ ^ L T Q T Q ^ ^ Q Q ^ Q T L L T L C J C C g t i t g S C C C T T T L L Q T T T T T T L :.8.8.8.1.:.:.:.:.:.:.:.:.:.=.=.:.#.^ { { ^ g i t i i g g g h c c c c C C C C C C C S S m m h c h h g g 
+T L =.q.r.r.q.r.r.r.r.r.r.r.i.i.r.r.r.r.r.r.i.r.r.r.r.r.r.r.r.r.i.i.r.i.r.r.d.i.r.1.C q q q i h g g h h h h h i q q q q 7 t t g i t i i c T T T T Q Q T L T Q T T L T T Q L 1.i.r.r.8.:.:.:.:.:.:.:.:.1.:.:.8.=.:.8.8.=.m i t t t i i t i h c c h c c c c c c c c c h c c m h g t i 
+T T :.r.i.i.i.i.r.r.r.r.r.r.r.r.i.r.i.i.r.i.i.r.r.r.r.r.r.r.r.r.r.r.r.i.r.q.i.q.i.i.S q c i g m m m C C m C C c g i i i i t q i i i i t h L T J T L T T T T L J T T T T T L 8.i.i.i.q.#.:.:.:.:.:.:.:.:.:.:.1.=.@.#.#.#.c t i i t i t t i h c c m m m c c c c c c c c c c m h g q t 
+T T =.r.r.r.r.r.i.i.i.i.i.i.i.i.r.r.r.i.r.r.i.r.i.i.i.i.i.i.i.i.i.i.i.i.i.i.d.i.r.r.m 2 g q g c c h c c g h h i q q q q g i t i t t t i h L Q L ^ J T J L T L Q T T T T T L 1.i.q.i.q.#.1.:.:.:.:.:.=.:.:.=.:.=.q.1.:.1.c t i t t i i i g c c c m c c c c c c c c c c c c c g i t i 
+J J | 1.1.1.:.:.:.:.:.:.:.:.:.:.1.:.1.1.:.:.1.:.:.:.:.:.:.:.:.=.:.:.=.:.=.=.1.:.:.=.m q h i h h c c c c h c c h i g i t C C C C m m m C J Q ` ^ { ^ { ^ ` Q L T L T T T T L 8.i.q.i.q.=.1.1.:.:.:.1.=.:.:.:.1.:.:.=.#.:.h t g t t t t t i h h h m c c c c c c c h h c c c c h g i i 
+t i C ^ Q T T T T T Q T T T T T T L T Q T T T T Q Q T Q Q Q Q T Q Q T Q T T Q T T T C c C c c i t i i t i g g g q i g c @.#.=.=.:.=.#.=.=.#.:.=.=.8.i.r.i.@.T T T T T T T L 8.r.q.i.8.=.:.1.=.:.:.1.=.:.1.:.:.1.=.:.=.8.h q i t i i t t t t i i i t t t i t i i q q t t i i t q i t 
+t t m Q L L L L L T L L L L L L T L T Q T T T T T T L T T T T L T T L T L L T L L J m c h c i q t g i t i i t i q i g m 8.1.1.:.:.1.1.1.:.:.1.:.:.i.i.q.i.{ L L T T T L T L 1.r.r.i.1.:.=.:.=.=.1.1.=.:.1.=.=.:.#.1.=.8.c t g i g i i t t t t t t t i i i t i i i i i t g i i t i t 
+t i m Q L T T T T T T T T T T T T T T Q Q T T T T T L T T T T L L L L T T L T T T L C m c C g g t h g t i i q t t i t c 8.=.=.=.=.1.1.:.=.=.1.=.=.i.i.q.d.| T T T T T L T T q.i.i.i.8.8.=.1.=.=.1.8.:.:.1.=.=.:.=.1.@.:.g q t 7 q t t i i i i i t t i i i t t i g t q 2 q t i t h i 
+i g m T T L L L T L L L T T L T T T T T T T Q Q T L J L T T T Q Q Q Q Q T T L L L J C C m h g q 7 t 7 g g h i i g g g S | :.=.#.:.=.=.=.#.1.:.:.1.q.i.r.d.{ T L L T T L T T #.1.r.q.8.1.#.:.1.:.1.8.1.:.:.:.:.1.:.1.#.:.C h g h g q t i t g i t t i i t g t 7 g t t i g h h t 2 7 q 
+t q i C m m C C C C C m C C m S J J L T T T T T J C m C C m m m c c m m m m c c C m c c m m c g g c g { | @.#.#.| | @.=.:.8.:.1.:.:.:.:.:.r.q.q.r.i.i.q.i.{ T T Q T T T Q T J m c h ^ r.i.r.q.q.q.q.q.8.1.:.=.=.=.:.=.8.| { { #.L i i t q t t t t i i t i t q g t g L { { | ^ h i g 
+i t g C c c h h c c c c c c c S L L T T T T T T S m c c c c c c m m m m m m m m c c h h c c g t q i 7 #.:.#.1.:.:.:.:.8.=.=.#.=.1.:.:.:.1.i.r.r.r.i.i.q.i.| L T L L T T T S h q q i ^ q.8.i.i.r.r.i.r.1.=.=.=.=.:.:.:.1.:.1.:.q.` i i i g i i i i i i i g i t g q i { q.:.:.{ t q t 
+t t g C m m m c c c m c m c c S T T T T L T T T S m c c m m m m c c c c c c h h c c c c C C h h t i t 1.8.:.8.:.:.:.=.8.=.1.:.:.1.:.=.=.1.i.q.r.r.r.d.i.i.| L L Q L T T Q Q m t i q Q d.r.i.r.i.r.r.r.8.:.:.1.1.:.:.:.=.:.:.#.1.^ q i t g i t t t t i t i i t i t i ^ 1.=.:.| t t i 
+g i g m h c m m c c m c c c h C T T T T T T Q Q S m c c c c c c m m m m m m m m m c m c c h t t q t g @.#.#.=.=.1.:.#.1.#.:.=.=.1.1.=.:.8.i.q.i.d.q.i.i.q.| L T T T T T L J c t i q T i.i.d.q.i.r.r.i.q.:.=.=.#.=.=.:.#.1.1.=.8.Q i g q i t t t i t i t t i t i t g ^ :.:.=.^ g t i 
+g i i c g h g g h g h h c c h m J J J J C C C m c h h g g h g g h h g h h h g g g g L ^ ^ ^ T T T T Q =.=.1.1.1.1.1.:.1.=.1.:.1.8.q.1.8.q.i.q.i.i.@.#.=.| ^ T Q J L S C h g g g g c T @.{ =.#.r.8.8.r.r.8.8.q.8.#.:.:.=.1.:.=.1.| L L J L L T L T L T L L T L L L ^ #.8.8.=.| Q S J 
+q 7 q g t i i i i t i h m m c m c c c h i t t q t t t t t t t t i i t t t t t t g h { 1.:.:.=.#.=.=.=.:.=.=.=.=.=.:.=.:.=.:.:.1.q.r.q.r.r.i.8.i.r.T T ^ T Q ^ ^ ^ L i g i g m c h g C ^ T T J r.h.d.d.i.8.q.i.r.=.1.:.=.:.=.=.=.:.:.=.:.8.:.1.:.1.:.1.:.:.1.1.1.#.#.#.#.#.#.:.1.8.8.
+m g i g q t t t i t i g c m g h m c c h i t i i t i i i i i i i g i t t i g g g i g { :.=.1.1.1.:.1.:.:.1.=.:.=.:.:.=.=.:.:.=.:.8.r.r.r.i.d.q.i.i.L J Q J ^ ` ^ ^ T q i q q c c m m m L T ^ L q.8.1.q.r.8.r.d.i.=.8.=.:.1.1.1.1.:.1.#.:.1.=.:.=.:.=.:.:.=.:.:.:.1.:.1.1.1.1.1.=.=.=.
+2 7 t g i t i i i t t g m m c c m m c c c i i t i t q i i q i t t q t t t t i q q i | =.:.=.#.:.:.:.=.=.:.:.:.:.1.=.:.1.=.#.=.:.q.q.r.r.q.r.d.q.r.L Q J T ^ Q ` ` T t i t q h c m c C ^ T J L d.i.d.d.q.h.r.i.r.=.1.#.:.:.:.=.=.=.=.=.=.:.1.1.1.1.1.1.1.:.:.:.:.:.=.=.:.=.:.1.:.=.:.
+c m h i i i t q i i t h c c h c h h g g t t t i t i i i g m c i c h c h h c m c S S | =.1.1.:.1.=.:.:.=.:.=.=.=.:.:.1.1.1.1.8.8.q.r.i.d.r.8.r.1.r.Q ^ J L T L Q T L t i t i m m m c m T L L T q.q.q.8.1.d.r.r.i.=.1.=.8.:.:.:.:.=.:.1.1.1.:.=.#.=.=.=.:.:.:.:.:.8.1.:.:.=.=.:.:.1.1.
+1.1.L t t g i i t t q i i i t i i i g h t i t i g g i i m :.q.q.1.1.q.8.1.:.| | | @.#.:.:.1.:.:.=.1.1.1.1.1.1.8.8.q.q.8.q.q.q.q.r.r.i.q.:.` ^ Q T h m c m m C m C S g c g c m h c m C Q T T T { L Q Q @.r.q.q.i.q.r.8.i.1.1.1.1.:.1.:.=.:.:.1.1.:.:.:.:.=.=.=.=.:.:.1.1.:.:.1.:.#.=.
+r.i.T t i i t t i i i t i t t t t t i g t g t t i t q t c 1.8.i.r.r.i.r.q.r.=.1.=.1.=.1.=.:.=.=.=.=.=.=.:.:.1.q.i.d.d.r.r.r.r.r.r.r.i.8.=.T T L T C C m m h c g h C h C c m c g c m C Q L L L J T T T :.d.d.r.d.r.r.q.i.=.=.=.=.=.:.:.:.:.:.=.#.=.:.:.:.:.:.1.1.@.#.=.:.=.=.:.=.:.1.
+i.i.T t i t t t i i g t g t i i g g i i q i t t i i i g m q.q.r.r.r.i.r.q.r.=.1.#.8.#.8.=.:.:.:.:.:.=.=.=.=.:.8.r.r.r.r.r.r.r.i.r.r.i.8.:.T T T J m h h c c S m c m g m c c m m m m C T L L T T Q Q J #.q.q.8.i.i.r.i.d.:.:.:.:.1.:.:.:.1.1.:.=.=.=.:.:.:.:.:.1.1.1.1.:.:.:.1.1.:.:.
+i.i.T i t t i t q q i q g t i g q i t q t t i i q t t q g q.r.i.i.i.i.h.i.r.#.=.=.:.@.1.=.:.:.:.1.1.:.:.:.:.:.8.d.r.r.i.i.i.i.i.i.i.d.r.:.T T T J C h c c h m c c c h m c h c m m c S T T T T Q T Q L =.r.r.i.h.q.q.r.r.:.:.=.:.1.=.#.#.=.=.:.:.:.1.:.:.:.=.=.:.:.:.:.:.=.:.:.=.:.=.
+r.i.| ^ ^ Q T h t i i i i i i g t c i h T T ` Q J J S m J r.r.q.i.q.8.i.8.q.:.:.1.=.#.1.=.:.:.:.=.:.=.=.:.=.:.8.r.8.q.8.@.| @.| @.| @.@.^ C S S C m c m m h h g g g h h h i h c h g C S S S C S c S m ^ #.| @.#.r.r.d.r.q.q.8.8.r.r.r.r.q.1.:.=.=.:.:.:.:.:.:.1.=.:.1.1.:.1.1.=.:.:.
+i.h.:.=.:.=.| h t g t i t i q t t g 7 i @.#.q.=.{ ^ L L Q q.r.q.d.i.q.z.r.q.:.#.:.=.:.q.:.:.:.1.:.1.:.:.:.=.:.q.q.r.d.1.T J Q T Q L L Q C h m m m c h c h i t t i t i q t t h m m h C c c c g m h C h J ^ L ^ ^ q.q.d.q.i.i.r.r.q.q.q.q.8.:.:.:.:.:.:.:.:.:.=.=.:.=.=.=.=.:.:.=.:.:.
+r.i.q.=.=.=.@.h i g t h 7 i q i t c 7 i #.=.8.:.{ Q L T Q q.q.q.i.d.r.8.d.q.:.=.:.:.:.1.:.=.:.=.:.:.1.:.:.=.1.r.r.i.d.1.L L T T Q L L T J c c m c c c c h i t t t t q t t t h C C m c c h m c m h C c J L Q L T q.q.d.:.d.r.i.r.q.i.i.i.r.1.1.:.:.:.:.=.=.:.:.:.:.:.:.:.1.=.:.#.:.=.
+q.r.1.:.q.1.| i q q 7 h i g q g q q t c #.:.#.:.` Q Q ^ ^ r.i.r.q.i.r.8.d.1.:.#.#.:.:.=.=.:.1.=.=.:.:.=.=.=.=.8.r.r.r.:.T T T L T L L Q J c c c c c c m c g i t i i t q t g c C C m c m c m h c c C c J J T T Q d.i.h.8.d.q.i.i.r.d.i.r.i.1.:.=.=.:.:.=.=.:.:.=.:.:.:.:.1.=.1.=.:.:.
+r.i.=.@.#.{ ^ h t t t g t t q g C m C L | :.=.=.^ S S J S { @.@.@.8.i.8.h.8.q.8.1.q.1.=.:.:.:.=.=.:.:.1.8.8.8.q.i.r.r.:.T Q T J T L L Q J c c c m h g h h g i t t i t t i g g g h g g h g h g c g m c S S L J T =.#.:.@.=.@.#.:.:.r.r.8.r.8.1.8.1.8.8.1.1.1.1.1.1.1.1.1.8.1.q.1.q.8.
+i.i.@.T L S S i t h g t t i g c :.:.@.=.=.1.q.:.Q t t g t i i g h ` i.q.i.q.r.q.q.r.:.:.:.=.#.:.=.:.=.8.i.i.q.i.i.r.r.:.T T L J Q T L T J m m m c g t t i i t t i i t q t i t i g i g i t g g m c C m C m c h h c h m c C m m m ` q.d.r.h.i.r.r.q.r.r.r.r.i.i.i.r.i.i.r.i.r.d.r.r.r.
+r.r.{ T T Q L i 7 t t 7 t i g h 8.:.#.q.:.=.:.=.^ q q g t q q q q ^ h.r.q.i.r.d.q.r.1.=.:.=.:.8.1.:.=.r.d.i.q.i.r.r.i.1.T T T L T T L T S c c c h i t t i i t q q q i i i i q t i i g t q t i c h c g c h c C m c h m c m m c g Q r.h.q.i.r.r.r.i.i.i.i.i.i.r.r.r.r.r.r.r.q.i.q.d.i.
+i.r.{ T T Q L t i g i i i q t m 1.#.1.1.:.8.#.:.T q t t t t g g t ` z.i.q.i.r.r.q.i.8.=.=.:.:.:.1.=.=.i.i.i.q.r.i.r.i.1.T L L L T T T T J c c c h i t i i i i i i t i i i i t g t t g t t t i c C m c m c c m h C m C c m C m h Q r.d.1.q.q.r.i.8.q.r.r.i.i.i.r.r.i.i.r.i.i.h.r.d.i.
+i.r.| ^ J J J g i g t g h i i J =.=.:.#.#.1.@.:.T i h i i q t t g ^ q.q.r.q.d.r.q.r.1.=.=.:.:.#.1.:.:.i.q.r.8.1.i.r.i.1.T T T T T T T T J m m m h g t t t t i g i t i q t i q i i t g i g i h c h h h c c c m h m g h g c h c g Q 8.i.q.d.i.r.q.i.i.i.r.q.q.q.8.q.r.r.q.r.r.i.1.r.q.
+S J m S m C S g i g i C { @.` | 1.1.=.:.8.=.@.:.:.^ @.| ^ h t i i c m h J T r.i.i.r.8.q.r.r.r.8.r.q.q.h.q.i.r.:.{ ^ ` T g g g i m m m C h i g g i t t i t t t i t m ` | @.{ m i t q t 7 t t t i h g g g i i h g h q g i h i g g g S C c S C S J S S S S J T ^ ` ^ ` ` ` { ^ ^ S T L 
+g m h c h C i i t t g ^ 8.8.=.#.:.#.#.=.:.:.=.1.:.1.1.:.#.c i t t t q q t c r.r.i.i.8.d.i.r.r.q.r.r.q.r.q.r.r.| J J L J q t q q c m h h h q t i t i q i i i t t 2 c #.8.8.8.m q q g g t i i t t t i i t q i 7 i t g q t t i t i t t t t q h c c c m c c c m L T J S T L J T C h m m 
+C S m m c C i g q i g ^ =.:.:.:.1.8.1.:.1.1.:.:.:.=.=.=.| g t t i g i t h T h.1.r.i.i.r.q.i.i.i.q.r.r.r.i.i.r.{ ^ ^ ^ L i i i i m m c m c i g g i i t t t i t i q C #.@.@.:.C q i i t t h g i i t i i i t g q i i i t t g t t t i g g h g m m c c m c c c m L Q T T Q T T T S c m m 
+g g h c m S t h q i i Q #.#.#.#.@.1.=.#.=.=.:.@.1.1.1.8.#.c t q t q 7 t q S r.r.i.q.i.r.r.r.r.i.r.i.i.q.d.d.r.| L T J m t q t q c c h c h t t t i i g i q i q t q S :.1.1.1.S t q i i 7 q i t q t t i i t g t t t i i i g i t i t t t i t h h c c m c c m C L Q L L T L T T S m c c 
+m h c g g c i T S L J #.8.8.q.8.@.q.1.:.:.1.q.=.:.=.=.=.@.J J J T c i h 7 g { { #.` 8.8.r.q.1.q.1.q.8.| =.=.#.^ T ^ T S m h m h m c c m g t t q q q i i t J S L C L @.=.=.#.T J S T T S S L L J J J J J J L J C q t q g q g 7 t g i t i t g h c h h g h h h C C C J J S L L S C m C 
+7 7 g t q i g :.:.1.#.1.=.@.=.=.#.8.:.:.:.=.1.#.1.1.:.:.:.#.1.:.=.S t g q g h 2 t g @.@.=.:.=.:.#.:.=.T Q T Q J T Q L S m h m h m c C C h i i i i t t t i ` #.8.8.1.1.1.8.1.=.8.:.#.#.:.1.=.=.:.:.:.:.:.:.:.:.@.i i i g t g q t i t t g t t t i i i t i i q i i t g g h m m c h h c 
+i i h i i i g #.1.:.:.:.:.=.1.1.=.8.:.:.:.=.:.:.=.:.:.1.:.:.8.=.8.S q g i g i q q i @.:.8.1.:.:.=.1.:.Q T L T L Q Q L J c c c c m c C m h i q i g g t t q ` =.8.=.=.:.=.:.=.=.:.1.=.=.1.1.:.:.:.:.=.:.:.:.:.1.@.h t g t i i i i g i t g t i i i t t t i i q t i q g h c m c c h h c 
+g t q 7 i t c =.1.@.:.=.1.:.:.=.=.:.=.=.:.:.:.:.:.1.=.:.=.:.q.1.1.C q i q 7 q c g i ` :.1.=.#.=.=.:.=.Q L T T T Q L L L c m c m m c m m h g q i q i t i t ^ #.:.#.:.:.=.1.:.1.:.:.:.1.:.=.=.1.=.:.:.1.1.:.:.1.| i 2 i 2 q 7 t q t t q t q t t i t i t i i t g h q g h m c h m h h c 
+g h h g h t c :.q.=.q.:.:.=.:.:.:.:.:.:.:.1.=.:.:.:.=.1.=.#.:.@.:.J g h c c i i t g { #.@.#.:.:.=.=.@.Q L Q L L Q S J L h c h c h h h h h g q i t h g h i ` :.:.=.:.=.=.1.=.:.=.1.=.=.:.:.:.1.:.:.=.:.:.=.#.:.{ S g m g g g g g g h h c g h g i i i t t t q i g t g m S C c C m C C 
+@.@.#.:.@.:.| #.@.@.:.=.:.1.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.:.#.| @.| T q 2 q 7 c c m h m Q Q Q ^ J Q L T C C S m c i g i i g i i i i g q g h @.@.:.#.@.:.1.:.:.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.| { #.@.@.#.#.#.=.1.8.:.8.m m c h i i t i h J L J Q @.1.1.8.q.q.8.8.
+:.:.=.8.1.q.:.1.:.:.:.=.=.:.:.1.:.:.:.:.:.:.:.:.1.1.:.:.:.:.=.:.8.8.1.8.:.` i i h q q 2 7 q g L T J T J T L L m c c h h t i t t t t i t t t 7 t h =.:.8.=.=.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.1.:.1.1.:.1.:.1.8.q.i.q.r.S C m c g i i g c T Q L ^ :.i.i.i.i.i.r.r.
+#.:.=.1.#.@.@.#.1.8.:.:.:.=.:.=.:.:.:.:.:.:.:.:.=.:.:.=.=.:.:.:.| =.@.#.1.` i i q i g g i h C ` Q J T T ^ T T m c c h h i i t t i t i i i i i t g #.1.1.=.:.=.:.1.=.:.:.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.:.#.#.:.#.:.=.1.8.r.i.r.r.S m c c h t t t t J J J L :.i.i.i.q.r.r.r.
+1.1.@.1.1.8.1.=.| #.#.=.:.:.1.=.:.:.:.:.:.:.:.:.=.:.:.:.:.:.1.8.=.8.=.#.1.^ i t 7 g t t 7 q i J Q J T T T T T m c m c h i i t t i t t t t t g q c @.:.=.=.1.#.:.1.=.:.1.=.:.1.=.:.:.:.:.:.:.:.:.:.:.=.:.:.:.=.#.8.1.=.8.=.1.=.1.8.r.r.q.q.C m c m c i i g g ^ ^ Q Q 1.i.r.i.q.h.r.r.
+q.8.=.8.q.q.q.8.i.d.q.8.:.=.1.=.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.:.| q.q.8.i.:.{ #.@.` g h g i g J C m J S m C S g g g g i i t i i g i t g m Q { Q ` =.:.=.:.8.#.:.1.=.1.1.:.:.1.:.:.:.:.:.:.:.:.:.:.:.=.:.:.:.=.=.8.:.#.8.=.:.=.:.8.r.r.r.q.S m m h g q t t i T Q L J { | | @.@.r.r.r.
+i.i.i.d.r.q.r.i.q.r.q.1.=.=.1.:.:.:.:.:.=.=.:.:.=.=.:.:.=.=.=.=.#.q.r.q.d.q.8.r.i.8.c i t g g h h h C m h c c i i i i t t t i i t t q g J =.1.:.:.1.:.=.:.1.=.:.1.=.:.1.:.:.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.=.#.1.:.1.1.1.8.r.i.i.q.S m c m h i t i i L T L J T L T Q ` r.r.r.
+i.q.q.r.i.i.r.i.r.i.i.8.:.:.=.=.:.:.:.:.=.=.:.:.:.:.:.:.1.:.:.:.1.q.q.q.i.r.i.q.h.d.S q 7 t h h c c m m c c c g i i i t i t i t g g t g S :.=.:.:.:.=.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.#.:.=.#.=.#.1.r.r.i.q.S c h c i t t i h T Q L Q T L Q T ` i.q.q.
+d.r.i.i.i.r.q.i.q.r.i.1.=.:.=.:.=.:.:.=.=.:.:.:.=.=.=.=.:.:.=.=.:.8.i.r.r.q.d.q.8.:.c i g q g m m c c m m m h g t t i t i t t t t i q g C 1.=.1.=.:.:.:.:.:.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.=.=.:.:.=.:.:.=.1.:.8.r.r.r.8.S c c m g i t i h J T S Q T J Q T ` i.i.i.
+8.=.q.r.8.r.8.r.q.r.d.8.1.8.1.8.8.8.1.8.1.1.8.1.1.=.:.:.#.:.8.=.:.r.r.i.i.1.#.:.1.=.c h g h c g g c c h h c c t q i i i m c c h h c g m J =.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.:.:.1.=.:.=.:.:.:.:.#.:.1.8.1.1.:.8.8.1.q.r.q.i.r.C h h c g t i i g T T J T T L T L Q 1.1.1.
+^ ^ @.:.#.1.1.r.r.q.r.q.r.i.r.r.r.r.r.r.r.q.r.r.8.:.1.1.1.r.d.r.r.i.r.q.r.| h q 2 g q c h h h i i i i i i t h g t t t g J J L L L T J T ` 1.:.:.:.:.1.:.:.:.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.1.:.:.=.:.:.:.8.q.q.r.r.q.r.r.r.r.i.q.q.q.J m m m h t i t g T Q T T L J T T T ` Q T 
+L J { :.#.=.:.i.r.q.r.r.i.d.i.i.i.i.r.i.i.i.d.i.8.:.:.:.:.q.d.r.r.i.r.r.i.#.i q i c h S m m g t t t t t t 7 i i i t t c T Q ^ Q T Q T Q ` 1.=.=.:.:.:.:.:.:.=.:.:.:.:.:.:.:.:.:.=.=.:.:.:.:.:.:.:.=.=.=.=.:.=.:.q.r.i.r.r.r.r.r.i.d.r.r.8.S c h c h t i t g L T J T T L T Q L T L L 
+^ T { 8.:.=.=.i.r.r.r.r.r.r.q.r.q.r.q.r.r.q.r.r.8.:.=.=.:.q.r.q.r.r.i.q.r.#.i h q q i m c S h i i i g i t q i t i t t c L L T J L L L T ` :.=.1.:.:.=.:.:.:.:.:.:.:.:.:.:.:.:.:.1.1.1.:.:.:.=.:.=.:.:.=.:.:.=.=.8.r.i.q.q.r.i.q.r.q.q.d.q.J c m c g t i i h L Q J T Q T L T L T Q Q 
+Q L ` :.:.1.1.r.q.r.r.r.r.i.i.r.r.i.r.r.i.r.r.r.:.=.=.:.8.r.r.r.r.q.r.i.i.#.q q i g h C g c i i i t q i t t g g t t i c J T ^ T L L T T ^ =.=.1.:.:.=.:.:.=.=.=.:.:.:.:.:.:.:.:.:.:.:.=.:.:.=.8.:.1.:.=.:.:.:.:.q.q.i.i.q.q.i.r.i.r.q.i.1.S h c m h t t i h J Q T L T T L L L T T T 
+Q Q Q ` Q ^ Q L { { { #.:.1.8.:.:.8.:.1.q.q.q.q.q.q.8.8.r.r.r.q.h.#.{ ^ Q Q i c c c g h q i t g g t q S C C m J J J J S J L Q S @.@.#.@.=.q.8.r.q.r.8.r.r.1.8.:.:.:.:.=.:.:.:.:.=.=.:.=.1.1.:.r.1.q.8.8.8.8.q.8.h.r.r.q.Q C m C S L L T J m m m c g i t i i g c c h J Q T L L Q T L 
+T T T Q T ^ ^ T Q T L | 1.1.1.:.:.1.:.1.i.i.i.i.d.d.i.i.i.i.r.r.d.| Q ^ L T c m c c t g i g t i g g g ` Q ^ L ^ J J L L T T ` T :.=.1.=.1.r.q.d.q.r.8.r.r.:.:.#.:.:.:.:.:.:.=.=.1.1.1.=.:.:.#.q.8.d.d.d.d.i.i.r.i.q.r.r.m t t i i c m c h c m m h g i t i t q q 7 q S ^ L J T Q T L 
+T L L ^ L T Q T Q J J @.1.=.=.=.=.1.#.:.q.q.8.q.q.r.q.q.r.r.r.i.d.^ J Q S L c c m m t i t i t i q t q T S T S L T L T Q Q L T S =.#.1.=.1.i.q.h.i.i.q.i.i.1.1.:.1.1.:.1.:.:.:.:.:.=.1.=.1.1.:.i.8.d.r.q.q.8.r.q.q.r.h.i.h t i t g c m m c c m c c g i t i i i h h i C T J L Q T T T 
+L T L T T L Q T T T L @.1.:.1.:.:.1.:.:.i.i.d.i.d.i.d.d.i.i.d.i.i.{ T Q T J m m h m t i t i q g t i h T Q ` L ^ T T L L T T T T =.:.:.:.8.r.r.i.8.h.r.i.q.1.=.=.=.=.=.=.=.:.:.:.:.=.:.1.=.@.=.i.r.r.r.r.h.r.h.i.i.r.d.i.c i t i g h c m c h c c c h i t t g i q q i c T Q ^ T T T L 
+T T T Q T L Q T Q Q L { @.| @.| @.=.#.@.:.=.:.=.=.#.#.@.| | #.{ #.T J J S C c c h C i i t g t h i g g C S S m T Q Q T J T T Q T #.#.@.| =.:.#.#.#.i.r.i.r.8.1.1.8.8.1.1.1.8.1.1.8.1.:.1.1.1.8.r.q.r.i.:.:.=.1.=.#.#.=.:.c h i i h h c h c g h h i g g i q g C C S J S L L L S S J S 
+L L L T T L T L L T L Q Q L T T J T T J T J L L C m c c m c S h C c c c c m m m g m g t i g 7 g 7 q 7 q t q q m J L Q L Q T T S T T J L Q Q T T ^ q.r.i.d.i.r.i.i.r.r.r.i.i.i.i.i.i.i.i.d.d.i.q.r.r.i.{ L J T C ^ Q T ^ c m c c h m m m C g g t g i q t t C =.:.1.:.L c h c h m m m 
+T T T Q T T Q T T Q T T L L T L L T T L T J T L C c h c c g m g m c m c c m c m g m g t i i 7 h t g g i h i i J Q T T L T T Q T Q Q L T L S J J T r.i.r.i.r.q.r.i.r.r.r.i.i.i.i.r.i.d.i.r.r.r.q.i.i.d.@.L T ^ L L T S J c m c m m m c h c q i t t t 7 t t m :.:.:.:.L m C m g h c c 
+T L T T L T T L T Q T T L L T L T T T T T L ^ Q C c c m m h C m m c m m m m c m h c g q t t q c q t t q i t q C Q J L L T L T T L L L Q T T Q ^ T r.i.q.i.r.r.r.i.r.r.r.r.r.r.r.r.r.r.q.q.q.r.i.i.q.r.| L L T J L ^ L T C m c c h c c m m i i i q i t i t h :.:.1.=.C h c m c m c c 
+L J T L L L L L L T L L L T T L L L L J L J T L S m c c h c m m C m m C S C c m C m c h h g q i i g t t g i t C T S L ^ Q T L L Q T J T T J T J ^ 8.q.1.r.q.r.r.q.q.q.q.q.q.8.8.q.q.8.q.q.q.q.q.r.8.8.@.Q T Q L S Q L L C m m m c h c c h g i t h h g g g m :.=.q.:.J C C C C h h c 
+g g c c c m c m c c c c c m c c C m m m m h C m c h m C S #.#.=.=.=.#.#.#.| T T L J T J L L h t i t q t q t 7 c S c h C h m m m T T L Q T T ` T J ` ^ T ^ T Q T T T Q Q Q Q Q Q T T T Q Q Q T L L L T T J L Q T c S c c h h m c g t i i g { =.1.=.=.#.#.:.:.h.q.8.r.8.i.r.8.| g i i 
+q t h c c m c m m c m c m m m m m c m m c h C c c c m m m :.:.:.:.1.1.:.:.@.T L Q L T J T ` S i i i t g t i q c C c h S g m c c J T L T J S Q J J Q L S Q L Q T L L T L L J L L L L L L L T T T L ^ Q Q Q T Q T c S h c c c m h g t g i i #.:.=.=.1.:.=.:.=.i.8.d.z.i.d.q.q.#.i q t 
+i t c c m m m c c c c c c c c c c c c c m m m m m m m c S #.=.=.=.=.=.#.:.@.J J Q T L L L C S t i 7 7 g g i t g m c m C c C c m L Q L L L Q Q T L Q ^ L T L T Q T Q Q T T T T T Q Q Q T L L L T L L J J L J Q J c g c m h c c c i i t i i { 1.=.#.=.:.:.=.1.r.r.i.q.8.r.8.r.@.q t i 
+i q g g h c c c m c c c c c c c m m c c c c c c h h c c S =.:.:.1.:.1.=.:.@.L T L L T T Q L S t g i g 7 q t t i c c c c c m c h L Q T ^ T T T L L L L J L L L L J L L L L T T T L T T T T T Q Q L T T T Q L T S m h m c m m m c c h t i g { 1.8.=.:.1.1.:.8.i.i.q.8.i.h.r.i.| g i g 
+i t g g h h c h h g g g h h h h g g g g g g g g g h g g c #.=.:.:.:.:.=.:.=.{ | | { | { | | ` L Q T ` t t g g g h c h g m m m h m S C S m m C C S C m S J L L T T T Q T T T T T T T T T T L L L J L L S C m C c m h C c J S J S L T T ^ Q #.:.:.#.=.=.#.=.=.1.1.r.1.r.r.8.r.1.| ^ ` 
+i i g t i t t q i t t t t q q t t t t t t t i i t i q t g #.=.=.:.=.=.=.:.:.=.1.8.:.1.=.:.8.:.:.:.@.1.i i t t t q i i t c h C c m C c m c c m S m c h m m L T T T T T T L L L L L L L L L L L L ^ ^ T c t q t q c h m h L L L T { =.1.8.1.8.:.=.:.1.1.:.1.:.:.1.1.#.q.i.q.d.r.i.i.d.
+t t i q t t g g i i i i i t i i i i t t t t i i t g i g c :.:.=.:.:.:.=.:.:.:.1.=.@.:.:.:.1.#.1.:.@.1.t i i i g g g i t C h C c h c h C c h h h c c h c h J T L L T T T L L L T T L L L T T T L J L L m t t i i m m c c L Q L Q { =.=.=.=.8.:.=.#.:.:.=.:.:.=.:.=.#.r.d.i.d.q.d.q.r.
+i g g t i q t q t t t i i t t i i i i i i i i i q t q t h #.=.=.:.:.:.:.:.:.:.:.:.=.1.1.1.1.#.8.=.=.1.q t i i i i t t t m c C m h m c C m m c c c m m c h J T T Q Q Q Q Q Q Q Q Q Q T T Q T T L T Q T C t t q t m m h c J T J L ^ #.:.=.#.:.:.:.:.:.:.:.:.:.=.:.1.:.q.i.r.i.q.d.q.r.
+g h g i c h c h h g g h h h g g g g g h h h h h c h h m S @.=.:.:.=.:.1.1.:.1.:.:.:.:.=.=.:.@.:.:.:.:.c m c g h g g c g g g c c g h g h h h c c h m m c m C J L L J J J J J J J J S S J L L L J S S S m t g i g m m m m T ^ Q Q | :.q.q.1.:.:.:.1.:.:.:.=.=.=.=.=.:.1.q.q.q.8.r.q.r.
+1.:.` L T L T L T L T { #.:.1.1.1.1.1.1.1.1.1.1.1.=.:.:.=.1.=.:.:.:.:.:.:.:.1.:.=.1.:.:.:.8.=.:.#.#.1.| :.:.#.8.:.:.8.` m i i i i g i i t i g g g c m h m c c m m m c m m m m m m c c c c c h g t t g i 7 i q t T J Q T #.=.:.:.:.=.#.#.=.:.:.=.1.=.:.:.=.:.1.:.=.1.=.:.1.1.8.r.q.r.
+1.1.{ Q ^ L Q T Q Q T =.8.:.=.:.=.=.:.:.:.:.:.=.:.1.:.=.=.:.:.=.=.:.1.:.=.:.:.:.1.=.:.:.=.#.1.=.1.1.1.8.8.8.1.=.=.=.8.{ q i q q i g i t t t t t i h c c c c c c c h h c c c c c h h c h h c c i t t t t i i t i ^ S T L @.1.1.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.:.=.=.:.1.i.q.r.
+#.=.^ S L J Q L T L J | =.=.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.:.:.=.=.:.:.:.=.:.:.:.:.=.1.1.1.:.:.=.:.:.=.=.@.@.1.1.=.:.8.{ i t q t t t t t t i i i g c m m m m m m m c c m m m m m c m C C m m c i t t i i i i i h ` L ^ Q #.:.=.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.=.:.r.r.i.
+1.1.| Q T L Q J Q Q T @.:.:.:.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.1.:.:.1.=.1.1.#.#.q.1.#.1.=.=.:.=.^ h i g g i q t i t t i i i h h h c c c c c c c c c c c m h c m m c m h i g i t i g t q t L S T Q #.:.1.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.:.:.:.1.i.r.i.
+Q L J L L L T T T T L @.:.:.:.=.:.:.:.:.=.=.:.:.:.=.=.:.:.:.:.:.:.=.=.:.:.:.:.:.:.:.:.=.=.1.#.r.r.i.q.8.1.q.h.| Q ` ^ Q L S J m i t t i t t i t t i i i g g i g g g g g i g h c h c c c c m m h g g g J { | { { #.| @.| =.=.=.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.:.:.:.:.1.i.r.r.
+Q T L Q T L L L Q T J | =.=.:.:.:.:.:.:.=.=.:.1.:.=.=.:.:.=.:.:.:.=.=.:.:.:.:.:.:.:.:.:.1.1.#.i.r.q.r.d.r.8.i.` T T J J T L Q L g t i g t i g i i g i i i i t t t t i i t i h m c c c c c m m c m c m ^ :.:.:.=.:.=.:.=.:.1.1.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.1.:.=.=.:.i.i.i.
+T Q T T T T T T Q T J @.:.=.:.1.:.:.:.:.:.:.:.:.:.=.:.:.:.:.:.:.:.:.:.:.:.:.:.1.:.:.:.:.1.:.:.h.r.r.r.q.q.r.h.{ ^ ^ L L L L Q Q g t t i t t i t t i t t i i t i t t i i t i h m c c m m c c c h m c c ` :.=.:.1.:.:.:.:.:.=.=.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.=.1.d.r.r.
+L Q T T L L L ^ L L L @.:.:.1.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.1.1.1.:.:.1.1.:.:.:.:.=.1.:.8.d.i.8.r.d.d.r.r.| J L T ` T T T T g i t t t t t t t t t t i i i i t t t t t i g c c c m m c c c h m c c ^ :.=.:.:.=.:.:.1.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.:.:.:.1.1.i.r.q.
+T T L Q Q T L | | | ` #.=.:.1.1.1.1.:.:.:.:.:.=.:.:.:.:.:.:.:.:.:.:.:.:.=.:.:.:.=.:.1.:.q.8.r.r.r.8.r.=.@.| =.^ Q T J L m S S L i t t t g i i g g g g i g i t i i i i t t t g h h g h h g g h g h g g ^ 1.:.:.=.:.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.1.8.8.8.1.q.r.q.
+T T T T T T T :.1.1.=.:.:.=.:.1.1.:.1.1.=.=.:.:.1.=.:.=.:.=.:.:.:.=.=.#.=.:.:.:.=.8.8.r.i.r.r.q.i.d.r.` J T ^ S T Q L L c c h S t i i t t t q q t q q q q t i t t g t t i t t t t i t i i t g i g t i Q 1.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.1.:.:.:.1.:.1.8.q.r.r.r.r.i.r.
+T T T T T T T :.#.=.=.1.1.:.:.:.:.:.:.:.=.:.:.:.:.:.1.=.:.#.:.1.:.:.:.1.1.1.:.=.1.1.8.r.d.i.i.q.i.q.8.^ L T Q J J T T L c m g c i i i t t i t g i t t t t i t q t i t t i i t i t i t t t t i t i q t T :.=.=.=.=.:.:.:.:.1.:.=.1.:.:.:.:.1.:.:.:.=.:.:.:.=.:.:.=.:.q.i.i.i.r.q.r.q.
+T T T T T T T :.=.:.:.=.=.:.=.:.1.1.:.:.:.:.:.=.=.=.:.=.:.=.:.:.:.=.=.:.:.:.=.:.=.:.8.q.r.q.i.q.h.r.q.Q Q T L L L L T J h C h C t t i i i i t i i g i t i i t t i i t t i i i i i i t t i t i t i t i Q 1.:.:.:.:.:.:.:.:.:.:.=.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.:.#.:.8.r.r.i.r.q.d.i.
+T T T T T Q T 1.:.:.8.=.#.:.=.=.:.:.:.:.1.1.:.=.1.1.:.:.1.1.1.=.:.:.:.:.:.:.1.1.1.1.r.i.i.q.i.1.r.8.8.L Q L S T ` T ^ L c C c C i i i t i h i i i i g g c i t i g t i t g i i i i i t i i i i i i t i T :.=.:.=.:.:.:.=.:.=.:.:.1.:.:.:.1.1.:.:.:.:.:.:.:.:.:.:.1.8.q.r.i.i.i.8.r.r.
+T Q T T T Q Q 1.#.=.1.:.:.1.=.=.=.:.:.1.q.r.q.q.r.r.q.8.q.1.1.#.=.q.r.r.r.q.r.q.r.q.r.i.i.q.1.^ Q ^ ^ q g i t c h i c m h m c C t t i t S @.#.=.=.=.=.#.#.S t i g t i t i i i t g i t t i i t t i t i T :.=.:.=.:.:.1.=.:.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.:.:.:.:.8.r.r.q.:.^ T T 
+L T T L T Q T :.#.=.1.:.:.1.:.:.=.1.:.1.r.i.r.r.r.i.i.r.q.:.:.=.=.r.i.i.r.i.h.r.r.r.r.i.i.q.#.L S Q Q q i t q h C h c C c c m m i t i q S :.:.:.:.=.:.:.1.S q g i 7 g q i i i t i t i t i g t t t t g T :.:.8.:.=.=.1.:.1.=.:.:.:.=.=.=.=.=.=.=.:.:.:.:.=.:.:.:.:.:.q.i.i.i.:.T T T 
+L T T L L T T :.:.:.:.:.:.:.:.:.#.:.:.=.q.r.q.r.q.r.r.r.r.=.1.:.=.r.q.r.q.q.d.r.r.d.i.h.i.r.=.` J ^ T t g i t h C h c C c h C c i i g t J :.=.=.:.:.:.=.1.C q h i 7 g q t t i t i t i t i g i i t t g L :.=.1.=.:.=.1.=.1.=.:.:.1.:.:.:.:.1.:.:.:.:.:.:.:.:.:.1.=.=.8.r.r.r.:.T L T 
+L Q T T T Q T :.=.:.=.1.1.:.:.=.=.1.1.:.r.d.i.d.i.i.q.i.i.:.8.:.:.r.q.i.i.r.i.8.q.i.1.r.q.r.@.Q S Q S t g i i h c h c C c h m i g t i t S =.=.:.=.:.:.=.1.C q g g q h t t t i t i t i t t i t t i i h Q :.:.1.=.q.:.:.#.1.#.:.=.:.:.=.:.=.=.=.=.:.:.:.=.=.=.:.:.:.:.q.i.r.i.:.T L T 
+L T L T T T Q =.:.1.#.:.:.1.:.1.8.8.8.8.r.q.i.r.1.#.| @.@.q.q.8.1.r.d.r.r.8.#.| #.#.@.| @.@.` J C S m i i h g g g i h g g c h h J Q T J { =.:.=.:.1.:.:.:.{ L Q Q Q Q Q T T T T T Q T T T Q T g g 7 i m L T J Q 8.q.8.8.i.8.8.q.q.8.8.8.8.=.:.:.=.:.:.=.=.1.1.8.8.8.r.r.d.i.:.T L T 
+L T L L L T Q :.=.:.#.:.:.1.:.1.r.r.i.r.i.r.i.q.@.Q L T ^ 8.i.r.r.i.i.q.q.:.Q S Q T T T T Q J h c C C m m c h g g t i i i g i i { :.1.=.1.8.1.:.=.:.:.:.8.1.=.1.1.:.:.:.:.:.:.:.1.1.:.:.:.1.=.c i t t q t i i m 8.d.r.r.r.i.r.r.r.i.d.i.i.1.:.#.:.:.1.:.1.8.r.i.q.r.i.q.r.r.:.Q L Q 
+L Q T L T T Q :.:.1.=.:.:.:.:.8.r.r.i.i.i.r.d.r.#.Q L T ^ 8.d.i.r.r.i.r.i.8.T J T J L L J T C h c m h m m c m g t q t q t t q t | 1.8.:.=.:.#.=.:.:.:.=.:.:.:.:.=.:.:.:.:.:.:.:.:.:.:.:.1.1.=.q t t h g t t t g q.h.r.i.8.r.8.8.q.q.r.r.r.:.:.=.=.:.=.:.=.:.i.i.r.d.i.q.i.r.1.Q T Q 
+L Q T T T T T =.:.:.=.:.=.=.#.1.i.r.r.i.q.q.i.q.@.T J T ^ 8.d.i.i.r.d.r.r.:.T T Q L Q T T Q J m S m i c m m C g t g g t g g i h @.1.1.:.=.:.:.1.:.:.:.:.=.:.:.=.:.:.:.:.:.:.:.:.:.=.:.:.1.:.1.t g q i q q q t h r.i.q.h.q.i.r.i.i.d.r.i.r.:.=.:.#.=.#.:.#.=.i.r.8.d.r.q.d.i.:.L T Q 
+S L L J J L L 1.:.:.:.1.=.:.#.1.i.r.r.r.1.1.r.8.@.Q T Q Q =.8.q.8.8.q.1.:.@.T Q Q J L J S L C c C c i c c h c t q g i q c h g g @.=.=.:.=.:.=.=.=.=.1.1.:.1.8.:.:.:.:.:.:.:.:.:.:.=.:.:.=.#.1.C c g m h g g g h :.:.:.8.1.1.8.:.:.i.r.i.i.1.:.:.:.1.:.8.1.1.h.i.8.h.8.:.8.8.#.T L T 
+t i i t i g h #.=.=.1.8.1.8.=.8.r.i.q.1.` T T L ^ T L T L Q Q Q Q T T Q Q Q L L T L C c m m c c c c g h i t i t t g g c #.:.:.=.:.:.:.1.:.1.:.=.:.:.:.:.=.:.1.=.:.:.:.:.:.:.:.:.1.=.1.1.:.=.8.| :.=.:.L c h c h m C C h g i h 7 Q q.r.r.i.d.d.q.r.r.q.i.q.q.d.d.:.r.| T T T T L L L 
+t t t q t i h :.=.#.:.:.:.1.#.1.1.r.q.8.` T T Q L L T Q T Q J L T L L T T T Q L Q Q m c m h c m m m c g t t i g t i t c :.1.:.:.1.:.:.=.=.=.:.:.:.:.:.:.:.:.1.:.:.:.:.:.:.:.:.:.:.=.:.:.:.:.1.:.#.=.8.Q C m C c c m C g g t g 7 L q.q.q.q.r.i.q.i.i.i.i.r.r.r.i.8.d.{ L J J T Q L L 
+t i i t i i g :.q.1.1.:.=.1.#.8.q.h.d.q.{ L J T T Q T T L T J T T T T ^ L L ^ L T ^ m c C h c m m m h i i i t i 7 q 7 c 1.=.=.1.:.=.1.:.:.=.:.:.:.:.:.:.:.=.:.=.:.:.:.:.:.:.:.:.:.:.:.=.:.1.=.:.1.=.:.L g i c m h c c h g t i t ^ i.i.h.d.i.i.r.r.r.i.i.i.i.r.d.r.d.` L T T T T L L 
+q i g i i t h | #.#.@.#.=.=.:.8.q.i.q.=.{ T T T T T T T T T T T Q T J Q L J Q L Q L m m c c h c c h h g t i i i g g h J @.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.1.:.=.1.:.@.1.:.:.=.T C m S J g m c c g i g i Q :.1.r.8.q.q.8.q.8.q.q.q.q.q.q.8.8.` T Q T T T L L 
+i i q 7 i i i C c m S { 1.1.:.#.T { { ` ^ T L L T T T T T T T T L S m S S S Q J T T m m c c h g i i g g t t g L { ` ` | =.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.:.#.1.#.=.:.#.=.=.#.@.c m m m c h h g c J S J S ^ { | ` { | { ` ` ` { ` | ^ T T L T Q L L 
+q g g i i t q i 7 t g Q :.=.=.@.L Q L L L L Q Q T T T T T T T T T S h m m C T L L L m c c m h i i t t t t t i ^ 1.:.:.:.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.1.=.=.:.1.d.i.r.q.c c m m m m c c g i q t q C J L J J L J J L T ^ J T T T L J T Q L L 
+t i t q t i i i t g g Q :.:.1.#.Q ^ T T T T T L T T T T T T T T T S h h c C T L L L m c c c h i q i i i i g t Q :.=.:.1.=.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.1.:.1.=.1.r.r.q.r.c h m c c m c c c i g g g T ^ ^ Q T Q Q ^ ^ T T T L L T T L T T L L 
+i t i g i i g q i i t T :.1.:.@.T Q T T T T T L L L T T L L L L T J m c m C L T T T m m c c g i t g i i q t t ^ 1.:.:.1.:.:.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.1.=.:.=.8.i.r.q.q.c h m c c m h c h t i i t C L T T L L L L T J J ^ L T Q T T T L L L 
+i t h C m c m t g g g J ` ` ^ Q S L S S S S J J L L L L L L L L S C c c m m C S S C g h h h g g i t t J S S S @.8.:.=.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.:.:.1.:.:.:.1.#.q.d.i.q.8.c c m c c m c c g i g h h C L T J J T T L L L T J C J J S J J S J J 
+t i T 8.r.8.| i q q t q t t q i g m c m C c c h h h h h h h h h h h h h c h i i i g t i i i i t 7 7 g =.1.1.=.=.=.=.#.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.1.=.:.:.:.1.=.=.1.1.#.q.r.r.q.1.m m c c c c m c C C m m c h c h m S Q ^ Q J c h c c C m c m m m m m 
+g h L #.#.#.| g g i g q q i q g c m h h c c m m m c c c c c m m m m m m C h t q q i q q q t q 7 h g c #.#.1.1.=.:.1.1.:.1.:.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.:.:.:.1.:.#.=.:.#.q.r.r.r.8.m m h c m c m h h c g h m c C m m C J L J S c h m h c h h m h h c c 
+q g T :.1.1.@.h t q h i i i t g C m m m m m c c c c c c c c c c c h h h c h i q t i i i i i g q i t t @.=.:.=.=.1.8.1.=.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.:.:.:.8.r.q.i.8.c m h h C m m m m m c c m m c m m S T Q Q L m h m C m c C c m m C m 
+q h Q =.1.1.| g q i m q 7 t q t c c h h c h h h h c c c c c c m m m m m c h i t t t q t i i g g h c c #.:.1.:.:.#.#.=.:.:.:.=.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.1.1.1.:.:.:.1.1.:.=.:.:.=.1.:.1.8.q.i.r.i.8.c C c c m c h h c c m c c c h i c C L L L J c h c m h h c g c h m m 
+=.@.#.:.=.=.8.1.8.8.8.J h h i i g g i i g g i g m m C m h i t t t i i i t q q q t i i i t q m { | @.` =.:.=.=.:.:.=.:.1.1.:.:.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.:.:.=.=.1.:.:.q.8.q.q.r.i.r.r.1.h c h h g i i t i t g i g h g g t g h g h h i t g g i i g i g i i i 
+=.#.=.1.:.#.1.i.r.q.8.S t q q i t i t t i i t i t g c c h g i i t g i i i i g h g g t i i i T 8.:.8.:.:.:.:.1.8.:.=.=.=.=.=.=.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.1.:.:.r.i.r.i.r.i.r.i.8.m C m m g i g g g 7 i t t t q t i t i t i i t g i t q t t t t t q q 
+:.1.:.=.:.1.8.r.r.r.i.J g t t i q i i i i t t i h m C m h i q q t i t t t t i t q i t t t t J :.@.:.:.=.1.:.1.1.=.:.:.:.1.1.1.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.=.=.:.:.:.:.:.:.1.1.:.:.=.:.r.r.q.r.q.r.i.i.8.c m h c t t t i g t g t g i i t i t t i i t q g g t i i t t i i g g 
+1.1.:.=.:.:.=.q.8.r.i.S i i g i q i i i i t t i g h m c h g i i t i t i t t g t q g g i t t L =.=.:.1.:.:.:.:.:.=.:.:.=.:.:.:.=.1.1.1.1.:.:.:.:.:.:.:.:.:.1.1.:.:.=.=.:.:.=.=.:.:.:.:.:.=.=.1.r.i.i.h.r.r.i.i.8.m C c c i i i i 2 t g q i t g t i t t i i t 7 t i 7 i t t q i i 7 7 
+1.=.=.=.=.#.:.z.i.d.d.S i t g t q t i t i i t i i g g g g i i i i i t g i h T L L T L Q Q ^ @.1.q.8.8.8.1.8.q.q.q.q.8.8.8.8.8.q.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.8.r.8.1.1.1.1.8.q.8.1.8.8.1.1.r.r.r.q.r.#.{ { ` ^ i c i g t i q t c T Q L L g g i g g g g g g t i g i L L T L Q T T T 
+1.=.:.:.1.1.:.i.r.r.r.S g q t t q t t q i i i t i i g i t q q t t t q i t C :.1.#.1.r.h.i.q.r.i.d.r.r.i.q.r.r.r.r.r.r.r.r.r.r.r.r.r.r.r.r.r.r.r.r.i.i.r.r.i.i.r.i.q.:.=.=.:.8.r.i.r.i.h.r.i.d.q.h.i.r.` C m c c 7 g q g i g q i L @.:.1.:.g q q t t t 7 q i t t t i { @.:.#.:.=.:.:.
+1.=.:.:.1.:.1.q.8.8.q.S g i t t i i t t i g q t i t t i i i g i g i t h g S :.:.@.1.q.q.i.d.r.r.q.r.r.r.r.r.i.i.i.i.i.i.i.i.i.i.i.i.i.i.i.r.i.i.i.i.r.r.i.q.q.r.d.i.:.:.1.:.r.r.q.q.8.q.r.8.d.1.h.q.i.Q c C g h t g q t t g t t T =.#.:.#.m i t g h t t g q h i g t =.:.1.1.1.:.1.1.
+:.#.1.=.=.#.1.r.d.r.r.S t t q t i t t t t i t i t t t t q t t t q q t t 7 c #.q.=.1.q.q.i.i.q.q.i.d.i.r.r.q.q.q.q.q.q.q.q.q.q.q.q.q.r.q.q.q.q.q.q.q.r.r.r.q.q.8.r.q.=.:.:.:.q.q.r.i.r.r.i.r.h.q.z.r.i.^ m m h h t i t t t i t q L =.1.8.| c t q i i q t t q i t 7 2 | =.1.:.1.=.=.:.
+=.#.q.1.1.=.q.r.i.r.r.L c h g h c h h h q t q q g c h c g m m c m c C C m L ^ @.{ | :.#.1.=.:.1.:.:.1.1.8.8.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.q.8.i.d.i.r.8.=.=.=.:.r.r.q.d.r.1.q.8.8.=.8.:.:.T m m c h t t t i i c h g L ` @.| ^ L m c C C m m m m m m m m @.#.=.#.:.=.=.:.
+:.#.r.q.i.q.i.q.q.r.d.{ L T J L T L Q L g i i t c J J T Q #.=.:.1.=.:.=.#.{ c h t i C c C c S Q Q Q Q Q T L L L L L L L L L L L L L L L L L L L T L L L L #.8.8.i.r.i.h.i.r.d.r.q.r.#.L T L T L T Q ^ S h h c g i t i g m L L L m g i t h { =.=.#.#.=.=.#.:.@.=.:.#.8.1.:.=.1.1.:.:.
+1.=.q.q.i.i.i.r.i.i.i.{ L T L T L L Q T i t t t C Q L T Q =.=.=.=.=.:.:.=.{ q t t t m h c h S Q L L T T T T T Q T T T T T T T T T T T T T T T T T T T T T :.d.d.d.r.r.r.8.8.i.r.r.i.=.L T T Q Q L T T S m h C h i q t i C Q Q Q m i g t h @.:.:.:.=.1.1.:.8.=.1.:.=.:.:.:.=.:.=.:.:.
+=.:.r.r.i.i.r.r.r.r.q.{ L L L T Q T ^ T i t i i c L L L ^ :.:.1.:.:.1.:.:.{ q i i t c h c c S T T L T T T L L L T T T T T T T T T T T T T T T T L T L L L =.r.i.r.q.i.d.i.r.r.q.q.r.#.L T L L T L T L C c g m g t q t t S Q L L m t t q t @.:.1.=.=.:.:.:.1.=.:.:.:.:.1.1.1.:.=.:.1.
+#.8.r.i.i.i.q.r.r.i.r.@.Q Q T T Q L T L g g i i C Q Q T ` #.#.=.=.=.=.=.:.| t h g t c c c m S J T L L T L L L T L L T T T T T T T T T T L T T T J Q T Q T :.q.d.i.r.r.r.r.r.r.i.i.i.=.L L L L Q T T T S m h C h i i g i L Q J T S g i g c #.:.:.1.:.:.=.:.:.:.:.:.:.=.=.:.1.#.:.=.=.
+1.r.r.q.r.d.q.d.r.r.q.| T T L T L L T T C S C C Q @.@.{ #.:.:.:.:.:.=.:.#.^ q h q q g h t i g c c h h h h h h c m m C C C C C C C C C C m C C C m T L T J ^ ^ ` { { { { { ^ T T L T T m C C C C C m C c g t g t t i i q S T S Q m i t i h #.q.i.8.1.:.=.:.=.:.=.=.:.:.=.=.8.#.1.=.:.
+h.d.q.8.i.d.8.i.r.i.q.{ L L Q T L Q T Q Q T T T | 1.8.1.1.1.:.:.:.:.1.:.:.` g g q i t g i i t t t i i i t t i h c c m m c c c c h h c c m m m C m T T T L T T L T T T L T T C m h c m h h m c m c c c g i i t t g t t t L ^ J Q C i t i h 1.i.d.i.r.:.=.1.=.:.:.:.:.1.=.1.8.| 8.:.:.
+q.q.i.d.r.r.8.r.r.i.q.{ L L Q T L T L L T L L L { =.:.#.=.:.=.:.:.=.=.=.=.^ i t q i q t t i t t t t t t i t i g c c c m c c c c m c m c c c c c c T T T T T L L Q Q Q T T T C m h c m c c m c m c c c g t t q t g q t t L ^ J Q C i t i g 1.r.i.r.q.:.#.1.=.:.:.=.=.:.#.:.:.@.:.:.:.
+r.q.i.h.r.i.i.i.i.i.r.@.Q L Q T L Q T L T L T T ` =.:.=.:.:.:.:.1.:.1.:.:.` i q i g q i i g i t i i i i i i i h m c m m m c m m c c c c c c c c c L T Q T Q L L T L L J L J m c c c m m m m c c c c c g i i t t i 7 t i J Q L T C g q t i 1.r.i.r.q.1.=.1.:.:.:.1.1.1.:.1.:.:.1.1.:.
+#.{ ` | { @.@.@.{ { { L C c C m m S C C C C C m J ^ ` ^ ` ` ^ Q ^ Q Q Q ^ S q 2 7 q 2 7 7 q 7 2 7 7 2 2 7 7 7 q i t i i t t i i t i i i i g g g i C m m m m m m C C C C S C c c i q t i t i q t t t t q 7 7 2 7 t < t t h C c m g q 7 7 q ^ { { { { ^ Q { ^ ` ^ ^ ^ Q ^ ^ T ` T ` ` 
+* > * : * * # > : * : * # # * # o * # # # # # # o : * o # * # * : * * * : * o o o # o # o o o o # o o o # o o # * # # # o o # # o o o o o o o o o : # # o # # * o o o o # # o # * o # * # # o o # # * # o # o o * o * o # * # * # o o o o : : * * : # o : # * * : : * : * # < # * * 

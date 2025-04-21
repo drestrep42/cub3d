@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/16 13:53:36 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/20 16:34:48 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_map
 typedef struct s_texture
 {
 	char		*path;
+	mlx_texture_t *img;
 	bool		empty;
 }				t_texture;
 
