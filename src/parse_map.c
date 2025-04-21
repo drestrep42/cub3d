@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:01:11 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/16 14:04:51 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:31:22 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,10 @@ void parse_map(t_map *map, int fd, int size)
         while (line[x])
         {
             map->coord[y][x].nbr = line[x];
+			map->coord[y][x].filled = false;
             x++;
         }
         map->coord[y][x].nbr = '\0';
-        
         free(line);
         line = get_next_line(fd);
         y++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/16 13:53:36 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:31:17 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 
 typedef struct s_points
 {
-	int			filled;
+	bool		filled;
 	char		nbr;
 }				t_points;
 
@@ -70,6 +70,7 @@ typedef struct s_texture
 {
 	char		*path;
 	bool		empty;
+	xpm_t		*texture;
 }				t_texture;
 
 typedef struct s_floor

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/16 14:06:13 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/16 20:06:02 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,12 +127,12 @@ static void key_callback(mlx_key_data_t key_data, void *param)
 void init_player(t_player *player, t_map *map)
 {
     int y, x;
-    printf("Inicializando el jugador...\n");
+    //printf("Inicializando el jugador...\n");
     for (y = 0; y < map->y_nbrs; y++)
     {
         for (x = 0; x < map->x_nbrs; x++)
         {
-            printf("y='%d', x='%d'\n", y, x);
+            //printf("y='%d', x='%d'\n", y, x);
             if (map->coord[y] != NULL && x < ft_strlen(map->raw_lines[y])) {
                 char c = map->coord[y][x].nbr;
                 if (c == 'N' || c == 'S' || c == 'E' || c == 'W')

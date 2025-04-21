@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:43:48 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/27 14:07:13 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/04/16 20:05:10 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,6 @@ void	parse_textures(t_texture *texture, int cardinal, \
 		ft_exit(strerror(errno));
 	texture[cardinal].path = path;
 	texture[cardinal].empty = false;
+	texture[cardinal].texture = mlx_load_xpm42(path);
+	printf("path: %s %s %p\n", mlx_strerror(mlx_errno), path, texture[cardinal].texture);
 }
