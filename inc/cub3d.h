@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/21 15:31:17 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:35:23 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_map
 typedef struct s_texture
 {
 	char		*path;
+	mlx_texture_t *img;
 	bool		empty;
 	xpm_t		*texture;
 }				t_texture;
