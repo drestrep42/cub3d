@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:57:59 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/21 21:41:19 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:29:48 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ int	main(int ac, char **argv)
 		ft_exit(USAGE_ERROR);
 	file_init(&mlx.file);
 	parsing(&mlx, argv[1]);
-	// parsing(&mlx.file, argv[1]);
 	cube_init(&mlx);
-	// mlx_loop(mlx.mlx_ptr);
 	free_all(&mlx);
 	free_textures(&mlx);
 	return (0);
