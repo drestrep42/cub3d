@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/21 21:00:28 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:13:09 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -523,9 +523,20 @@ void cast_single_ray(t_mlx *mlx, double rayAngle, int screenX)
     }
 }
 
+int	get_color(t_mlx *mlx, int mode)
+{
 
-
-
+    if (mode == 1)
+        return ((mlx->file.ceiling.color[R] << 24) | 
+            ((mlx->file.ceiling.color[G] & 0xFF) << 16) | 
+            ((mlx->file.ceiling.color[B] & 0xFF) << 8) | 
+            ((255 & 0xFF)));
+    else
+        return ((mlx->file.floor.color[R] << 24) | 
+            ((mlx->file.floor.color[G] & 0xFF) << 16) | 
+            ((mlx->file.floor.color[B] & 0xFF) << 8) | 
+            ((255 & 0xFF)));
+}
 
 void draw_loop(void *param)
 {
@@ -536,10 +547,10 @@ void draw_loop(void *param)
     // cielo / suelo
     for (int y = 0; y < HEIGHT/2; y++)
         for (int x = 0; x < WIDTH; x++)
-            put_pixel(x, y, 0xFF0000, mlx->img);
+            put_pixel(x, y, get_color(mlx, 1), mlx->img);
     for (int y = HEIGHT/2; y < HEIGHT; y++)
         for (int x = 0; x < WIDTH; x++)
-            put_pixel(x, y, 0x00FF00, mlx->img);
+            put_pixel(x, y, get_color(mlx, 0), mlx->img);
 
     // trazo rayos
     double startAngle = mlx->player.angle - (PI/3)/2;
