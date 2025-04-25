@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:47:22 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/10 17:02:42 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:14:19 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,41 @@ void set_map_dimensions(t_map *map)
     map->x_nbrs = max_x;
 }
 
+void	flood_fill(t_map *map, int x, int y)
+{
+	if (y < 0 || y >= map->y_nbrs || x < 0 || x >= map->coord[y]->x_nbrs || \
+		(map->coord[y][x].nbr != '0' && map->coord[y][x].nbr != '1' && \
+		map->coord[y][x].nbr != 'N' && map->coord[y][x].nbr != 'S' && \
+		map->coord[y][x].nbr != 'E' && map->coord[y][x].nbr != 'W'))
+			ft_exit(INVALID_MAP);
+	if (map->coord[y][x].filled == true || map->coord[y][x].nbr == '1')
+		return ;
+	map->coord[y][x].filled = true;
+	flood_fill(map, x + 1, y);
+	flood_fill(map, x - 1, y);
+	flood_fill(map, x, y + 1);
+	flood_fill(map, x, y - 1);
+}
+
+void	start_flood_fill(t_map *map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < map->y_nbrs)
+	{
+		x = 0;
+		while (map->coord[y][x].nbr)
+		{
+			if (map->coord[y][x].nbr == '0')
+				flood_fill(map, x, y);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	parsing(t_file *file, char *argv)
 {
 	int		fd;
@@ -71,5 +106,6 @@ void	parsing(t_file *file, char *argv)
 	fd = open(argv, O_RDONLY);
 	parse_map(&file->map, fd, size);
 	set_map_dimensions(&file->map);
+	start_flood_fill(&file->map);
 	map_validator(&file->map);
 }

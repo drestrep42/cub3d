@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:43:48 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/15 16:15:23 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:06:15 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,10 @@ void parse_textures(t_texture *texture, int cardinal, char **line, char *word)
 	// 	perror("&xpm->texture");   
     texture[cardinal].img = &xpm->texture;
 	// mlx_image_t* img = mlx_texture_to_image(mlx_ptr, &xpm->texture);
-    printf("cardinal '%d'\n", cardinal);
+//	printf("cardinal '%d'\n", cardinal);
 	if (!texture[cardinal].img)
         perror("img"); 
-    printf("aaaaaaaaaaaa\n");
+//	printf("aaaaaaaaaaaa\n");
 	// texture[cardinal].img = img;
 
     // xpm = mlx_load_xpm42(path);

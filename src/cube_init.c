@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/12 22:45:35 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:02:57 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -431,8 +431,10 @@ void draw_line(t_mlx *mlx, float ray_angle, int screenX, t_texture textures[4])
     }
 
     // Obtener la textura seleccionada y verificar que esté inicializada
-    printf("textureIndex '%d'\n", textureIndex);
-    printf("path '%s'\n", textures[textureIndex].path);
+
+	(void)textures;
+    //printf("textureIndex '%d'\n", textureIndex);
+    //printf("path '%s'\n", textures[textureIndex].path);
     if (!mlx->file.textures[textureIndex].img)
     {
        printf("no existe la texutra\n");

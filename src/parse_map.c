@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:01:11 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/27 18:01:08 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:42:22 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,21 @@ void	parse_map(t_map *map, int fd, int size)
 		parse_line(line, &player);
 		map->coord[y] = ft_malloc((ft_strlen(line) + 1) * sizeof(t_points));
 		while (line[++x])
+		{
 			map->coord[y][x].nbr = line[x];
+			map->coord[y]->x_nbrs = x;
+		}
 		map->coord[y][x].nbr = '\0';
 		free(line);
 		line = get_next_line(fd);
 		y++;
+	}
+	while (line)
+	{
+		if (line[0] != '\n')
+			ft_exit(INVALID_MAP);
+		free(line);
+		line = get_next_line(fd);
 	}
 	map->coord[y] = NULL;
 	free(line);
