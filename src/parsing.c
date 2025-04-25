@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:47:22 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/25 20:54:23 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/04/25 20:56:13 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,41 +56,6 @@ void set_map_dimensions(t_map *map)
     }
     map->y_nbrs = y;
     map->x_nbrs = max_x;
-}
-
-void	flood_fill(t_map *map, int x, int y)
-{
-	if (y < 0 || y >= map->y_nbrs || x < 0 || x >= map->coord[y]->x_nbrs || \
-		(map->coord[y][x].nbr != '0' && map->coord[y][x].nbr != '1' && \
-		map->coord[y][x].nbr != 'N' && map->coord[y][x].nbr != 'S' && \
-		map->coord[y][x].nbr != 'E' && map->coord[y][x].nbr != 'W'))
-			ft_exit(INVALID_MAP);
-	if (map->coord[y][x].filled == true || map->coord[y][x].nbr == '1')
-		return ;
-	map->coord[y][x].filled = true;
-	flood_fill(map, x + 1, y);
-	flood_fill(map, x - 1, y);
-	flood_fill(map, x, y + 1);
-	flood_fill(map, x, y - 1);
-}
-
-void	start_flood_fill(t_map *map)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < map->y_nbrs)
-	{
-		x = 0;
-		while (map->coord[y][x].nbr)
-		{
-			if (map->coord[y][x].nbr == '0')
-				flood_fill(map, x, y);
-			x++;
-		}
-		y++;
-	}
 }
 
 void	flood_fill(t_map *map, int x, int y)
