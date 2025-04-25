@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/24 18:38:12 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/25 20:31:23 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -443,9 +443,9 @@ void cast_single_ray(t_mlx *mlx, double rayAngle, int screenX)
         uint32_t g = (int)(y_pos * 255);
 
 		if (y_pos < 0 || y_pos > 1)
-			assert(false);
+			ft_exit("y_pos out range");
 		if (x_pos < 0 || x_pos > 1)
-			assert(false);
+			ft_exit("x_pos out range");
 		uint32_t color = pixels[(int)floor(x_pos * (texW - 1)) + (int)floor(y_pos * (texH - 1)) * (texW)];
         put_pixel(screenX, y, color, mlx->img);
     }
