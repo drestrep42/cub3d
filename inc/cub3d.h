@@ -21,6 +21,7 @@
 # include <errno.h>
 # include <sys/time.h>
 #include <math.h>
+#include <assert.h>
 # include "../libft/inc/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 

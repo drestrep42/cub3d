@@ -12,14 +12,22 @@
 
 #include "../inc/cub3d.h"
 
-void put_pixel(int x, int y, int color, mlx_image_t *img)
+void put_pixel(int x, int y, uint32_t color, mlx_image_t *img)
 {
     if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
         return;
-    mlx_put_pixel(img, x, y, color);
+
+	uint32_t color_swapped = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		color_swapped <<= 8;
+		color_swapped |= (0xff & color);
+		color >>= 8;
+	}
+    mlx_put_pixel(img, x, y, color_swapped | 0xff);
 }
 
-void draw_square(int x, int y, int size, int color, mlx_image_t *img)
+void draw_square(int x, int y, int size, uint32_t color, mlx_image_t *img)
 {
     int i = 0;
     while (i < size)
@@ -421,26 +429,24 @@ void cast_single_ray(t_mlx *mlx, double rayAngle, int screenX)
     uint32_t      *pixels = (uint32_t *)tex->pixels;
 
     // 13a) Cálculo de wallX (0.0–1.0)
-    double wallX = (side == 0)
+    double x_pos = (side == 0)
         ? (posY + perpDist * rayDirY)
         : (posX + perpDist * rayDirX);
-    wallX -= floor(wallX);
-
-    // 13b) texX
-    int texX = (int)(wallX * texW);
-    if ((side == 0 && rayDirX > 0) ||
-        (side == 1 && rayDirY < 0))
-        texX = texW - texX - 1;
-
-    // 13c) paso vertical en la textura
-    double stepTex = (double)texH / lineHeight;
-    double texPos  = (drawStart - HEIGHT/2 + lineHeight/2) * stepTex;
+    x_pos -= floor(x_pos);
 
     // 13d) bucle de pintado
     for (int y = drawStart; y <= drawEnd; y++) {
-        int texY = ((int)texPos) & (texH - 1);
-        texPos += stepTex;
-        uint32_t color = pixels[ texY * texW + texX ];
+		double y_pos = ((double)y - drawStart) / ((double)drawEnd - drawStart);
+
+        // int texY = ((int)texPos) + (texH - 1);
+        uint32_t r = (int)(x_pos * 255);
+        uint32_t g = (int)(y_pos * 255);
+
+		if (y_pos < 0 || y_pos > 1)
+			assert(false);
+		if (x_pos < 0 || x_pos > 1)
+			assert(false);
+		uint32_t color = pixels[(int)floor(x_pos * (texW - 1)) + (int)floor(y_pos * (texH - 1)) * (texW)];
         put_pixel(screenX, y, color, mlx->img);
     }
 }
@@ -449,15 +455,15 @@ int	get_color(t_mlx *mlx, int mode)
 {
 
     if (mode == 1)
-        return ((mlx->file.ceiling.color[R] << 24) | 
-            ((mlx->file.ceiling.color[G] & 0xFF) << 16) | 
-            ((mlx->file.ceiling.color[B] & 0xFF) << 8) | 
-            ((255 & 0xFF)));
+        return ((mlx->file.ceiling.color[R] | 
+            ((mlx->file.ceiling.color[G] & 0xFF) << 8) | 
+            ((mlx->file.ceiling.color[B] & 0xFF) << 16) | 
+            (0xFF << 24)));
     else
-        return ((mlx->file.floor.color[R] << 24) | 
-            ((mlx->file.floor.color[G] & 0xFF) << 16) | 
-            ((mlx->file.floor.color[B] & 0xFF) << 8) | 
-            ((255 & 0xFF)));
+        return ((mlx->file.floor.color[R] | 
+            ((mlx->file.floor.color[G] & 0xFF) << 8) | 
+            ((mlx->file.floor.color[B] & 0xFF) << 16) | 
+            (0xFF << 24)));
 }
 
 void draw_loop(void *param)
