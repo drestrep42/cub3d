@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/25 16:14:07 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/04/25 20:49:02 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <errno.h>
 # include <sys/time.h>
 #include <math.h>
+#include <assert.h>
 # include "../libft/inc/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
@@ -30,6 +31,7 @@
 # define INVALID_TEXTURES "Invalid textures"
 # define INVALID_PLAYER "Only one player allowed"
 # define OUT_OF_BOUNDS "Player out of bounds"
+# define DUPLICATED_TEXTURE "Texture duplicate"
 
 # define NO 0
 # define SO 1
@@ -64,14 +66,16 @@ typedef struct s_map
 	t_points	**coord;
 	int			x_nbrs;
 	int			y_nbrs;
+	char      **raw_lines;
 }				t_map;
 
 typedef struct s_texture
 {
 	char		*path;
-	// mlx_image_t  *img;
-	// mlx_image_t  *img;
 	mlx_texture_t *img;
+	xpm_t       *xpm;
+	int            width;
+	int            height;
 	bool		empty;
 }				t_texture;
 
@@ -143,7 +147,8 @@ void	file_init(t_file *file);
  * data will be stored.
  * @param[in] argv Path to the file to be parsed.
  */
-void	parsing(t_file *file, char *argv);
+// void	parsing(t_file *file, char *argv);
+void	parsing(t_mlx	*mlx, char *argv);
 
 /**
  * Parses the textures and color elements from the given file descriptor.
@@ -154,7 +159,9 @@ void	parsing(t_file *file, char *argv);
  * 
  * @note If the map is empty, the function exits with an error.
  */
-void	parse_elements(t_file *file, int fd);
+void parse_elements(t_file *file, int fd, void *mlx_ptr);
+
+// void	parse_elements(t_file *file, int fd);
 void	parse_floor_and_ceiling(t_floor *floor, t_ceiling *ceiling, \
 								char **line, char element);
 /**
@@ -169,9 +176,10 @@ void	parse_floor_and_ceiling(t_floor *floor, t_ceiling *ceiling, \
  * 
  * @note If the texture file cannot be opened, the function exits with an error.
  */
-void	parse_textures(t_texture *texture, int cardinal, \
-						char **line, char *word);
-						// char **line, char *word, void *mlx_ptr);
+void parse_textures(t_texture *texture, int cardinal, char **line, char *word, void *mlx_ptr);
+
+// void	parse_textures(t_texture *texture, int cardinal, \/
+						// char **line, char *word);
 
 /**
  * Parses the map lines from the file and stores them in the map structure.

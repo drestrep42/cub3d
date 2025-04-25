@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:35:59 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/27 17:47:57 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/04/21 21:42:09 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 
 void	free_map(t_map *map)
 {
-	int	i;
+	int	i = 0;
 
-	i = 0;
 	while (map->coord[i])
 		free(map->coord[i++]);
 	free(map->coord);
+
+	i = 0;
+	while (map->raw_lines[i])
+		free(map->raw_lines[i++]);
+	free(map->raw_lines);
 }
+
 
 void	free_all(t_mlx *mlx)
 {
