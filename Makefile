@@ -13,8 +13,7 @@
 NAME			=	cub3d
 
 CC				=	gcc
-CFLAGS			=	-g3 -Wall -Wextra -I$(LIBFT_DIR) -fsanitize=address #-Ofast -DDEBUG=1
-# CFLAGS			=	-g3 -Wall -Wextra -Werror -I$(LIBFT_DIR) -fsanitize=address #-Ofast -DDEBUG=1
+CFLAGS			=	-g3 -Wall -Wextra -Werror -I$(LIBFT_DIR) -fsanitize=address #-Ofast -DDEBUG=1
 
 LIBFT_DIR		= 	libft
 LIBFT			= 	$(LIBFT_DIR)/libft.a

@@ -15,8 +15,7 @@ NAME				=	libft.a
 OBJ_DIR				=	obj/
 CC					=	gcc
 RM					=	rm -rf
-CFLAGS				=	-Wall -Wextra -I.
-# CFLAGS				=	-Wall -Wextra -Werror -I.
+CFLAGS				=	-Wall -Wextra -Werror -I.
 
 LIBFT_DIR			=	src/
 LIBFT_SRC			=	ft_isalnum.c			ft_isalpha.c			ft_isascii.c			ft_isdigit.c			\
