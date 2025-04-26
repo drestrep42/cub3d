@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cube_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/25 20:48:50 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/04/26 19:31:35 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
 void put_pixel(int x, int y, uint32_t color, mlx_image_t *img)
 {
     if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
@@ -19,7 +20,7 @@ void put_pixel(int x, int y, uint32_t color, mlx_image_t *img)
     }
     uint32_t color_swapped;
     int i;
-    
+
     color_swapped = 0;
     i = 0;
     while (i < 4)
@@ -68,28 +69,36 @@ bool touch(double px, double py, t_map *map)
 
 void move_player(mlx_key_data_t key_data, t_mlx *mlx)
 {
-    const int speed = 3;
-    const double angle_speed = 0.2;
+    int speed;
+    double angle_speed;
 
+    speed = 3;
+    angle_speed = 0.2;
     if (key_data.key == MLX_KEY_Q)
         mlx->player.angle -= angle_speed;
     if (key_data.key == MLX_KEY_E)
         mlx->player.angle += angle_speed;
-
     if (mlx->player.angle >= 2 * PI)
         mlx->player.angle -= 2 * PI;
     if (mlx->player.angle < 0)
         mlx->player.angle += 2 * PI;
 
-    double cos_angle = cos(mlx->player.angle);
-    double sin_angle = sin(mlx->player.angle);
+//-------movimiento de flechas sacar a funcion----------
+    double cos_angle;
+    double sin_angle;
 
+    cos_angle = cos(mlx->player.angle);
+    sin_angle = sin(mlx->player.angle);
     if (key_data.key == MLX_KEY_UP || key_data.key == MLX_KEY_DOWN ||
         key_data.key == MLX_KEY_RIGHT || key_data.key == MLX_KEY_LEFT)
     {
-        double dir = (key_data.key == MLX_KEY_DOWN) ? -1.0 : 1.0;
-        double newPosX = mlx->player.posX;
-        double newPosY = mlx->player.posY;
+        double dir;
+        double newPosX;
+        double newPosY;
+
+        dir = (key_data.key == MLX_KEY_DOWN) ? -1.0 : 1.0;
+        newPosX = mlx->player.posX;
+        newPosY = mlx->player.posY;
         if (key_data.key == MLX_KEY_UP || key_data.key == MLX_KEY_DOWN)
         {
             newPosX += cos_angle * speed * dir;
@@ -106,11 +115,14 @@ void move_player(mlx_key_data_t key_data, t_mlx *mlx)
         if (!touch(mlx->player.posX, newPosY, &mlx->file.map))
             mlx->player.posY = newPosY;
     }
+//-------------------------------
 }
 
 static void key_callback(mlx_key_data_t key_data, void *param)
 {
-    t_mlx *mlx = (t_mlx *)param;
+    t_mlx *mlx;
+
+    mlx = (t_mlx *)param;
     if (key_data.key == MLX_KEY_ESCAPE)
         exit(1);
     if (key_data.key == MLX_KEY_UP || key_data.key == MLX_KEY_DOWN ||
@@ -121,17 +133,19 @@ static void key_callback(mlx_key_data_t key_data, void *param)
 
 void init_player(t_player *player, t_map *map)
 {
-    int y = 0;
-    printf("Inicializando el jugador...\n");
-    while (y < map->y_nbrs)
+    int y;
+    int x;
+    char c;
+
+    y = -1;
+    while (++y < map->y_nbrs)
     {
-        int x = 0;
-        while (x < map->x_nbrs)
+        x = -1;
+        while (++x < map->x_nbrs)
         {
-            printf("y='%d', x='%d'\n", y, x);
             if (map->coord[y] != NULL && x < ft_strlen(map->raw_lines[y]))
             {
-                char c = map->coord[y][x].nbr;
+                c = map->coord[y][x].nbr;
                 if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
                 {
                     player->posX = (x + 0.5) * BLOCK;
@@ -148,18 +162,19 @@ void init_player(t_player *player, t_map *map)
                     return;
                 }
             }
-            x++;
         }
-        y++;
     }
 }
 
 void clear_image(t_mlx *mlx)
 {
-    int y = 0;
+    int x;
+    int y;
+
+    y = 0;
     while (y < HEIGHT)
     {
-        int x = 0;
+        x = 0;
         while (x < WIDTH)
         {
             put_pixel(x, y, 0, mlx->img);
@@ -189,7 +204,7 @@ double init_distance(double x, double y, double x1, double y1, t_mlx *mlx)
 void cast_single_ray(t_mlx *mlx, double rayAngle, int screenX)
 {
     // 1) Parámetros de cámara
-    const double FOV           = PI / 3.0;
+    const double FOV = PI / 3.0;
     const double projPlaneDist = (WIDTH / 2.0) / tan(FOV / 2.0);
 
     // 2) Posición del jugador en unidades de celda
@@ -232,12 +247,15 @@ void cast_single_ray(t_mlx *mlx, double rayAngle, int screenX)
 
     // 7) DDA: avanzamos hasta chocar con '1'
     int hit = 0, side;
-    while (!hit) {
-        if (sideDistX < sideDistY) {
+    while (!hit)
+    {
+        if (sideDistX < sideDistY)
+        {
             sideDistX += deltaDistX;
             mapX      += stepX;
             side       = 0;
-        } else {
+        } else
+        {
             sideDistY += deltaDistY;
             mapY      += stepY;
             side       = 1;
@@ -285,9 +303,9 @@ void cast_single_ray(t_mlx *mlx, double rayAngle, int screenX)
 
     // 13) Muestreamos la textura
     mlx_texture_t *tex   = T->img;
-    int            texW  = tex->width;
-    int            texH  = tex->height;
-    uint32_t      *pixels = (uint32_t *)tex->pixels;
+    int texW  = tex->width;
+    int texH  = tex->height;
+    uint32_t *pixels = (uint32_t *)tex->pixels;
 
     // 13a) Cálculo de wallX (0.0–1.0)
     double x_pos = (side == 0)
@@ -297,14 +315,16 @@ void cast_single_ray(t_mlx *mlx, double rayAngle, int screenX)
 
     // 13d) bucle de pintado
     int y = drawStart;
+    double y_pos;
+    uint32_t color;
     while (y <= drawEnd)
     {
-        double y_pos = ((double)y - drawStart) / ((double)drawEnd - drawStart);
+        y_pos = ((double)y - drawStart) / ((double)drawEnd - drawStart);
         if (y_pos < 0 || y_pos > 1)
             ft_exit("y_pos out range");
         if (x_pos < 0 || x_pos > 1)
             ft_exit("x_pos out range");
-        uint32_t color = pixels[(int)floor(x_pos * (texW - 1)) + (int)floor(y_pos * (texH - 1)) * texW];
+        color = pixels[(int)floor(x_pos * (texW - 1)) + (int)floor(y_pos * (texH - 1)) * texW];
         put_pixel(screenX, y, color, mlx->img);
         y++;
     }
