@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/26 19:31:35 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/27 16:58:52 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void put_pixel(int x, int y, uint32_t color, mlx_image_t *img)
     }
     mlx_put_pixel(img, x, y, color_swapped | 0xff);
 }
-
-
 
 void draw_square(int x, int y, int size, uint32_t color, mlx_image_t *img)
 {
@@ -67,10 +65,49 @@ bool touch(double px, double py, t_map *map)
     return false;
 }
 
+static void move_strafe(double *newPosX, double *newPosY, double sin_angle, double cos_angle, int speed, mlx_key_data_t key_data)
+{
+    double strafe_dir;
+
+    if (key_data.key == MLX_KEY_LEFT)
+        strafe_dir = -1.0;
+    else
+        strafe_dir = 1.0;
+    *newPosX += -sin_angle * speed * strafe_dir;
+    *newPosY +=  cos_angle * speed * strafe_dir;
+}
+
+static void move_player_arrows(mlx_key_data_t key_data, t_mlx *mlx, double cos_angle, double sin_angle, int speed)
+{
+    double dir;
+    double newPosX;
+    double newPosY;
+
+    if (key_data.key == MLX_KEY_DOWN)
+        dir = -1.0;
+    else
+        dir = 1.0;
+    newPosX = mlx->player.posX;
+    newPosY = mlx->player.posY;
+    if (key_data.key == MLX_KEY_UP || key_data.key == MLX_KEY_DOWN)
+    {
+        newPosX += cos_angle * speed * dir;
+        newPosY += sin_angle * speed * dir;
+    }
+    else if (key_data.key == MLX_KEY_RIGHT || key_data.key == MLX_KEY_LEFT)
+        move_strafe(&newPosX, &newPosY, sin_angle, cos_angle, speed, key_data);
+    if (!touch(newPosX, mlx->player.posY, &mlx->file.map))
+        mlx->player.posX = newPosX;
+    if (!touch(mlx->player.posX, newPosY, &mlx->file.map))
+        mlx->player.posY = newPosY;
+}
+
 void move_player(mlx_key_data_t key_data, t_mlx *mlx)
 {
     int speed;
     double angle_speed;
+    double cos_angle;
+    double sin_angle;
 
     speed = 3;
     angle_speed = 0.2;
@@ -83,39 +120,11 @@ void move_player(mlx_key_data_t key_data, t_mlx *mlx)
     if (mlx->player.angle < 0)
         mlx->player.angle += 2 * PI;
 
-//-------movimiento de flechas sacar a funcion----------
-    double cos_angle;
-    double sin_angle;
-
     cos_angle = cos(mlx->player.angle);
     sin_angle = sin(mlx->player.angle);
     if (key_data.key == MLX_KEY_UP || key_data.key == MLX_KEY_DOWN ||
         key_data.key == MLX_KEY_RIGHT || key_data.key == MLX_KEY_LEFT)
-    {
-        double dir;
-        double newPosX;
-        double newPosY;
-
-        dir = (key_data.key == MLX_KEY_DOWN) ? -1.0 : 1.0;
-        newPosX = mlx->player.posX;
-        newPosY = mlx->player.posY;
-        if (key_data.key == MLX_KEY_UP || key_data.key == MLX_KEY_DOWN)
-        {
-            newPosX += cos_angle * speed * dir;
-            newPosY += sin_angle * speed * dir;
-        }
-        else if (key_data.key == MLX_KEY_RIGHT || key_data.key == MLX_KEY_LEFT)
-        {
-            double strafe_dir = (key_data.key == MLX_KEY_LEFT) ? -1.0 : 1.0;
-            newPosX += -sin_angle * speed * strafe_dir;
-            newPosY +=  cos_angle * speed * strafe_dir;
-        }
-        if (!touch(newPosX, mlx->player.posY, &mlx->file.map))
-            mlx->player.posX = newPosX;
-        if (!touch(mlx->player.posX, newPosY, &mlx->file.map))
-            mlx->player.posY = newPosY;
-    }
-//-------------------------------
+        move_player_arrows(key_data, mlx, cos_angle, sin_angle, speed);
 }
 
 static void key_callback(mlx_key_data_t key_data, void *param)
@@ -131,11 +140,34 @@ static void key_callback(mlx_key_data_t key_data, void *param)
         move_player(key_data, mlx);
 }
 
+static int set_player_position(t_player *player, t_map *map, int x, int y)
+{
+    char c;
+
+    c = map->coord[y][x].nbr;
+    if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+    {
+        player->posX = (x + 0.5) * BLOCK;
+        player->posY = (y + 0.5) * BLOCK;
+        if (c == 'N')
+            player->angle = 3 * PI / 2;
+        else if (c == 'S')
+            player->angle = PI / 2;
+        else if (c == 'E')
+            player->angle = 0;
+        else if (c == 'W')
+            player->angle = PI;
+        map->coord[y][x].nbr = '0';
+        return (1);
+    }
+    return (0);
+}
+
+
 void init_player(t_player *player, t_map *map)
 {
     int y;
     int x;
-    char c;
 
     y = -1;
     while (++y < map->y_nbrs)
@@ -145,25 +177,11 @@ void init_player(t_player *player, t_map *map)
         {
             if (map->coord[y] != NULL && x < ft_strlen(map->raw_lines[y]))
             {
-                c = map->coord[y][x].nbr;
-                if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-                {
-                    player->posX = (x + 0.5) * BLOCK;
-                    player->posY = (y + 0.5) * BLOCK;
-                    if (c == 'N')
-                        player->angle = 3 * PI / 2;
-                    else if (c == 'S')
-                        player->angle = PI / 2;
-                    else if (c == 'E')
-                        player->angle = 0;
-                    else if (c == 'W')
-                        player->angle = PI;
-                    map->coord[y][x].nbr = '0';
-                    return;
-                }
+                if (set_player_position(player, map, x, y))
+                    return;    
+            }
             }
         }
-    }
 }
 
 void clear_image(t_mlx *mlx)
@@ -373,7 +391,7 @@ void draw_loop(void *param)
     double startAngle;
     double angleStep;
     int i;
-    
+
     mlx = (t_mlx *)param;
     clear_image(mlx);
     print_sky_and_floor(mlx);
@@ -395,15 +413,12 @@ void cube_init(t_mlx *mlx)
     mlx->height = HEIGHT;
     mlx->mlx_ptr = mlx_init(WIDTH, HEIGHT, "Cub3D", false);
     if (!mlx->mlx_ptr)
-        ft_exit("Error al inicializar MLX");
-
+        ft_exit("Init MLX");
     mlx->img = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT);
     if (!mlx->img)
-        ft_exit("Error al crear la imagen");
+        ft_exit("clear image");
 
-    printf("map->y_nbrs: %d, map->x_nbrs: %d\n", mlx->file.map.y_nbrs, mlx->file.map.x_nbrs);
     init_player(&mlx->player, &mlx->file.map);
-
     mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
     mlx_key_hook(mlx->mlx_ptr, key_callback, mlx);
     mlx_loop_hook(mlx->mlx_ptr, draw_loop, mlx);
