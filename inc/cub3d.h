@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/27 18:40:03 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/27 19:18:13 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,25 @@ typedef struct s_file
 
 }				t_file;
 
+typedef struct s_ray {
+    /* Camera & ray direction */
+    double posX, posY;
+    double rayDirX, rayDirY;
+
+    /* DDA state */
+    int mapX, mapY;
+    int stepX, stepY;
+    double sideDistX, sideDistY;
+    double deltaDistX, deltaDistY;
+    int side, hit;
+
+    /* Projection & drawing */
+    double perpDist;
+    int drawStart, drawEnd;
+    double wallX;
+    int texID;
+} t_ray;
+
 typedef struct s_mlx
 {
 	t_file		file;
@@ -122,6 +141,7 @@ typedef struct s_mlx
 	int			width;
 	int			height;
 	t_player    player;
+	t_ray		ray;
 }				t_mlx;
 
 // Init
@@ -228,6 +248,7 @@ int	get_color(t_mlx *mlx, int mode);
 void print_sky_and_floor(t_mlx *mlx);
 void move_player(mlx_key_data_t key_data, t_mlx *mlx);
 void init_player(t_player *player, t_map *map);
+void cast_single_ray(t_mlx *mlx, double rayAngle, int screenX);
 
 // UTILS
 
