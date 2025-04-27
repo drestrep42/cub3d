@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+         #
+#    By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 12:51:47 by drestrep          #+#    #+#              #
-#    Updated: 2025/03/27 18:02:47 by drestrep         ###   ########.fr        #
+#    Updated: 2025/04/27 17:52:19 by igvisera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ BASE_DIR   		=	$(addprefix $(PATH_BASE), $(BASE_SRC))
 BASE_SRC		=	main.c		cube_init.c			parsing.c	ft_free.c		\
 					file_init.c	parse_textures.c	utils01.c	utils02.c		\
 					parse_map.c	parse_elements.c	parse_floor_and_ceiling.c	\
+					print_utils.c	player.c		walls.c	\
 
 OBJS			=	${BASE_DIR:.c=.o} \
 

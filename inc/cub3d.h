@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/25 20:49:02 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/04/27 18:40:03 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,15 @@ void	free_all(t_mlx *mlx);
  * @param[in] message Message to be printed.
  */
 void	*ft_exit(char *message);
+
+void draw_square(int x, int y, int size, uint32_t color, mlx_image_t *img);
+bool touch(double px, double py, t_map *map);
+void put_pixel(int x, int y, uint32_t color, mlx_image_t *img);
+void clear_image(t_mlx *mlx);
+int	get_color(t_mlx *mlx, int mode);
+void print_sky_and_floor(t_mlx *mlx);
+void move_player(mlx_key_data_t key_data, t_mlx *mlx);
+void init_player(t_player *player, t_map *map);
 
 // UTILS
 
