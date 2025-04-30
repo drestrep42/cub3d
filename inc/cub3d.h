@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/27 19:18:13 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:48:52 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 #define ROT_SPEED  0.05
 #define BLOCK  64
 #define PI  3.14159265359
-
+#define PLAYER_RADIUS  10
 
 typedef struct s_points
 {
@@ -100,6 +100,7 @@ typedef struct s_player
 	double angle;
     double planeX;
     double planeY;
+	double radius;
 
 	bool left_rotate;
 	bool right_rotate;
@@ -241,7 +242,8 @@ void	free_all(t_mlx *mlx);
 void	*ft_exit(char *message);
 
 void draw_square(int x, int y, int size, uint32_t color, mlx_image_t *img);
-bool touch(double px, double py, t_map *map);
+// bool touch(double px, double py, t_map *map);
+bool   touch(double px, double py, t_map *map, double radius);
 void put_pixel(int x, int y, uint32_t color, mlx_image_t *img);
 void clear_image(t_mlx *mlx);
 int	get_color(t_mlx *mlx, int mode);

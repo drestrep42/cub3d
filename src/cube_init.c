@@ -6,7 +6,7 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/27 18:51:15 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:14:51 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void key_callback(mlx_key_data_t key_data, void *param)
         key_data.key == MLX_KEY_Q || key_data.key == MLX_KEY_E)
         move_player(key_data, mlx);
 }
-
 
 void draw_loop(void *param)
 {
@@ -46,7 +45,6 @@ void draw_loop(void *param)
     }
     mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
 }
-
 
 void cube_init(t_mlx *mlx)
 {

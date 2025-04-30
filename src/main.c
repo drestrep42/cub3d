@@ -6,11 +6,12 @@
 /*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:57:59 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/24 18:29:48 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/29 17:56:03 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
 void free_textures(t_mlx *mlx)
 {
     for (int i = 0; i < 4; i++)
