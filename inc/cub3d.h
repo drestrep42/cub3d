@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/30 18:31:03 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/04/30 22:06:38 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 #define ROT_SPEED  0.05
 #define BLOCK  64
 #define PI  3.14159265359
-#define PLAYER_RADIUS  27
+#define PLAYER_RADIUS  0
 
 typedef struct s_points
 {
@@ -114,6 +114,21 @@ typedef struct s_file
 	t_texture	textures[4];
 
 }				t_file;
+
+typedef struct s_touch {
+	double	nearest_x;
+	double	nearest_y;
+	double	dx;
+	double	dy;
+	double	px;
+	double	py;
+	int		min_x;
+	int		max_x;
+	int		min_y;
+	int		max_y;
+	int		y;
+	int		x;
+}				t_touch;
 
 typedef struct s_ray {
     /* Camera & ray direction */
@@ -216,7 +231,7 @@ void	parse_floor_and_ceiling(t_floor *floor, t_ceiling *ceiling, \
 		mlx->ray.sideDistY = (mlx->ray.mapY + 1.0 - mlx->ray.pos_y) \
 		* mlx->ray.deltaDistY;
 	}
-}
+}*/
 void parse_textures(t_texture *texture, int cardinal, char **line, char *word);
 
 // void	parse_textures(t_texture *texture, int cardinal, \/
