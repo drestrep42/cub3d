@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:01:11 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/25 20:51:38 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/04/30 17:35:14 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	get_map_size(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
+	size++;
 	free(line);
 	return (size);
 }
@@ -73,37 +74,44 @@ void	parse_line(char *line, int *player)
 		ft_exit(INVALID_PLAYER);
 }
 
-void parse_map(t_map *map, int fd, int size)
+void	parse_all_lines(t_map *map, char *line, int *player, int fd)
+{
+	int			x;
+	int			y;
+
+	y = 0;
+	while (line && ft_strncmp(line, "\n", 1) != 0)
+	{
+		parse_line(line, player);
+		map->raw_lines[y] = ft_strdup(line);
+		x = 0;
+		map->coord[y] = ft_malloc((ft_strlen(line) + 1) * sizeof(t_points));
+		while (line[x])
+		{
+			map->coord[y][x].nbr = line[x];
+			map->coord[y]->x_nbrs = x;
+			x++;
+		}
+		map->coord[y][x].nbr = '\0';
+		free(line);
+		line = get_next_line(fd);
+		y++;
+	}
+	free(line);
+	map->coord[y] = NULL;
+	map->raw_lines[y] = NULL;
+}
+
+void	parse_map(t_map *map, int fd, int size)
 {
 	static int	player;
-    int   y = 0, x;
-    char  *line;
-    // Reservar espacio para las líneas sin procesar (raw_lines)
-    map->raw_lines = ft_malloc((size + 1) * sizeof(char *));
-    map->coord = ft_malloc((size + 1) * sizeof(t_points *));
-    
-    line = get_to_map(fd);
-    while (line && ft_strncmp(line, "\n", 1) != 0)
-    {
-		parse_line(line, &player);
-        // Guarda la línea sin modificar en raw_lines
-        map->raw_lines[y] = ft_strdup(line);
-        
-        // Procesa la línea y almacena los caracteres en coord
-        x = 0;
-        map->coord[y] = ft_malloc((ft_strlen(line) + 1) * sizeof(t_points));
-        while (line[x])
-        {
-            map->coord[y][x].nbr = line[x];
-			map->coord[y]->x_nbrs = x;
-            x++;
-        }
-        map->coord[y][x].nbr = '\0';
-        
-        free(line);
-        line = get_next_line(fd);
-        y++;
-    }
+	char		*line;
+
+	map->raw_lines = ft_malloc((size + 1) * sizeof(char *));
+	map->coord = ft_malloc((size + 1) * sizeof(t_points *));
+	line = get_to_map(fd);
+	parse_all_lines(map, line, &player, fd);
+	line = get_next_line(fd);
 	while (line)
 	{
 		if (line[0] != '\n')
@@ -111,7 +119,5 @@ void parse_map(t_map *map, int fd, int size)
 		free(line);
 		line = get_next_line(fd);
 	}
-    map->coord[y] = NULL;
-    map->raw_lines[y] = NULL; // Marcar el final del arreglo
-    free(line);
+	free(line);
 }

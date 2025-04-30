@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/30 10:48:52 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/30 18:31:03 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 #define ROT_SPEED  0.05
 #define BLOCK  64
 #define PI  3.14159265359
-#define PLAYER_RADIUS  10
+#define PLAYER_RADIUS  27
 
 typedef struct s_points
 {
@@ -87,20 +87,20 @@ typedef struct s_floor
 
 typedef struct s_ceiling
 {
-	int			color[3];
+	int			color[3];	double radius;
+
 	bool		empty;
 }				t_ceiling;
 
 typedef struct s_player
 {
-    double posX;
-    double posY;
+    double pos_x;
+    double pos_y;
     // double dirX;
     // double dirY;
 	double angle;
     double planeX;
     double planeY;
-	double radius;
 
 	bool left_rotate;
 	bool right_rotate;
@@ -117,8 +117,10 @@ typedef struct s_file
 
 typedef struct s_ray {
     /* Camera & ray direction */
-    double posX, posY;
-    double rayDirX, rayDirY;
+    double	pos_x;
+	double	pos_y;
+    double	raydir_x;
+	double	raydir_y;
 
     /* DDA state */
     int mapX, mapY;
@@ -141,6 +143,9 @@ typedef struct s_mlx
 	mlx_image_t	*img;
 	int			width;
 	int			height;
+	double		cos_angle;
+	double		sin_angle;
+	int			speed;
 	t_player    player;
 	t_ray		ray;
 }				t_mlx;
@@ -180,24 +185,39 @@ void	parsing(t_mlx	*mlx, char *argv);
  * 
  * @note If the map is empty, the function exits with an error.
  */
-void parse_elements(t_file *file, int fd, void *mlx_ptr);
+void parse_elements(t_file *file, int fd);
 
 // void	parse_elements(t_file *file, int fd);
 void	parse_floor_and_ceiling(t_floor *floor, t_ceiling *ceiling, \
 								char **line, char element);
 /**
  * Parses and stores a texture path for a given cardinal direction.
- * 
- * @param[in, out] texture Pointer to the texture array where the parsed path \
- * will be stored.
- * @param[in] cardinal Index representing the texture's cardinal direction.
- * @param[in, out] line Pointer to the current position in the input line; \
- * it is modified as parsing progresses.
- * @param[in] word Expected keyword identifying the texture.
- * 
- * @note If the texture file cannot be opened, the function exits with an error.
- */
-void parse_textures(t_texture *texture, int cardinal, char **line, char *word, void *mlx_ptr);
+ * ydir_x < 0)
+	{
+		mlx->ray.stepX = -1;
+		mlx->ray.sideDistX = (mlx->ray.pos_x - mlx->ray.mapX) \
+		* mlx->ray.deltaDistX;
+	}
+	else
+	{
+		mlx->ray.stepX = +1;
+		mlx->ray.sideDistX = (mlx->ray.mapX + 1.0 - mlx->ray.pos_x) \
+		* mlx->ray.deltaDistX;
+	}
+	if (mlx->ray.raydir_y < 0)
+	{
+		mlx->ray.stepY = -1;
+		mlx->ray.sideDistY = (mlx->ray.pos_y - mlx->ray.mapY) \
+		* mlx->ray.deltaDistY;
+	}
+	else
+	{
+		mlx->ray.stepY = +1;
+		mlx->ray.sideDistY = (mlx->ray.mapY + 1.0 - mlx->ray.pos_y) \
+		* mlx->ray.deltaDistY;
+	}
+}
+void parse_textures(t_texture *texture, int cardinal, char **line, char *word);
 
 // void	parse_textures(t_texture *texture, int cardinal, \/
 						// char **line, char *word);
@@ -227,7 +247,31 @@ int		get_map_size(int fd);
 // Free
 /**
  * Frees all allocated memory in the mlx struct.
- * 
+ * ydir_x < 0)
+	{
+		mlx->ray.stepX = -1;
+		mlx->ray.sideDistX = (mlx->ray.pos_x - mlx->ray.mapX) \
+		* mlx->ray.deltaDistX;
+	}
+	else
+	{
+		mlx->ray.stepX = +1;
+		mlx->ray.sideDistX = (mlx->ray.mapX + 1.0 - mlx->ray.pos_x) \
+		* mlx->ray.deltaDistX;
+	}
+	if (mlx->ray.raydir_y < 0)
+	{
+		mlx->ray.stepY = -1;
+		mlx->ray.sideDistY = (mlx->ray.pos_y - mlx->ray.mapY) \
+		* mlx->ray.deltaDistY;
+	}
+	else
+	{
+		mlx->ray.stepY = +1;
+		mlx->ray.sideDistY = (mlx->ray.mapY + 1.0 - mlx->ray.pos_y) \
+		* mlx->ray.deltaDistY;
+	}
+}
  * @param[in, out] mlx Pointer to the MLX instance to be freed.
  * @note After calling this function, the freed pointers should not be accessed.
  */
@@ -241,7 +285,6 @@ void	free_all(t_mlx *mlx);
  */
 void	*ft_exit(char *message);
 
-void draw_square(int x, int y, int size, uint32_t color, mlx_image_t *img);
 // bool touch(double px, double py, t_map *map);
 bool   touch(double px, double py, t_map *map, double radius);
 void put_pixel(int x, int y, uint32_t color, mlx_image_t *img);

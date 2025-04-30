@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 17:49:59 by igvisera          #+#    #+#             */
-/*   Updated: 2025/04/30 10:51:12 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/04/30 18:23:10 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-void draw_square(int x, int y, int size, uint32_t color, mlx_image_t *img)
-{
-    int i;
-
-    i = 0;
-    while (i < size)
-        put_pixel(x + i++, y, color, img);
-    i = 0;
-    while (i < size)
-        put_pixel(x, y + i++, color, img);
-    i = 0;
-    while (i < size)
-        put_pixel(x + size, y + i++, color, img);
-    i = 0;
-    while (i < size)
-        put_pixel(x + i++, y + size, color, img);
-}
 
 //colision de pared
 bool   touch(double px, double py, t_map *map, double radius)
