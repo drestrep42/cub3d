@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/30 22:06:38 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/01 12:19:04 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 #define ROT_SPEED  0.05
 #define BLOCK  64
 #define PI  3.14159265359
-#define PLAYER_RADIUS  0
+#define PLAYER_RADIUS  10
 
 typedef struct s_points
 {
@@ -309,6 +309,9 @@ void print_sky_and_floor(t_mlx *mlx);
 void move_player(mlx_key_data_t key_data, t_mlx *mlx);
 void init_player(t_player *player, t_map *map);
 void cast_single_ray(t_mlx *mlx, double rayAngle, int screenX);
+
+void	perform_dda(t_mlx *mlx);
+void	draw_stripe(t_mlx *mlx, int x);
 
 // UTILS
 

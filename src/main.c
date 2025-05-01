@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:57:59 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/29 17:56:03 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/05/01 11:15:30 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void free_textures(t_mlx *mlx)
+void	free_textures(t_mlx *mlx)
 {
-    for (int i = 0; i < 4; i++)
-    {
-        if (mlx->file.textures[i].xpm)
-        {
-            mlx_delete_texture(&mlx->file.textures[i].xpm->texture);
-            mlx->file.textures[i].xpm = NULL; // ya fue liberado dentro de mlx_delete_texture
-        }
-    }
-}
+	int	i;
 
+	i = -1;
+	while (++i < 4)
+	{
+		if (mlx->file.textures[i].xpm)
+		{
+			mlx_delete_texture(&mlx->file.textures[i].xpm->texture);
+			mlx->file.textures[i].xpm = NULL;
+		}
+	}
+}
 
 int	main(int ac, char **argv)
 {
