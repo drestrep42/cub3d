@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculate_dda.c                                    :+:      :+:    :+:   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:51:16 by igvisera          #+#    #+#             */
-/*   Updated: 2025/05/01 12:18:38 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/02 18:51:24 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void	compute_step_and_side_dist(t_mlx *mlx)
 void	compute_projection(t_mlx *mlx)
 {
 	int	proj_dist;
-	int	line_height;
 
 	if (mlx->ray.side == 0)
 		mlx->ray.perpDist = ((mlx->ray.mapX - mlx->ray.pos_x) \
@@ -68,11 +67,11 @@ void	compute_projection(t_mlx *mlx)
 		mlx->ray.perpDist = ((mlx->ray.mapY - mlx->ray.pos_y) \
 		+ (1 - mlx->ray.stepY) * 0.5) / mlx->ray.raydir_y;
 	proj_dist = (mlx->width / 2.0) / tan((PI / 3.0) / 2.0);
-	line_height = (int)(proj_dist / mlx->ray.perpDist);
-	mlx->ray.drawStart = -line_height / 2 + mlx->height / 2;
+	mlx->ray.line_height = (int)(proj_dist / mlx->ray.perpDist);
+	mlx->ray.drawStart = -mlx->ray.line_height / 2 + mlx->height / 2;
 	if (mlx->ray.drawStart < 0)
 		mlx->ray.drawStart = 0;
-	mlx->ray.drawEnd = line_height / 2 + mlx->height / 2;
+	mlx->ray.drawEnd = mlx->ray.line_height / 2 + mlx->height / 2;
 	if (mlx->ray.drawEnd >= mlx->height)
 		mlx->ray.drawEnd = mlx->height - 1;
 }

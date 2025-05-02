@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/01 12:19:04 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:01:01 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,15 @@
 
 # define WIDTH 800
 # define HEIGHT 800
-#define mapHeight 8
-#define mapWidth 13
-#define screenWidth 640
-#define screenHeight 480
-#define MOVE_SPEED 0.1
-#define ROT_SPEED  0.05
-#define BLOCK  64
-#define PI  3.14159265359
-#define PLAYER_RADIUS  10
+# define mapHeight 8
+# define mapWidth 13
+# define screenWidth 640
+# define screenHeight 480
+# define MOVE_SPEED 0.1
+# define ROT_SPEED  0.05
+# define BLOCK  64
+# define PI  3.14159265359
+# define PLAYER_RADIUS  10
 
 typedef struct s_points
 {
@@ -146,7 +146,7 @@ typedef struct s_ray {
 
     /* Projection & drawing */
     double perpDist;
-    int drawStart, drawEnd;
+    int drawStart, drawEnd, line_height;
     double wallX;
     int texID;
 } t_ray;

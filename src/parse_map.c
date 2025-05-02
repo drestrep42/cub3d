@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:01:11 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/30 17:35:14 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:39:35 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	parse_all_lines(t_map *map, char *line, int *player, int fd)
 		while (line[x])
 		{
 			map->coord[y][x].nbr = line[x];
+			map->coord[y][x].filled = false;
 			map->coord[y]->x_nbrs = x;
 			x++;
 		}

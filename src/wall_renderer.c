@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:16:49 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/01 12:18:52 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/02 20:10:28 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,14 @@ void	draw_textured_column(t_mlx *mlx, t_texture *t, double wall_x, int x)
 	pixels = (uint32_t *)t->img->pixels;
 	while (y <= mlx->ray.drawEnd)
 	{
-		pos_y = ((double)y - mlx->ray.drawStart) \
-			/ ((double)mlx->ray.drawEnd - mlx->ray.drawStart);
-		color = pixels[(int)(wall_x * (t->img->width - 1)) + \
-			(int)(pos_y * (t->img->height - 1)) *t->img->width];
+		if (mlx->ray.line_height <= HEIGHT)
+			pos_y = ((double)y - mlx->ray.drawStart) / \
+			((double)mlx->ray.drawEnd - mlx->ray.drawStart);
+		else
+			pos_y = (double)(((mlx->ray.line_height - HEIGHT) / 2.0) + y) / \
+			(double)mlx->ray.line_height;
+		color = pixels[(int)(wall_x * (t->img->width - 1)) + (int)(pos_y * \
+		(t->img->height - 1)) *t->img->width];
 		put_pixel(x, y, color, mlx->img);
 		y++;
 	}
