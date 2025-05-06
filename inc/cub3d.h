@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/06 19:42:06 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/06 21:45:10 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,6 +217,8 @@ int		get_map_size(int fd);
  * @note After calling this function, the freed pointers should not be accessed.
  */
 void	free_all(t_mlx *mlx);
+void	free_textures(t_mlx *mlx);
+void	free_map(t_map *map);
 
 // Exit
 /**
