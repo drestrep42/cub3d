@@ -6,30 +6,11 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:47:22 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/30 16:06:02 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/06 20:04:05 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-/* void	map_validator(t_map *map)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (map->coord[y])
-	{
-		x = 0;
-		while (map->coord[y][x].nbr)
-		{
-			printf("%c", map->coord[y][x].nbr);
-			x++;
-		}
-		y++;
-	}
-	printf("\n");
-} */
 
 void	set_map_dimensions(t_map *map)
 {
@@ -95,7 +76,7 @@ void	parsing(t_mlx	*mlx, char *argv)
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
 		ft_exit(USAGE_ERROR);
-	parse_elements(&mlx->file, fd);
+	parse_elements(mlx, &mlx->file, fd);
 	size = get_map_size(fd);
 	close(fd);
 	fd = open(argv, O_RDONLY);

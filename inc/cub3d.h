@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/06 18:25:34 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/06 19:42:06 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ typedef struct s_map
 
 typedef struct s_texture
 {
-	char			*path;
 	mlx_texture_t	*img;
 	xpm_t			*xpm;
+	char			*path;
 	int				width;
 	int				height;
 	bool			empty;
@@ -101,22 +101,6 @@ typedef struct s_file
 
 }				t_file;
 
-typedef struct s_touch
-{
-	double	nearest_x;
-	double	nearest_y;
-	double	dx;
-	double	dy;
-	double	px;
-	double	py;
-	int		min_x;
-	int		max_x;
-	int		min_y;
-	int		max_y;
-	int		y;
-	int		x;
-}				t_touch;
-
 typedef struct s_ray
 {
 /* Camera & ray direction */
@@ -147,16 +131,16 @@ typedef struct s_ray
 
 typedef struct s_mlx
 {
+	t_ray		ray;
 	t_file		file;
-	void		*mlx_ptr;
+	t_player	player;
 	mlx_image_t	*img;
+	int			speed;
 	int			width;
 	int			height;
+	void		*mlx_ptr;
 	double		cos_angle;
 	double		sin_angle;
-	int			speed;
-	t_player	player;
-	t_ray		ray;
 }				t_mlx;
 
 /**
@@ -193,7 +177,7 @@ void	parsing(t_mlx	*mlx, char *argv);
  * 
  * @note If the map is empty, the function exits with an error.
  */
-void	parse_elements(t_file *file, int fd);
+void	parse_elements(t_mlx *mlx, t_file *file, int fd);
 
 void	parse_floor_and_ceiling(t_floor *floor, t_ceiling *ceiling, \
 								char **line, char element);
