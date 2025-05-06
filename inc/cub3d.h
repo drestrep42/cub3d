@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/02 19:01:01 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:25:34 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <string.h>
 # include <errno.h>
 # include <sys/time.h>
-#include <math.h>
-#include <assert.h>
+# include <math.h>
+# include <assert.h>
 # include "../libft/inc/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
@@ -44,39 +44,32 @@
 
 # define WIDTH 800
 # define HEIGHT 800
-# define mapHeight 8
-# define mapWidth 13
-# define screenWidth 640
-# define screenHeight 480
-# define MOVE_SPEED 0.1
-# define ROT_SPEED  0.05
 # define BLOCK  64
 # define PI  3.14159265359
-# define PLAYER_RADIUS  10
 
 typedef struct s_points
 {
-	int			filled;
-	int			x_nbrs;
-	char		nbr;
+	int				filled;
+	int				x_nbrs;
+	char			nbr;
 }				t_points;
 
 typedef struct s_map
 {
-	t_points	**coord;
-	int			x_nbrs;
-	int			y_nbrs;
-	char      **raw_lines;
+	t_points		**coord;
+	int				x_nbrs;
+	int				y_nbrs;
+	char			**raw_lines;
 }				t_map;
 
 typedef struct s_texture
 {
-	char		*path;
-	mlx_texture_t *img;
-	xpm_t       *xpm;
-	int            width;
-	int            height;
-	bool		empty;
+	char			*path;
+	mlx_texture_t	*img;
+	xpm_t			*xpm;
+	int				width;
+	int				height;
+	bool			empty;
 }				t_texture;
 
 typedef struct s_floor
@@ -87,24 +80,17 @@ typedef struct s_floor
 
 typedef struct s_ceiling
 {
-	int			color[3];	double radius;
-
+	int			color[3];
+	double		radius;
 	bool		empty;
 }				t_ceiling;
 
 typedef struct s_player
 {
-    double pos_x;
-    double pos_y;
-    // double dirX;
-    // double dirY;
-	double angle;
-    double planeX;
-    double planeY;
-
-	bool left_rotate;
-	bool right_rotate;
-}               t_player;
+	double		pos_x;
+	double		pos_y;
+	double		angle;
+}				t_player;
 
 typedef struct s_file
 {
@@ -115,7 +101,8 @@ typedef struct s_file
 
 }				t_file;
 
-typedef struct s_touch {
+typedef struct s_touch
+{
 	double	nearest_x;
 	double	nearest_y;
 	double	dx;
@@ -130,26 +117,33 @@ typedef struct s_touch {
 	int		x;
 }				t_touch;
 
-typedef struct s_ray {
-    /* Camera & ray direction */
-    double	pos_x;
+typedef struct s_ray
+{
+/* Camera & ray direction */
+	double	pos_x;
 	double	pos_y;
-    double	raydir_x;
+	double	raydir_x;
 	double	raydir_y;
 
-    /* DDA state */
-    int mapX, mapY;
-    int stepX, stepY;
-    double sideDistX, sideDistY;
-    double deltaDistX, deltaDistY;
-    int side, hit;
+	/* DDA state */
+	int		hit;
+	int		side;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
 
-    /* Projection & drawing */
-    double perpDist;
-    int drawStart, drawEnd, line_height;
-    double wallX;
-    int texID;
-} t_ray;
+	/* Projection & drawing */
+	int		tex_id;
+	int		draw_end;
+	int		draw_start;
+	int		line_height;
+	double	perp_dist;
+}				t_ray;
 
 typedef struct s_mlx
 {
@@ -161,11 +155,10 @@ typedef struct s_mlx
 	double		cos_angle;
 	double		sin_angle;
 	int			speed;
-	t_player    player;
+	t_player	player;
 	t_ray		ray;
 }				t_mlx;
 
-// Init
 /**
  * Initializes the t_mlx struct with a new window and image.
  * 
@@ -200,42 +193,15 @@ void	parsing(t_mlx	*mlx, char *argv);
  * 
  * @note If the map is empty, the function exits with an error.
  */
-void parse_elements(t_file *file, int fd);
+void	parse_elements(t_file *file, int fd);
 
-// void	parse_elements(t_file *file, int fd);
 void	parse_floor_and_ceiling(t_floor *floor, t_ceiling *ceiling, \
 								char **line, char element);
 /**
  * Parses and stores a texture path for a given cardinal direction.
- * ydir_x < 0)
-	{
-		mlx->ray.stepX = -1;
-		mlx->ray.sideDistX = (mlx->ray.pos_x - mlx->ray.mapX) \
-		* mlx->ray.deltaDistX;
-	}
-	else
-	{
-		mlx->ray.stepX = +1;
-		mlx->ray.sideDistX = (mlx->ray.mapX + 1.0 - mlx->ray.pos_x) \
-		* mlx->ray.deltaDistX;
-	}
-	if (mlx->ray.raydir_y < 0)
-	{
-		mlx->ray.stepY = -1;
-		mlx->ray.sideDistY = (mlx->ray.pos_y - mlx->ray.mapY) \
-		* mlx->ray.deltaDistY;
-	}
-	else
-	{
-		mlx->ray.stepY = +1;
-		mlx->ray.sideDistY = (mlx->ray.mapY + 1.0 - mlx->ray.pos_y) \
-		* mlx->ray.deltaDistY;
-	}
-}*/
-void parse_textures(t_texture *texture, int cardinal, char **line, char *word);
-
-// void	parse_textures(t_texture *texture, int cardinal, \/
-						// char **line, char *word);
+ */
+void	parse_textures(t_texture *texture, int cardinal, \
+						char **line, char *word);
 
 /**
  * Parses the map lines from the file and stores them in the map structure.
@@ -262,31 +228,7 @@ int		get_map_size(int fd);
 // Free
 /**
  * Frees all allocated memory in the mlx struct.
- * ydir_x < 0)
-	{
-		mlx->ray.stepX = -1;
-		mlx->ray.sideDistX = (mlx->ray.pos_x - mlx->ray.mapX) \
-		* mlx->ray.deltaDistX;
-	}
-	else
-	{
-		mlx->ray.stepX = +1;
-		mlx->ray.sideDistX = (mlx->ray.mapX + 1.0 - mlx->ray.pos_x) \
-		* mlx->ray.deltaDistX;
-	}
-	if (mlx->ray.raydir_y < 0)
-	{
-		mlx->ray.stepY = -1;
-		mlx->ray.sideDistY = (mlx->ray.pos_y - mlx->ray.mapY) \
-		* mlx->ray.deltaDistY;
-	}
-	else
-	{
-		mlx->ray.stepY = +1;
-		mlx->ray.sideDistY = (mlx->ray.mapY + 1.0 - mlx->ray.pos_y) \
-		* mlx->ray.deltaDistY;
-	}
-}
+ * 
  * @param[in, out] mlx Pointer to the MLX instance to be freed.
  * @note After calling this function, the freed pointers should not be accessed.
  */
@@ -300,15 +242,14 @@ void	free_all(t_mlx *mlx);
  */
 void	*ft_exit(char *message);
 
-// bool touch(double px, double py, t_map *map);
-bool   touch(double px, double py, t_map *map, double radius);
-void put_pixel(int x, int y, uint32_t color, mlx_image_t *img);
-void clear_image(t_mlx *mlx);
-int	get_color(t_mlx *mlx, int mode);
-void print_sky_and_floor(t_mlx *mlx);
-void move_player(mlx_key_data_t key_data, t_mlx *mlx);
-void init_player(t_player *player, t_map *map);
-void cast_single_ray(t_mlx *mlx, double rayAngle, int screenX);
+bool	touch(double px, double py, t_map *map);
+void	put_pixel(int x, int y, uint32_t color, mlx_image_t *img);
+void	clear_image(t_mlx *mlx);
+int		get_color(t_mlx *mlx, int mode);
+void	print_sky_and_floor(t_mlx *mlx);
+void	move_player(mlx_key_data_t key_data, t_mlx *mlx);
+void	init_player(t_player *player, t_map *map);
+void	cast_single_ray(t_mlx *mlx, double rayAngle, int screenX);
 
 void	perform_dda(t_mlx *mlx);
 void	draw_stripe(t_mlx *mlx, int x);

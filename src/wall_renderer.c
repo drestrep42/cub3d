@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:16:49 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/02 20:10:28 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:25:34 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	draw_textured_column(t_mlx *mlx, t_texture *t, double wall_x, int x)
 	double			pos_y;
 	int				y;
 
-	y = mlx->ray.drawStart;
+	y = mlx->ray.draw_start;
 	pixels = (uint32_t *)t->img->pixels;
-	while (y <= mlx->ray.drawEnd)
+	while (y <= mlx->ray.draw_end)
 	{
 		if (mlx->ray.line_height <= HEIGHT)
-			pos_y = ((double)y - mlx->ray.drawStart) / \
-			((double)mlx->ray.drawEnd - mlx->ray.drawStart);
+			pos_y = ((double)y - mlx->ray.draw_start) / \
+			((double)mlx->ray.draw_end - mlx->ray.draw_start);
 		else
 			pos_y = (double)(((mlx->ray.line_height - HEIGHT) / 2.0) + y) / \
 			(double)mlx->ray.line_height;
@@ -42,20 +42,20 @@ void	draw_stripe(t_mlx *mlx, int x)
 	t_texture		*t;
 	double			wall_x;
 
-	t = &mlx->file.textures[mlx->ray.texID];
+	t = &mlx->file.textures[mlx->ray.tex_id];
 	if (t->empty || !t->img || !t->img->pixels)
 	{
-		while (mlx->ray.drawStart <= mlx->ray.drawEnd)
+		while (mlx->ray.draw_start <= mlx->ray.draw_end)
 		{
-			put_pixel(x, mlx->ray.drawStart, 0xAAAAAA, mlx->img);
-			mlx->ray.drawStart++;
+			put_pixel(x, mlx->ray.draw_start, 0xAAAAAA, mlx->img);
+			mlx->ray.draw_start++;
 		}
 		return ;
 	}
 	if (mlx->ray.side == 0)
-		wall_x = mlx->ray.pos_y + mlx->ray.perpDist * mlx->ray.raydir_y;
+		wall_x = mlx->ray.pos_y + mlx->ray.perp_dist * mlx->ray.raydir_y;
 	else
-		wall_x = mlx->ray.pos_x + mlx->ray.perpDist * mlx->ray.raydir_x;
+		wall_x = mlx->ray.pos_x + mlx->ray.perp_dist * mlx->ray.raydir_x;
 	wall_x -= floor(wall_x);
 	draw_textured_column(mlx, t, wall_x, x);
 }

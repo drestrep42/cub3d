@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 19:27:36 by igvisera          #+#    #+#             */
-/*   Updated: 2025/04/30 18:14:12 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:07:20 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ static void	move_player_arrows(mlx_key_data_t key_data, t_mlx *mlx)
 	}
 	else if (key_data.key == MLX_KEY_RIGHT || key_data.key == MLX_KEY_LEFT)
 		move_strafe(&newpos_x, &newpos_y, key_data, mlx);
-	if (!touch(newpos_x, mlx->player.pos_y, &mlx->file.map, PLAYER_RADIUS))
+	if (!touch(newpos_x, mlx->player.pos_y, &mlx->file.map))
 		mlx->player.pos_x = newpos_x;
-	if (!touch(mlx->player.pos_x, newpos_y, &mlx->file.map, PLAYER_RADIUS))
+	if (!touch(mlx->player.pos_x, newpos_y, &mlx->file.map))
 		mlx->player.pos_y = newpos_y;
 }
 

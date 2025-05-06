@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 17:49:59 by igvisera          #+#    #+#             */
-/*   Updated: 2025/04/30 22:07:05 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:26:36 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,16 @@ bool	touch_loop(t_map *map, t_touch touch, double radius)
 	return (false);
 }
 
-//colision de pared
-bool	touch(double px, double py, t_map *map, double radius)
+bool	touch(double px, double py, t_map *map)
 {
-	t_touch	touch;
+	int	x;
+	int	y;
 
-	touch.px = px;
-	touch.py = py;
-	touch.min_x = (int)((px - radius) / BLOCK);
-	touch.min_y = (int)((py - radius) / BLOCK);
-	touch.max_x = (int)((px + radius) / BLOCK);
-	touch.max_y = (int)((py + radius) / BLOCK);
-	if (touch.min_x < 0 || touch.min_y < 0 || \
-		touch.max_x >= map->x_nbrs || touch.max_y >= map->y_nbrs)
+	x = (int)(px / BLOCK);
+	y = (int)(py / BLOCK);
+	if (x < 0 || y < 0 || x >= map->x_nbrs || y >= map->y_nbrs)
 		return (true);
-	touch.y = touch.min_y;
-	if (touch_loop(map, touch, radius) == true)
+	if (map->coord[y][x].nbr == '1')
 		return (true);
 	return (false);
 }

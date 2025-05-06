@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:51:16 by igvisera          #+#    #+#             */
-/*   Updated: 2025/05/02 18:51:24 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:25:34 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,39 +19,39 @@ static void	init_ray_params(t_mlx *mlx, double rayAngle)
 	mlx->ray.pos_y = mlx->player.pos_y / BLOCK;
 	mlx->ray.raydir_x = cos(rayAngle);
 	mlx->ray.raydir_y = sin(rayAngle);
-	mlx->ray.mapX = (int)mlx->ray.pos_x;
-	mlx->ray.mapY = (int)mlx->ray.pos_y;
-	mlx->ray.deltaDistX = fabs(1.0 / mlx->ray.raydir_x);
-	mlx->ray.deltaDistY = fabs(1.0 / mlx->ray.raydir_y);
+	mlx->ray.map_x = (int)mlx->ray.pos_x;
+	mlx->ray.map_y = (int)mlx->ray.pos_y;
+	mlx->ray.delta_dist_x = fabs(1.0 / mlx->ray.raydir_x);
+	mlx->ray.delta_dist_y = fabs(1.0 / mlx->ray.raydir_y);
 	mlx->ray.hit = 0;
 }
 
-// Calcula stepX/stepY y sideDistX/sideDistY
+// Calcula step_x/step_y y side_dist_x/side_dist_y
 static void	compute_step_and_side_dist(t_mlx *mlx)
 {
 	if (mlx->ray.raydir_x < 0)
 	{
-		mlx->ray.stepX = -1;
-		mlx->ray.sideDistX = (mlx->ray.pos_x - mlx->ray.mapX) \
-		* mlx->ray.deltaDistX;
+		mlx->ray.step_x = -1;
+		mlx->ray.side_dist_x = (mlx->ray.pos_x - mlx->ray.map_x) \
+		* mlx->ray.delta_dist_x;
 	}
 	else
 	{
-		mlx->ray.stepX = +1;
-		mlx->ray.sideDistX = (mlx->ray.mapX + 1.0 - mlx->ray.pos_x) \
-		* mlx->ray.deltaDistX;
+		mlx->ray.step_x = +1;
+		mlx->ray.side_dist_x = (mlx->ray.map_x + 1.0 - mlx->ray.pos_x) \
+		* mlx->ray.delta_dist_x;
 	}
 	if (mlx->ray.raydir_y < 0)
 	{
-		mlx->ray.stepY = -1;
-		mlx->ray.sideDistY = (mlx->ray.pos_y - mlx->ray.mapY) \
-		* mlx->ray.deltaDistY;
+		mlx->ray.step_y = -1;
+		mlx->ray.side_dist_y = (mlx->ray.pos_y - mlx->ray.map_y) \
+		* mlx->ray.delta_dist_y;
 	}
 	else
 	{
-		mlx->ray.stepY = +1;
-		mlx->ray.sideDistY = (mlx->ray.mapY + 1.0 - mlx->ray.pos_y) \
-		* mlx->ray.deltaDistY;
+		mlx->ray.step_y = +1;
+		mlx->ray.side_dist_y = (mlx->ray.map_y + 1.0 - mlx->ray.pos_y) \
+		* mlx->ray.delta_dist_y;
 	}
 }
 
@@ -61,19 +61,19 @@ void	compute_projection(t_mlx *mlx)
 	int	proj_dist;
 
 	if (mlx->ray.side == 0)
-		mlx->ray.perpDist = ((mlx->ray.mapX - mlx->ray.pos_x) \
-		+ (1 - mlx->ray.stepX) * 0.5) / mlx->ray.raydir_x;
+		mlx->ray.perp_dist = ((mlx->ray.map_x - mlx->ray.pos_x) \
+		+ (1 - mlx->ray.step_x) * 0.5) / mlx->ray.raydir_x;
 	else
-		mlx->ray.perpDist = ((mlx->ray.mapY - mlx->ray.pos_y) \
-		+ (1 - mlx->ray.stepY) * 0.5) / mlx->ray.raydir_y;
+		mlx->ray.perp_dist = ((mlx->ray.map_y - mlx->ray.pos_y) \
+		+ (1 - mlx->ray.step_y) * 0.5) / mlx->ray.raydir_y;
 	proj_dist = (mlx->width / 2.0) / tan((PI / 3.0) / 2.0);
-	mlx->ray.line_height = (int)(proj_dist / mlx->ray.perpDist);
-	mlx->ray.drawStart = -mlx->ray.line_height / 2 + mlx->height / 2;
-	if (mlx->ray.drawStart < 0)
-		mlx->ray.drawStart = 0;
-	mlx->ray.drawEnd = mlx->ray.line_height / 2 + mlx->height / 2;
-	if (mlx->ray.drawEnd >= mlx->height)
-		mlx->ray.drawEnd = mlx->height - 1;
+	mlx->ray.line_height = (int)(proj_dist / mlx->ray.perp_dist);
+	mlx->ray.draw_start = -mlx->ray.line_height / 2 + mlx->height / 2;
+	if (mlx->ray.draw_start < 0)
+		mlx->ray.draw_start = 0;
+	mlx->ray.draw_end = mlx->ray.line_height / 2 + mlx->height / 2;
+	if (mlx->ray.draw_end >= mlx->height)
+		mlx->ray.draw_end = mlx->height - 1;
 }
 
 // Selecciona el ID de textura según el lado
@@ -100,6 +100,6 @@ void	cast_single_ray(t_mlx *mlx, double rayAngle, int screenX)
 	compute_step_and_side_dist(mlx);
 	perform_dda(mlx);
 	compute_projection(mlx);
-	mlx->ray.texID = choose_texture(mlx);
+	mlx->ray.tex_id = choose_texture(mlx);
 	draw_stripe(mlx, screenX);
 }
