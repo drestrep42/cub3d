@@ -6,7 +6,7 @@
 #    By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 12:51:47 by drestrep          #+#    #+#              #
-#    Updated: 2025/05/06 18:47:14 by drestrep         ###   ########.fr        #
+#    Updated: 2025/05/08 21:56:54 by drestrep         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,9 @@ BASE_DIR   		=	$(addprefix $(PATH_BASE), $(BASE_SRC))
 
 BASE_SRC		=	main.c		cube_init.c			parsing.c		ft_free.c		\
 					file_init.c	parse_textures.c	utils01.c		utils02.c		\
-					parse_map.c	parse_elements.c	parse_floor_and_ceiling.c	\
+					parse_map.c	parse_elements.c	parse_floor_and_ceiling.c		\
 					player.c	walls.c				raycasting.c	print_utils.c	\
-					wall_renderer.c					perform_dda.c	\
+					wall_renderer.c					perform_dda.c	parse_map_aux.c	\
 
 OBJS			=	${BASE_DIR:.c=.o} \
 

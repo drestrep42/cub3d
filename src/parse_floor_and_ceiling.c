@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:06:41 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/08 15:36:28 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/08 21:39:38 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	parse_rgb(t_allocated *tobfreed, char **rgb)
 		ft_exit(INVALID_COLOR);
 }
 
-void	get_rgb(t_allocated *tobfreed, char **line, void *floor_or_ceiling, char element)
+void	get_rgb(t_allocated *tobfreed, char **line, \
+				void *floor_or_ceiling, char element)
 {
 	t_floor		*floor;
 	t_ceiling	*ceiling;

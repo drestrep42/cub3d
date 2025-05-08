@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:47:22 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/07 17:17:03 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/08 21:44:02 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	start_flood_fill(t_mlx *mlx, t_map *map)
 
 void	parsing(t_mlx	*mlx, char *argv)
 {
-	int		fd;
-	int		size;
+	int			fd;
+	int			size;
 
 	mlx->error_msg = NULL;
 	fd = open(argv, O_RDONLY);

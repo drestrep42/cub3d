@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:04:56 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/08 15:32:43 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/08 21:42:08 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ void	free_error(t_mlx *mlx, char *word, char *line)
 	ft_exit(INVALID_TEXTURES);
 }
 
+void	tobfreed_init(t_allocated *tobfreed, t_mlx *mlx, char *word, char *line)
+{
+	tobfreed->mlx = mlx;
+	tobfreed->var1 = word;
+	tobfreed->var2 = line;
+}
+
 void	parse_each_element(t_mlx *mlx, t_file *file, char **line)
 {
 	t_allocated	tobfreed;
@@ -30,9 +37,7 @@ void	parse_each_element(t_mlx *mlx, t_file *file, char **line)
 	while ((*line)[i] && (*line)[i] != ' ' && (*line)[i] != '\t')
 		i++;
 	word = ft_substr(*line, 0, i);
-	tobfreed.mlx = mlx;
-	tobfreed.var1 = word;
-	tobfreed.var2 = *line;
+	tobfreed_init(&tobfreed, mlx, word, *line);
 	if (file->textures[NO].empty && ft_strncmp(word, "NO", 2) == 0)
 		parse_textures(&tobfreed, file->textures, NO);
 	else if (file->textures[SO].empty && ft_strncmp(word, "SO", 2) == 0)

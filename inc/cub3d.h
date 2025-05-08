@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/08 16:55:33 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/08 21:58:22 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,8 +228,8 @@ int		get_map_size(int fd);
 void	free_all(t_mlx *mlx, int path_flag);
 void	free_textures(t_mlx *mlx, int path_flag);
 void	free_map(t_map *map);
-void	free_allocated_and_exit(t_allocated *tobfreed, bool rgb_flag, 
-								bool textures_flag, char *error_msg);
+void	free_allocated_and_exit(t_allocated *tobfreed, bool rgb_flag, \
+			bool textures_flag, char *error_msg);
 // Exit
 /**
  * Prints the argument before exiting the program.
@@ -255,5 +255,8 @@ void	draw_stripe(t_mlx *mlx, int x);
 char	**ft_split_cub3d(t_allocated *tobfreed, char const *s, char c);
 int		check_spaces(char **ptr);
 char	*skip_spaces(char *line);
+
+char	*get_to_map(int fd);
+int		get_map_size(int fd);
 
 #endif
