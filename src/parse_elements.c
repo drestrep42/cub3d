@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:04:56 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/06 21:40:32 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/08 15:32:43 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,41 @@ void	free_error(t_mlx *mlx, char *word, char *line)
 {
 	free(word);
 	free(line);
-	free_textures(mlx);
+	free_textures(mlx, 1);
 	ft_exit(INVALID_TEXTURES);
 }
 
 void	parse_each_element(t_mlx *mlx, t_file *file, char **line)
 {
-	char	*word;
-	int		i;
+	t_allocated	tobfreed;
+	char		*word;
+	int			i;
 
 	i = 0;
 	while ((*line)[i] && (*line)[i] != ' ' && (*line)[i] != '\t')
 		i++;
 	word = ft_substr(*line, 0, i);
+	tobfreed.mlx = mlx;
+	tobfreed.var1 = word;
+	tobfreed.var2 = *line;
 	if (file->textures[NO].empty && ft_strncmp(word, "NO", 2) == 0)
-		parse_textures(file->textures, NO, line, word);
+		parse_textures(&tobfreed, file->textures, NO);
 	else if (file->textures[SO].empty && ft_strncmp(word, "SO", 2) == 0)
-		parse_textures(file->textures, SO, line, word);
+		parse_textures(&tobfreed, file->textures, SO);
 	else if (file->textures[EA].empty && ft_strncmp(word, "EA", 2) == 0)
-		parse_textures(file->textures, EA, line, word);
+		parse_textures(&tobfreed, file->textures, EA);
 	else if (file->textures[WE].empty && ft_strncmp(word, "WE", 2) == 0)
-		parse_textures(file->textures, WE, line, word);
+		parse_textures(&tobfreed, file->textures, WE);
 	else if (file->floor.empty && ft_strncmp(word, "F", 2) == 0)
-		parse_floor_and_ceiling(&file->floor, &file->ceiling, line, 'F');
+		parse_floor_and_ceiling(&tobfreed, file, line, 'F');
 	else if (file->ceiling.empty && ft_strncmp(word, "C", 2) == 0)
-		parse_floor_and_ceiling(&file->floor, &file->ceiling, line, 'C');
+		parse_floor_and_ceiling(&tobfreed, file, line, 'C');
 	else if (ft_strncmp(word, "\n", 1) != 0)
 		free_error(mlx, word, *line);
 	free(word);
 }
 
-void	parse_space(char *line, char *trimmed, int fd)
+void	parse_space(t_mlx *mlx, char *line, char *trimmed, int fd)
 {
 	while (line)
 	{
@@ -56,6 +60,7 @@ void	parse_space(char *line, char *trimmed, int fd)
 		if (*trimmed != '\n' && !ft_isdigit(*trimmed))
 		{
 			free(line);
+			free_textures(mlx, 1);
 			ft_exit(INVALID_TEXTURES);
 		}
 		if (ft_isdigit(*trimmed))
@@ -85,5 +90,5 @@ void	parse_elements(t_mlx *mlx, t_file *file, int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	parse_space(line, trimmed, fd);
+	parse_space(mlx, line, trimmed, fd);
 }

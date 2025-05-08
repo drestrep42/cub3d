@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils02.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:52:50 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/21 20:55:44 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/05/08 15:36:13 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-int	ft_countstr(char const *s, char c)
+int	ft_countstr(t_allocated *tobfreed, char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
@@ -24,13 +24,13 @@ int	ft_countstr(char const *s, char c)
 	while (s[i])
 	{
 		if (s[i] == c && s[i + 1] == c)
-			ft_exit(INVALID_TEXTURES);
+			free_allocated_and_exit(tobfreed, false, true, INVALID_COLOR);
 		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
 			j++;
 		i++;
 	}
 	if (j != 2)
-		ft_exit(INVALID_TEXTURES);
+		free_allocated_and_exit(tobfreed, false, true, INVALID_COLOR);
 	if (s[0] != c)
 		j++;
 	return (j);
@@ -58,7 +58,7 @@ char	*ft_string(const char *s, char c, size_t counter)
 	return (str);
 }
 
-char	**ft_split_cub3d(char const *s, char c)
+char	**ft_split_cub3d(t_allocated *tobfreed, char const *s, char c)
 {
 	char	**new;
 	size_t	sn;
@@ -67,7 +67,7 @@ char	**ft_split_cub3d(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	sn = ft_countstr(s, c);
+	sn = ft_countstr(tobfreed, s, c);
 	new = malloc((sn + 1) * sizeof(char *));
 	if (!new)
 		return (NULL);

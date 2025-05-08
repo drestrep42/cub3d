@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:47:22 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/06 21:45:39 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:17:03 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	flood_fill(t_mlx *mlx, t_map *map, int x, int y)
 		map->coord[y][x].nbr != 'N' && map->coord[y][x].nbr != 'S' && \
 		map->coord[y][x].nbr != 'E' && map->coord[y][x].nbr != 'W'))
 	{
-		free_textures(mlx);
+		free_textures(mlx, 1);
 		free_map(map);
 		ft_exit(INVALID_MAP);
 	}
@@ -64,7 +64,8 @@ void	start_flood_fill(t_mlx *mlx, t_map *map)
 		x = 0;
 		while (map->coord[y][x].nbr)
 		{
-			if (map->coord[y][x].nbr == '0')
+			if (map->coord[y][x].nbr == 'N' || map->coord[y][x].nbr == 'S' \
+			|| map->coord[y][x].nbr == 'E' || map->coord[y][x].nbr == 'W')
 				flood_fill(mlx, map, x, y);
 			x++;
 		}
@@ -77,6 +78,7 @@ void	parsing(t_mlx	*mlx, char *argv)
 	int		fd;
 	int		size;
 
+	mlx->error_msg = NULL;
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
 		ft_exit(USAGE_ERROR);
@@ -84,7 +86,7 @@ void	parsing(t_mlx	*mlx, char *argv)
 	size = get_map_size(fd);
 	close(fd);
 	fd = open(argv, O_RDONLY);
-	parse_map(&mlx->file.map, fd, size);
+	parse_map(mlx, &mlx->file.map, fd, size);
 	set_map_dimensions(&mlx->file.map);
 	start_flood_fill(mlx, &mlx->file.map);
 }

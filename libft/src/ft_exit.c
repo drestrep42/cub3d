@@ -6,15 +6,15 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:29:48 by drestrep          #+#    #+#             */
-/*   Updated: 2025/03/27 14:13:02 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:44:33 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	*ft_exit(char *message)
+void	*ft_exit(char *error_msg)
 {
 	printf("Error\n");
-	printf("%s\n", message);
+	printf("%s\n", error_msg);
 	exit(1);
 }

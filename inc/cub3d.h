@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/06 21:45:10 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/08 16:55:33 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@
 # define EMPTY_MAP "Map is empty"
 # define INVALID_MAP "Invalid map"
 # define INVALID_TEXTURES "Invalid textures"
-# define INVALID_PLAYER "Only one player allowed"
+# define NO_PLAYER "No player on the map"
 # define OUT_OF_BOUNDS "Player out of bounds"
 # define DUPLICATED_TEXTURE "Texture duplicate"
+# define INVALID_COLOR "Invalid color format"
 
 # define NO 0
 # define SO 1
@@ -141,7 +142,16 @@ typedef struct s_mlx
 	void		*mlx_ptr;
 	double		cos_angle;
 	double		sin_angle;
+	char		*error_msg;
 }				t_mlx;
+
+typedef struct s_allocated
+{
+	char	*var1;
+	char	*var2;
+	char	**var3;
+	t_mlx	*mlx;
+}				t_allocated;
 
 /**
  * Initializes the t_mlx struct with a new window and image.
@@ -165,7 +175,6 @@ void	file_init(t_file *file);
  * data will be stored.
  * @param[in] argv Path to the file to be parsed.
  */
-// void	parsing(t_file *file, char *argv);
 void	parsing(t_mlx	*mlx, char *argv);
 
 /**
@@ -179,13 +188,13 @@ void	parsing(t_mlx	*mlx, char *argv);
  */
 void	parse_elements(t_mlx *mlx, t_file *file, int fd);
 
-void	parse_floor_and_ceiling(t_floor *floor, t_ceiling *ceiling, \
+void	parse_floor_and_ceiling(t_allocated *tobfreed, t_file *file, \
 								char **line, char element);
 /**
  * Parses and stores a texture path for a given cardinal direction.
  */
-void	parse_textures(t_texture *texture, int cardinal, \
-						char **line, char *word);
+void	parse_textures(t_allocated *tobfreed, t_texture *texture, \
+						int cardinal);
 
 /**
  * Parses the map lines from the file and stores them in the map structure.
@@ -198,7 +207,7 @@ void	parse_textures(t_texture *texture, int cardinal, \
  * @note If the function encounters a failure, it will exit with the \
  * corresponding message. 
  */
-void	parse_map(t_map *map, int fd, int size);
+void	parse_map(t_mlx *mlx, t_map *map, int fd, int size);
 
 /**
  * Determines the number of lines in the map section of the file.
@@ -216,17 +225,18 @@ int		get_map_size(int fd);
  * @param[in, out] mlx Pointer to the MLX instance to be freed.
  * @note After calling this function, the freed pointers should not be accessed.
  */
-void	free_all(t_mlx *mlx);
-void	free_textures(t_mlx *mlx);
+void	free_all(t_mlx *mlx, int path_flag);
+void	free_textures(t_mlx *mlx, int path_flag);
 void	free_map(t_map *map);
-
+void	free_allocated_and_exit(t_allocated *tobfreed, bool rgb_flag, 
+								bool textures_flag, char *error_msg);
 // Exit
 /**
  * Prints the argument before exiting the program.
  * 
  * @param[in] message Message to be printed.
  */
-void	*ft_exit(char *message);
+void	*ft_exit(char *error_msg);
 
 bool	touch(double px, double py, t_map *map);
 void	put_pixel(int x, int y, uint32_t color, mlx_image_t *img);
@@ -242,7 +252,7 @@ void	draw_stripe(t_mlx *mlx, int x);
 
 // UTILS
 
-char	**ft_split_cub3d(char const *s, char c);
+char	**ft_split_cub3d(t_allocated *tobfreed, char const *s, char c);
 int		check_spaces(char **ptr);
 char	*skip_spaces(char *line);
 
