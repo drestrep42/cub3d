@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:51:16 by igvisera          #+#    #+#             */
-/*   Updated: 2025/05/06 18:25:34 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/09 14:06:12 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	compute_step_and_side_dist(t_mlx *mlx)
 }
 
 // Calcula distancia perpendicular y límites de dibujo
-void	compute_projection(t_mlx *mlx)
+static void	compute_projection(t_mlx *mlx)
 {
 	int	proj_dist;
 
@@ -93,7 +93,6 @@ static int	choose_texture(t_mlx *mlx)
 	}
 }
 
-// Función principal: un rayo por columna
 void	cast_single_ray(t_mlx *mlx, double rayAngle, int screenX)
 {
 	init_ray_params(mlx, rayAngle);

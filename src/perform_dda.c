@@ -6,13 +6,12 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:12:14 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/06 18:24:29 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:56:34 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-// DDA hasta colisión con muro o fuera de mapa
 void	perform_dda(t_mlx *mlx)
 {
 	while (!mlx->ray.hit)

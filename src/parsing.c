@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:47:22 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/08 21:44:02 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/09 22:08:45 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	start_flood_fill(t_mlx *mlx, t_map *map)
 		while (map->coord[y][x].nbr)
 		{
 			if (map->coord[y][x].nbr == 'N' || map->coord[y][x].nbr == 'S' \
-			|| map->coord[y][x].nbr == 'E' || map->coord[y][x].nbr == 'W')
+			|| map->coord[y][x].nbr == 'E' || map->coord[y][x].nbr == 'W' \
+			|| map->coord[y][x].nbr == '0')
 				flood_fill(mlx, map, x, y);
 			x++;
 		}
@@ -75,15 +76,19 @@ void	start_flood_fill(t_mlx *mlx, t_map *map)
 
 void	parsing(t_mlx	*mlx, char *argv)
 {
+	t_allocated	tobfreed;
 	int			fd;
 	int			size;
 
-	mlx->error_msg = NULL;
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
 		ft_exit(USAGE_ERROR);
+	mlx->error_msg = NULL;
+	tobfreed.mlx = mlx;
+	tobfreed.fd = fd;
 	parse_elements(mlx, &mlx->file, fd);
-	size = get_map_size(fd);
+	size = get_map_size(&tobfreed, fd) + 1;
+	free_gnl(fd);
 	close(fd);
 	fd = open(argv, O_RDONLY);
 	parse_map(mlx, &mlx->file.map, fd, size);

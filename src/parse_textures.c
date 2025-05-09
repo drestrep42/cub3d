@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:43:48 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/08 16:32:58 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/09 18:43:07 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	parse_textures(t_allocated *tobfreed, t_texture *texture, \
 	char	*path;
 	int		i;
 
+	flags_init(tobfreed, false, true, true);
 	i = ft_strlen(tobfreed->var1);
 	while (tobfreed->var2[i] == ' ' || tobfreed->var2[i] == '\t')
 		i++;
@@ -55,13 +56,13 @@ void	parse_textures(t_allocated *tobfreed, t_texture *texture, \
 	if (tobfreed->var2[i] != '\n')
 	{
 		free(path);
-		free_allocated_and_exit(tobfreed, false, true, INVALID_TEXTURES);
+		free_alloc_and_exit(tobfreed, tobfreed->flags, INVALID_TEXTURES);
 	}
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
 		free(path);
-		free_allocated_and_exit(tobfreed, false, true, strerror(errno));
+		free_alloc_and_exit(tobfreed, tobfreed->flags, strerror(errno));
 	}
 	close(fd);
 	texture_init(texture, cardinal, path);

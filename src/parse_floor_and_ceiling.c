@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:06:41 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/08 21:39:38 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/09 18:43:15 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	parse_rgb(t_allocated *tobfreed, char **rgb)
 
 	i = 0;
 	nbr_of_elements = 0;
+	flags_init(tobfreed, true, true, true);
 	while (rgb[i])
 	{
 		ptr = rgb[i];
@@ -28,16 +29,16 @@ void	parse_rgb(t_allocated *tobfreed, char **rgb)
 		while (*ptr)
 		{
 			if (*ptr == ' ' && check_spaces(&ptr) == -1)
-				free_allocated_and_exit(tobfreed, true, false, INVALID_COLOR);
+				free_alloc_and_exit(tobfreed, tobfreed->flags, INVALID_COLOR);
 			if (!ft_isdigit(*ptr) && *ptr != '\n')
-				free_allocated_and_exit(tobfreed, true, false, INVALID_COLOR);
+				free_alloc_and_exit(tobfreed, tobfreed->flags, INVALID_COLOR);
 			ptr++;
 		}
 		nbr_of_elements++;
 		i++;
 	}
 	if (nbr_of_elements != 3)
-		ft_exit(INVALID_COLOR);
+		free_alloc_and_exit(tobfreed, tobfreed->flags, INVALID_COLOR);
 }
 
 void	get_rgb(t_allocated *tobfreed, char **line, \

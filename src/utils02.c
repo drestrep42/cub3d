@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:52:50 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/08 15:36:13 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/09 18:43:07 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ int	ft_countstr(t_allocated *tobfreed, char const *s, char c)
 	j = 0;
 	if (!s[i])
 		return (0);
+	flags_init(tobfreed, false, true, true);
 	while (s[i])
 	{
 		if (s[i] == c && s[i + 1] == c)
-			free_allocated_and_exit(tobfreed, false, true, INVALID_COLOR);
+			free_alloc_and_exit(tobfreed, tobfreed->flags, INVALID_COLOR);
 		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
 			j++;
 		i++;
 	}
 	if (j != 2)
-		free_allocated_and_exit(tobfreed, false, true, INVALID_COLOR);
+		free_alloc_and_exit(tobfreed, tobfreed->flags, INVALID_COLOR);
 	if (s[0] != c)
 		j++;
 	return (j);

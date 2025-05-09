@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:16:49 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/06 18:25:34 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:19:49 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	draw_textured_column(t_mlx *mlx, t_texture *t, double wall_x, int x)
 	}
 }
 
-// Dibuja la columna con textura o gris si no hay, manteniendo while
 void	draw_stripe(t_mlx *mlx, int x)
 {
 	t_texture		*t;

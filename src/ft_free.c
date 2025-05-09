@@ -6,44 +6,24 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 17:35:59 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/08 16:48:02 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/09 18:46:28 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	free_allocated_and_exit(t_allocated *tobfreed, bool rgb_flag, \
-								bool textures_flag, char *error_msg)
+void	free_alloc_and_exit(t_allocated *tobfreed, t_flag flags, \
+								char *error_msg)
 {
 	free(tobfreed->var1);
 	free(tobfreed->var2);
-	if (rgb_flag == true)
-	{
-		free(tobfreed->var3[0]);
-		free(tobfreed->var3[1]);
-		free(tobfreed->var3[2]);
-		free(tobfreed->var3);
-	}
-	if (textures_flag == true)
+	if (flags.rgb_flag == true)
+		free_rgb(tobfreed);
+	if (flags.textures_flag == true)
 		free_textures(tobfreed->mlx, 1);
+	if (flags.gnl_flag == true)
+		free_gnl(tobfreed->fd);
 	ft_exit(error_msg);
-}
-
-void	free_textures(t_mlx *mlx, int path_flag)
-{
-	int	i;
-
-	i = -1;
-	while (++i < 4)
-	{
-		if (mlx->file.textures[i].xpm)
-		{
-			if (path_flag == 1)
-				free(mlx->file.textures[i].path);
-			mlx_delete_texture(&mlx->file.textures[i].xpm->texture);
-			mlx->file.textures[i].xpm = NULL;
-		}
-	}
 }
 
 void	free_map(t_map *map)
