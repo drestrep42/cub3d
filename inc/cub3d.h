@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/10 20:10:46 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/05/10 20:53:38 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,17 @@ typedef struct s_mlx
 	double		sin_angle;
 	char		*error_msg;
 }				t_mlx;
+
+typedef struct s_dh
+{
+	int			x;
+	int			y;
+	int			dh;
+	double		wall_x;
+	uint32_t	*pixels;
+	uint32_t	color;
+	t_texture	*t;
+}				t_dh;
 
 typedef struct s_flags
 {
