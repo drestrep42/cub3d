@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:51:16 by igvisera          #+#    #+#             */
-/*   Updated: 2025/05/09 14:06:12 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/10 19:08:19 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,36 @@ static void	compute_step_and_side_dist(t_mlx *mlx)
 	}
 }
 
-// Calcula distancia perpendicular y límites de dibujo
-static void	compute_projection(t_mlx *mlx)
+static double safe_div(double num, double den)
 {
-	int	proj_dist;
+    const double EPS = 1e-6;
+    if (fabs(den) < EPS)
+        return num / (den < 0 ? -EPS : EPS);
+    return num / den;
+}
 
-	if (mlx->ray.side == 0)
-		mlx->ray.perp_dist = ((mlx->ray.map_x - mlx->ray.pos_x) \
-		+ (1 - mlx->ray.step_x) * 0.5) / mlx->ray.raydir_x;
-	else
-		mlx->ray.perp_dist = ((mlx->ray.map_y - mlx->ray.pos_y) \
-		+ (1 - mlx->ray.step_y) * 0.5) / mlx->ray.raydir_y;
-	proj_dist = (mlx->width / 2.0) / tan((PI / 3.0) / 2.0);
-	mlx->ray.line_height = (int)(proj_dist / mlx->ray.perp_dist);
-	mlx->ray.draw_start = -mlx->ray.line_height / 2 + mlx->height / 2;
-	if (mlx->ray.draw_start < 0)
+// Calcula distancia perpendicular y límites de dibujo
+static void compute_projection(t_mlx *mlx)
+{
+    int proj_dist;
+
+    if (mlx->ray.side == 0)
+        mlx->ray.perp_dist = safe_div(
+            (mlx->ray.map_x - mlx->ray.pos_x + (1 - mlx->ray.step_x) * 0.5),
+            mlx->ray.raydir_x
+        );
+    else
+        mlx->ray.perp_dist = safe_div(
+            (mlx->ray.map_y - mlx->ray.pos_y + (1 - mlx->ray.step_y) * 0.5),
+            mlx->ray.raydir_y
+        );
+    proj_dist = (mlx->width / 2.0) / tan((PI / 3.0) / 2.0);
+    mlx->ray.line_height = (int)(proj_dist / mlx->ray.perp_dist);
+    mlx->ray.draw_start = -mlx->ray.line_height / 2 + mlx->height / 2;
+    if (mlx->ray.draw_start < 0)
 		mlx->ray.draw_start = 0;
 	mlx->ray.draw_end = mlx->ray.line_height / 2 + mlx->height / 2;
-	if (mlx->ray.draw_end >= mlx->height)
+    if (mlx->ray.draw_end >= mlx->height)
 		mlx->ray.draw_end = mlx->height - 1;
 }
 
