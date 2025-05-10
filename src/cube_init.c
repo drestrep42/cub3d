@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/10 19:14:15 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/10 20:08:33 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	key_callback(mlx_key_data_t key_data, void *param)
 		free_all(mlx, 1);
 		exit(1);
 	}
-	if (key_data.key == MLX_KEY_UP || key_data.key == MLX_KEY_DOWN || \
-		key_data.key == MLX_KEY_RIGHT || key_data.key == MLX_KEY_LEFT || \
-		key_data.key == MLX_KEY_Q || key_data.key == MLX_KEY_E)
+	if (key_data.key == MLX_KEY_W || key_data.key == MLX_KEY_A || \
+		key_data.key == MLX_KEY_S || key_data.key == MLX_KEY_D || \
+		key_data.key == MLX_KEY_LEFT || key_data.key == MLX_KEY_RIGHT)
 		move_player(key_data, mlx);
 }
 

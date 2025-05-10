@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 19:27:36 by igvisera          #+#    #+#             */
-/*   Updated: 2025/05/10 18:06:50 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/10 20:11:40 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	move_strafe(double *newpos_x, double *newpos_y, \
 {
 	double	strafe_dir;
 
-	if (key_data.key == MLX_KEY_LEFT)
+	if (key_data.key == MLX_KEY_A)
 		strafe_dir = -1.0;
 	else
 		strafe_dir = 1.0;
@@ -31,18 +31,18 @@ static void	move_player_arrows(mlx_key_data_t key_data, t_mlx *mlx)
 	double	newpos_x;
 	double	newpos_y;
 
-	if (key_data.key == MLX_KEY_DOWN)
+	if (key_data.key == MLX_KEY_S)
 		dir = -1.0;
 	else
 		dir = 1.0;
 	newpos_x = mlx->player.pos_x;
 	newpos_y = mlx->player.pos_y;
-	if (key_data.key == MLX_KEY_UP || key_data.key == MLX_KEY_DOWN)
+	if (key_data.key == MLX_KEY_W || key_data.key == MLX_KEY_S)
 	{
 		newpos_x += mlx->cos_angle * mlx->speed * dir;
 		newpos_y += mlx->sin_angle * mlx->speed * dir;
 	}
-	else if (key_data.key == MLX_KEY_RIGHT || key_data.key == MLX_KEY_LEFT)
+	else if (key_data.key == MLX_KEY_A || key_data.key == MLX_KEY_D)
 		move_strafe(&newpos_x, &newpos_y, key_data, mlx);
 	if (!touch(newpos_x, mlx->player.pos_y, &mlx->file.map))
 		mlx->player.pos_x = newpos_x;
@@ -56,9 +56,9 @@ void	move_player(mlx_key_data_t key_data, t_mlx *mlx)
 
 	angle_speed = 0.08;
 	mlx->speed = 3;
-	if (key_data.key == MLX_KEY_Q)
+	if (key_data.key == MLX_KEY_LEFT)
 		mlx->player.angle -= angle_speed;
-	if (key_data.key == MLX_KEY_E)
+	if (key_data.key == MLX_KEY_RIGHT)
 		mlx->player.angle += angle_speed;
 	if (mlx->player.angle >= 2 * PI)
 		mlx->player.angle -= 2 * PI;
@@ -66,8 +66,8 @@ void	move_player(mlx_key_data_t key_data, t_mlx *mlx)
 		mlx->player.angle += 2 * PI;
 	mlx->cos_angle = cos(mlx->player.angle);
 	mlx->sin_angle = sin(mlx->player.angle);
-	if (key_data.key == MLX_KEY_UP || key_data.key == MLX_KEY_DOWN || \
-		key_data.key == MLX_KEY_RIGHT || key_data.key == MLX_KEY_LEFT)
+	if (key_data.key == MLX_KEY_W || key_data.key == MLX_KEY_A || \
+		key_data.key == MLX_KEY_S || key_data.key == MLX_KEY_D)
 		move_player_arrows(key_data, mlx);
 }
 
