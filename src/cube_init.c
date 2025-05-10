@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 20:31:26 by drestrep          #+#    #+#             */
-/*   Updated: 2025/04/30 17:55:02 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/10 19:14:15 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ static void	key_callback(mlx_key_data_t key_data, void *param)
 
 	mlx = (t_mlx *)param;
 	if (key_data.key == MLX_KEY_ESCAPE)
+	{
+		free_all(mlx, 1);
 		exit(1);
+	}
 	if (key_data.key == MLX_KEY_UP || key_data.key == MLX_KEY_DOWN || \
 		key_data.key == MLX_KEY_RIGHT || key_data.key == MLX_KEY_LEFT || \
 		key_data.key == MLX_KEY_Q || key_data.key == MLX_KEY_E)

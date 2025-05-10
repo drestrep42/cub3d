@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/09 22:11:30 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/10 19:17:49 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define USAGE_ERROR "Correct use: ./cub3d map_name.cub"
 # define EMPTY_MAP "Map is empty"
-# define DOUBLE_MAP "Only one map allowed" //TODO: Revisar esto
+# define DOUBLE_MAP "Only one map allowed"
 # define INVALID_MAP "Invalid map"
 # define INVALID_TEXTURES "Invalid textures"
 # define NO_PLAYER "No player on the map"

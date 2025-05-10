@@ -6,11 +6,49 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:01:11 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/09 22:07:05 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/10 18:40:41 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+void	check_for_double_maps(t_allocated *tobfreed, char *line, int fd)
+{
+	char	*aux;
+
+	while (line)
+	{
+		aux = line;
+		while (*line)
+		{
+			if (*line != '\n' && *line != ' ' && *line != '	')
+			{
+				free_gnl(fd);
+				free_all(tobfreed->mlx, 0);
+				ft_exit(DOUBLE_MAP);
+			}
+			line++;
+		}
+		free(aux);
+		line = get_next_line(fd);
+	}
+	free(line);
+}
+
+void	check_for_errors(t_allocated *tobfreed, t_map *map, int *player, int y)
+{
+	free(tobfreed->var1);
+	map->coord[y] = NULL;
+	map->raw_lines[y] = NULL;
+	if (*player < 1)
+		tobfreed->mlx->error_msg = NO_PLAYER;
+	if (tobfreed->mlx->error_msg)
+	{
+		free_gnl(tobfreed->fd);
+		free_all(tobfreed->mlx, 1);
+		ft_exit(tobfreed->mlx->error_msg);
+	}
+}
 
 void	parse_line(t_mlx *mlx, char *line, int *player)
 {
@@ -36,21 +74,6 @@ void	parse_line(t_mlx *mlx, char *line, int *player)
 	}
 	if (*player > 1)
 		mlx->error_msg = INVALID_MAP;
-}
-
-void	check_for_errors(t_allocated *tobfreed, t_map *map, int *player, int y)
-{
-	free(tobfreed->var1);
-	map->coord[y] = NULL;
-	map->raw_lines[y] = NULL;
-	if (*player < 1)
-		tobfreed->mlx->error_msg = NO_PLAYER;
-	if (tobfreed->mlx->error_msg)
-	{
-		free_gnl(tobfreed->fd);
-		free_all(tobfreed->mlx, 1);
-		ft_exit(tobfreed->mlx->error_msg);
-	}
 }
 
 void	parse_all_lines(t_allocated	*tobfreed, t_map *map, int *player, int fd)
@@ -95,16 +118,5 @@ void	parse_map(t_mlx *mlx, t_map *map, int fd, int size)
 	tobfreed.var1 = line;
 	parse_all_lines(&tobfreed, map, &player, fd);
 	line = get_next_line(fd);
-	while (line)
-	{
-		if (line[0] != '\n')
-		{
-			free_gnl(fd);
-			free_all(mlx, 0);
-			ft_exit(DOUBLE_MAP);
-		}
-		free(line);
-		line = get_next_line(fd);
-	}
-	free(line);
+	check_for_double_maps(&tobfreed, line, fd);
 }

@@ -6,7 +6,7 @@
 /*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 19:27:36 by igvisera          #+#    #+#             */
-/*   Updated: 2025/05/06 18:07:20 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/10 18:06:50 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	move_player(mlx_key_data_t key_data, t_mlx *mlx)
 {
 	double	angle_speed;
 
-	angle_speed = 0.2;
+	angle_speed = 0.08;
 	mlx->speed = 3;
 	if (key_data.key == MLX_KEY_Q)
 		mlx->player.angle -= angle_speed;
@@ -88,6 +88,7 @@ static int	set_player_position(t_player *player, t_map *map, int x, int y)
 			player->angle = 0;
 		else if (c == 'W')
 			player->angle = PI;
+		player->angle += 0.02;
 		map->coord[y][x].nbr = '0';
 		return (1);
 	}
