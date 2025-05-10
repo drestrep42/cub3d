@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils02.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 16:52:50 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/10 20:59:49 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/05/10 21:09:45 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	**ft_split_cub3d(t_allocated *tobfreed, char const *s, char c)
 
 double	safe_div(double num, double den)
 {
-	const double	eps;
+	double	eps;
 
 	eps = 1e-6;
 	if (fabs(den) < eps)

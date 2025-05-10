@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 18:51:16 by igvisera          #+#    #+#             */
-/*   Updated: 2025/05/10 20:56:16 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/05/10 21:43:54 by drestrep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,14 @@ static int	choose_texture(t_mlx *mlx)
 	if (mlx->ray.side == 0)
 	{
 		if (mlx->ray.raydir_x > 0)
-			return (SO);
-		return (NO);
+			return (EA);
+		return (WE);
 	}
 	else
 	{
 		if (mlx->ray.raydir_y > 0)
-			return (WE);
-		return (EA);
+			return (SO);
+		return (NO);
 	}
 }
 
