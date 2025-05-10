@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:45:23 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/10 20:10:46 by igvisera         ###   ########.fr       */
+/*   Updated: 2025/05/10 21:00:31 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define HEIGHT 800
 # define BLOCK  64
 # define PI  3.14159265359
-#define MAX_DDA_STEPS 1000
+# define MAX_DDA_STEPS 1000
 
 typedef struct s_points
 {
@@ -435,7 +435,7 @@ void	draw_stripe(t_mlx *mlx, int x);
 char	**ft_split_cub3d(t_allocated *tobfreed, char const *s, char c);
 int		check_spaces(char **ptr);
 char	*skip_spaces(char *line);
-
+double	safe_div(double num, double den);
 void	flags_init(t_allocated *tobfreed, bool rgb_flag, \
 					bool textures_flag, bool gnl_flag);
 
