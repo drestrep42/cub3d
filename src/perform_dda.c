@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   perform_dda.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drestrep <drestrep@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igvisera <igvisera@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:12:14 by drestrep          #+#    #+#             */
-/*   Updated: 2025/05/09 13:56:34 by drestrep         ###   ########.fr       */
+/*   Updated: 2025/05/10 19:07:18 by igvisera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	perform_dda(t_mlx *mlx)
 {
-	while (!mlx->ray.hit)
+	int steps;
+
+	steps = 0;
+	while (!mlx->ray.hit && steps < MAX_DDA_STEPS)
 	{
 		if (mlx->ray.side_dist_x < mlx->ray.side_dist_y)
 		{
@@ -37,5 +40,8 @@ void	perform_dda(t_mlx *mlx)
 		}
 		if (mlx->file.map.coord[mlx->ray.map_y][mlx->ray.map_x].nbr == '1')
 			mlx->ray.hit = 1;
-	}
+	    steps++;
+    }
+    if (!mlx->ray.hit)
+        mlx->ray.hit = 1;
 }
